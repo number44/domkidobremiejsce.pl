@@ -1,0 +1,17 @@
+{
+  "name": "daniel/lesio-theme",
+  "type": "project",
+  "autoload": {
+    "psr-4": {
+      "Src\\": "src/",
+      "App\\": "app/"
+    }
+  },
+  "authors": [
+    {
+      "name": "number44",
+      "email": "daniel.lesiewicz.dev@gmail.com"
+    }
+  ],
+  "require": {}
+}

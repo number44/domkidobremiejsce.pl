@@ -1,7 +1,17 @@
+todo :
+
+[x] : Galeria
+[x] : Footer
+[ ] : Atrakcje dla dzieci
+[ ] : Atrakcje w okolicy
+[ ] : GaduGadu
+
 # Rsbuild project
 
 ## Setup
 
+increase file watchers :
+sudo sysctl -n -w fs.inotify.max_user_watches=524288
 Install the dependencies:
 
 ```bash
@@ -34,3 +44,5 @@ To learn more about Rsbuild, check out the following resources:
 
 - [Rsbuild documentation](https://rsbuild.rs) - explore Rsbuild features and APIs.
 - [Rsbuild GitHub repository](https://github.com/web-infra-dev/rsbuild) - your feedback and contributions are welcome!
+
+GG mati : 7 222 44 0;

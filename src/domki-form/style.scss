@@ -1,0 +1,118 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-domki-form-domki-form {
+  .container {
+  }
+}
+@media screen and (min-width: 62rem) {
+  .wp-block-domki-form-domki-form .content {
+    grid-template-columns: 1fr 2fr !important;
+  }
+}
+.wp-block-domki-form-domki-form .content {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-block: 5rem;
+
+  .left {
+    max-width: 30ch;
+  }
+  .form {
+    position: relative;
+    padding-inline: 0.5rem;
+    label,
+    a {
+      font-size: var(--wp--preset--font-size--small);
+    }
+  }
+  .loader {
+    width: 1rem;
+    height: 1rem;
+    border: 3px solid var(--wp--preset--color--light);
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+  }
+  .loader-box {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--wp--preset--color--light);
+    display: grid;
+    place-content: center;
+  }
+
+  .right {
+  }
+
+  input,
+  textarea {
+    padding-inline: 1rem;
+    padding-block: 0.5rem;
+    background-color: var(--wp--preset--color--light);
+    font-family: var(--wp--preset--font-family--montserrat);
+    outline: none;
+    border-radius: 0.25rem;
+    border: none;
+    line-height: 1.7;
+    outline: solid 1px var(--wp--preset--color--primary);
+    transition: outline ease-in-out 0.3s;
+  }
+  input:focus {
+    outline: solid 2px var(--wp--preset--color--primary);
+  }
+  textarea:focus {
+    outline: solid 2px var(--wp--preset--color--primary);
+  }
+
+  input[type='checkbox'] {
+    width: 1rem;
+    height: 1rem;
+    accent-color: var(--wp--preset--color--primary);
+  }
+  .button {
+    width: fit-content;
+    min-width: 12rem;
+  }
+  .button:disabled {
+    display: grid;
+    place-content: center;
+  }
+  .button:disabled:hover {
+    cursor: not-allowed;
+    background-color: var(--wp--preset--color--primary);
+  }
+  .error {
+    font-size: var(--wp--preset--font-size--small);
+    color: red;
+    height: 1rem;
+    opacity: 1;
+    transition: opacity ease-in-out 0.3s;
+  }
+  .noerror {
+    opacity: 0;
+  }
+  .success {
+    color: var(--wp--preset--color--light);
+    background-color: var(--wp--preset--color--primary);
+    font-size: var(--wp--preset--font-size--small);
+    padding: 1rem 2rem;
+    border-radius: 0.25rem;
+  }
+}
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

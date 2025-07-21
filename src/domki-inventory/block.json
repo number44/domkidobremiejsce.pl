@@ -1,0 +1,59 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "domki-inventory/domki-inventory",
+  "version": "0.1.0",
+  "title": "Inventory Block",
+  "category": "theme",
+  "icon": "layout",
+  "supports": {
+    "html": false
+  },
+  "example": {},
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": "full"
+    },
+    "identifier": {
+      "type": "string"
+    },
+    "image_one": {
+      "type": "object",
+      "default": {
+        "media_id": 0,
+        "alt": "",
+        "aspect_ratio": "3/4"
+      }
+    },
+    "image_two": {
+      "type": "object",
+      "default": {
+        "media_id": 0,
+        "alt": "",
+        "aspect_ratio": "16/9"
+      }
+    },
+    "image_three": {
+      "type": "object",
+      "default": {
+        "media_id": 0,
+        "alt": "",
+        "aspect_ratio": "16/9"
+      }
+    },
+
+    "pattern": {
+      "type": "object",
+      "default": {
+        "media_id": 0,
+        "url": ""
+      }
+    }
+  },
+  "textdomain": "domki-inventory",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php"
+}

@@ -1,0 +1,27 @@
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-domki-galleries-domki-galleries {
+  filter: drop-shadow(0px 0px 1px hsl(142, 59%, 19%));
+  min-height: 10rem;
+  border-radius: 0.2rem;
+  width: calc(100% - 2rem);
+  background-color: #fff;
+  margin-inline: auto !important;
+
+  .button-small {
+    border: 1px solid var(--wp--preset--color--pale);
+    border-radius: 50rem;
+    cursor: pointer;
+    font-size: 0.8rem;
+    line-height: 2.5;
+    padding-inline: 1.5rem;
+    text-transform: uppercase;
+    font-weight: 900;
+    background: #e4f5eb;
+    color: #144d29;
+  }
+}

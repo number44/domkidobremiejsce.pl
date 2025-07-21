@@ -1,0 +1,64 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "domki-galleries/domki-galleries",
+  "version": "0.1.0",
+  "title": "Domki Galerie",
+  "category": "theme",
+  "icon": "layout",
+  "description": "Domki Galerie ",
+  "example": {},
+  "supports": {
+    "interactivity": true
+  },
+  "attributes": {
+    "identifier": {
+      "type": "string",
+      "default": "galeria"
+    },
+    "title": {
+      "type": "object",
+      "default": {
+        "text": "Galeria",
+        "show": true
+      }
+    },
+    "galleries": {
+      "type": "array",
+      "default": [
+        {
+          "title": "Domki",
+          "order_by": 1,
+          "gallery_id": 0,
+          "images": []
+        },
+        {
+          "title": "Atrakcje dla dzieci",
+          "order_by": 2,
+          "gallery_id": 0,
+          "images": []
+        },
+        {
+          "title": "Atrakcje w okolicy",
+          "order_by": 3,
+          "gallery_id": 0,
+          "images": []
+        }
+      ]
+    },
+    "button": {
+      "type": "object",
+      "default": {
+        "text": "Zobacz więcej",
+        "link": "#",
+        "show": true
+      }
+    }
+  },
+  "textdomain": "domki-galleries",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php",
+  "viewScriptModule": "file:./view.ts"
+}

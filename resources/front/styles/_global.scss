@@ -1,0 +1,194 @@
+/*
+*
+* Global Styles
+*
+*/
+// * {
+//   margin: 0;
+//   padding: 0;
+//   box-sizing: border-box;
+// }
+
+// html,
+// body,
+// div,
+// span,
+// iframe,
+// h1,
+// h2,
+// h3,
+// h4,
+// h5,
+// p,
+// a,
+// em,
+// img,
+// sub,
+// b,
+// u,
+// i,
+// center,
+// ul,
+// li,
+// form,
+// label,
+// caption,
+// embed,
+// figure,
+// figcaption,
+// footer,
+// header,
+// nav,
+// section,
+// video {
+//   margin: 0;
+//   padding: 0;
+//   border: 0;
+//   font-size: 100%;
+//   font: inherit;
+//   vertical-align: baseline;
+// }
+
+figcaption,
+figure,
+footer,
+header,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1.5;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: Montserrat, sans-serif;
+  line-height: 1.6rem;
+  background: #fff !important;
+  overflow-x: hidden !important;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -o-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100% !important;
+  width: 100%;
+  display: block;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+video {
+  max-width: 100%;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.d-none {
+  display: none !important;
+}
+
+.d-block {
+  display: block !important;
+}
+
+.d-flex {
+  display: flex !important;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.my-0 {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.p-0 {
+  padding: 0 !important;
+}
+
+.pb-2 {
+  padding-bottom: 0.5rem !important;
+}
+
+.mb-8 {
+  margin-bottom: 8px;
+}
+
+.mb-24 {
+  margin-bottom: 24px;
+}
+
+.pb-2 {
+  padding-bottom: 64px;
+  margin-bottom: 64px;
+}
+
+.py {
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+
+.c {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ucase {
+  text-transform: uppercase !important;
+}
+
+.cp {
+  cursor: pointer;
+}
+
+.cp:hover {
+  opacity: 0.9;
+}
+
+.no-wrap {
+  white-space: nowrap;
+}
+
+.black {
+  color: #000 !important;
+}
+
+.black:hover {
+  color: #144d29 !important;
+}
+
+.over-hidden {
+  overflow: hidden;
+}
+
+.button-reservation-clear {
+  margin-inline: auto;
+  cursor: pointer;
+}

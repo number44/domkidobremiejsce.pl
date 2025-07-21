@@ -1,0 +1,21 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "block-starter/block-starter",
+  "version": "0.1.0",
+  "title": "Menu górne",
+  "category": "theme",
+  "icon": "layout",
+  "description": "Menu górne - domki dobre miejsce",
+  "example": {},
+  "supports": {
+    "interactivity": true
+  },
+  "attributes": {},
+  "textdomain": "block-starter",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php",
+  "viewScriptModule": "file:./view.ts"
+}

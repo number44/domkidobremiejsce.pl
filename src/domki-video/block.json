@@ -1,0 +1,33 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "domki-video/domki-video",
+  "version": "0.1.0",
+  "title": "Domki video .",
+  "category": "theme",
+  "icon": "layout",
+  "description": "domki Video pusty. Dodać z wtyczki.",
+  "example": {},
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "identifier": {
+      "type": "string",
+      "default": "galeria"
+    },
+    "title": {
+      "type": "object",
+      "default": {
+        "text": "Galeria",
+        "show": true
+      }
+    }
+  },
+  "textdomain": "domki-video",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php",
+  "viewScript": "file:./view.js"
+}

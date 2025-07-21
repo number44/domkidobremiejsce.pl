@@ -1,0 +1,29 @@
+.bottom :is(.heading) {
+  font-size: 1rem;
+  color: #bb0b00;
+  background-color: #fff;
+  text-align: center;
+  line-height: 1.25rem;
+  text-align: center;
+  position: relative;
+  z-index: 11;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+.bottom .bottom-heading {
+  position: relative !important;
+  display: block;
+}
+.bottom :is(.horizontal-line) {
+  position: absolute !important;
+  height: 0.0625rem;
+  background: #a80000 !important;
+  transform: translate(-50%, -50%) !important;
+  opacity: 1 !important;
+  width: min(90rem, 100%);
+  top: 50%;
+  left: 50%;
+  z-index: 0;
+}

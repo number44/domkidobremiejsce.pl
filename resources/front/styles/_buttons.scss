@@ -1,0 +1,150 @@
+/*
+*
+* Buttons
+*
+*/
+.btn-grp {
+  display: flex;
+  align-self: top;
+}
+
+.btn-grp .btn {
+  height: 48px;
+  min-width: 186px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.875rem;
+  font-weight: 700;
+  border-radius: 50px;
+}
+
+.btn-grp .btn-primary {
+  background: #144d29;
+  color: #fff;
+}
+
+.btn-grp .btn-secondary {
+  transition: all ease-in-out 0.3s;
+  background: #e4f5eb;
+  color: var(--wp--preset--color--primary);
+}
+
+.btn-grp .btn-secondary:hover {
+  background: #144d29;
+  color: #fff;
+}
+
+.btn-grp .btn-secondary:hover svg path {
+  fill: #fff !important;
+}
+
+.btn-grp .btn-secondary svg {
+  width: 18px;
+  height: 22px;
+  margin-right: 1rem;
+}
+
+.btn-grp .btn-secondary svg path {
+  transition: all ease-in-out 0.3s;
+  fill: var(--wp--preset--color--primary);
+}
+
+.btns-small {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.btns-small .btn {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.btns-small .btn svg {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.center-btn {
+  font-size: 12px;
+  font-style: normal;
+  line-height: 16px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin-block-start: 40px;
+  background: #144d29;
+  align-self: center;
+  border: inherit;
+  border-radius: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // width: 186px;
+  cursor: pointer;
+  transition: all ease-in-out 0.3s;
+  font-weight: 700;
+  margin-inline: auto;
+  padding-inline: 18px;
+  color: #fff !important;
+}
+
+.center-btn:focus {
+  border-radius: 50px;
+  outline: none;
+}
+
+.center-btn:hover {
+  color: #144d29 !important;
+  background: #e4f5eb;
+}
+
+.center-btn .text {
+  width: 150px;
+}
+
+.btn-g-fix {
+  box-sizing: border-box;
+  transition: all ease-in-out 0.3s;
+  border: solid #e4f5eb 2px;
+}
+
+.btn-g-fix:hover {
+  border: solid #144d29 2px;
+}
+
+.button {
+  padding: 18px;
+  line-height: 16px;
+  width: 276px;
+  max-width: 100%;
+  margin-top: 40px !important;
+  background: #144d29;
+  color: #fff;
+  font-weight: 700;
+  text-align: center;
+  align-self: center;
+  border: inherit;
+  border-radius: 50px;
+  text-transform: uppercase;
+  transition: all ease-in-out 0.3s;
+}
+.button:hover {
+  background: #e4f5eb;
+  color: #144d29;
+}
+
+.btn-fix {
+  transition: all ease-in-out 0.3s;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center;
+}
+
+.btn-fix:hover {
+  background: #e4f5eb !important;
+  color: #144d29;
+}

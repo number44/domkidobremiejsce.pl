@@ -1,0 +1,107 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "domki-reservation/domki-reservation",
+  "version": "0.1.0",
+  "title": "Reservation Block",
+  "category": "theme",
+  "icon": "layout",
+  "supports": {
+    "html": true,
+    "align": true
+  },
+  "example": {},
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": "wide"
+    },
+    "identifier": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string",
+      "default": "Oferta"
+    },
+    "promotion_text": {
+      "type": "string",
+      "default": "PROMOCJA od 23 marca do 4 kwietnia przy min 5 noclegach -20% na cały pobyt. "
+    },
+    "reservation_text": {
+      "type": "string",
+      "default": ""
+    },
+    "promo_1": {
+      "type": "object",
+      "default": {
+        "id": 0,
+        "alt": "",
+        "from": "",
+        "to": "",
+        "url": "",
+        "img_id": "",
+        "line_1": "",
+        "line_2": "",
+        "price_1": "",
+        "price_2": ""
+      }
+    },
+    "promo_2": {
+      "type": "object",
+      "default": {
+        "id": 0,
+        "alt": "",
+        "from": "",
+        "to": "",
+        "url": "",
+        "img_id": "",
+        "line_1": "",
+        "line_2": "",
+        "price_1": "",
+        "price_2": ""
+      }
+    },
+    "promo_3": {
+      "type": "object",
+      "default": {
+        "id": 0,
+        "alt": "",
+        "from": "",
+        "to": "",
+        "url": "",
+        "img_id": "",
+        "line_1": "",
+        "line_2": "",
+        "price_1": "",
+        "price_2": ""
+      }
+    },
+    "promo_4": {
+      "type": "object",
+      "default": {
+        "id": 0,
+        "alt": "",
+        "from": "",
+        "to": "",
+        "url": "",
+        "img_id": "",
+        "line_1": "",
+        "line_2": "",
+        "price_1": "",
+        "price_2": ""
+      }
+    },
+    "button": {
+      "type": "object",
+      "default": {
+        "text": "Rezerwuj dowolny termin",
+        "url": ""
+      }
+    }
+  },
+  "textdomain": "domki-reservation",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php"
+}

@@ -1,0 +1,75 @@
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-domki-reservation-domki-reservation {
+  margin-bottom: 2rem;
+  position: relative;
+  box-shadow: 0px 0px 3px #144d29;
+  display: grid;
+  gap: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 3rem;
+  padding-inline: 2rem;
+  grid-template-columns: 1fr;
+  .title {
+    background: darkred;
+  }
+  .select-btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    .btn-select {
+      cursor: pointer;
+      transition: all ease-in-out 0.3s;
+      .circle {
+        border: 3px white solid;
+        width: 1rem;
+        height: 1rem;
+        aspect-ratio: 1 !important;
+        border-radius: 50%;
+        background: white;
+      }
+      width: 100%;
+      width: fit-content;
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      justify-content: space-evenly;
+      background: #e4f5eb;
+      border-radius: 4rem;
+      padding: 1.5rem 2.5rem;
+      display: flex;
+      font-weight: 700;
+    }
+    .active-select-btn {
+      background: #144d29 !important;
+      color: white;
+      .circle {
+        width: 1rem;
+        height: 1rem;
+        border-radius: 50%;
+        background: #144d29;
+      }
+    }
+  }
+  .promos {
+    display: grid;
+    @media (min-width: 60rem) {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    .promo {
+      border-radius: 1rem;
+      background: #e6ece7;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1.5rem;
+      padding: 1rem;
+    }
+  }
+}

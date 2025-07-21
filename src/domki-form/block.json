@@ -1,0 +1,37 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "domki-form/domki-form",
+  "version": "0.1.0",
+  "title": "Domki. Kontakt.",
+  "category": "theme",
+  "icon": "layout",
+  "description": "Domki. Formularz kontaktowy plus dane kontaktowe.",
+  "example": {},
+  "supports": {
+    "interactivity": true
+  },
+  "attributes": {
+    "identifier": {
+      "type": "string",
+      "default": "galeria"
+    },
+    "title": {
+      "type": "object",
+      "default": {
+        "text": "Galeria",
+        "show": true
+      }
+    },
+    "privacy": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "textdomain": "domki-form",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php",
+  "viewScriptModule": "file:./view.ts"
+}

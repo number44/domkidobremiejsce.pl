@@ -8,9 +8,12 @@ import { globby } from 'globby';
 import path from 'path';
 import fs from 'fs';
 export default defineConfig(async () => {
-  const entries = await buildEntries();
-  console.log('entries', JSON.parse(JSON.stringify(entries)));
   return {
+    performance: {
+      chunkSplit: {
+        strategy: 'all-in-one',
+      },
+    },
     plugins: [
       pluginReact(),
       pluginSass(),
@@ -21,9 +24,6 @@ export default defineConfig(async () => {
       entry: {
         'front/main': './resources/front/main.ts',
         'admin/main': './resources/admin/main.ts',
-        // 'ds-app/view': './src/ds-app/view.ts',
-        // 'ds-app/style': './src/ds-app/style-entry.ts',
-        // 'ds-app/editor': './src/ds-app/editor-entry.ts',
       },
     },
     output: {

@@ -1,0 +1,15 @@
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-domki-form-domki-form {
+  .form {
+    width: 100%;
+    aspect-ratio: 16/9;
+    display: grid;
+    place-content: center;
+    background-color: var(--wp--preset--color--pale);
+  }
+}

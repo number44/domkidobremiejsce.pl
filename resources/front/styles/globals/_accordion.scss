@@ -1,0 +1,26 @@
+.accordion__wrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 1;
+  transform: scale(0) translateX(-30px);
+  background-color: purple;
+  transition:
+    grid-template-rows 300ms ease,
+    opacity 300ms ease,
+    transform 300ms ease;
+}
+
+.accordion__content {
+  overflow: hidden;
+}
+
+.accordion__wrapper--open {
+  opacity: 1;
+  grid-template-rows: 1fr;
+  transform: translateX(0px) scale(1);
+}
+
+.accordion-horizontal__wrapper {
+  display: grid;
+  grid-template-columns: 0fr;
+}

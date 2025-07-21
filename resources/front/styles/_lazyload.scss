@@ -1,0 +1,25 @@
+.image-container {
+  overflow: hidden;
+  width: 100%;
+}
+.placeholder {
+  width: 100%;
+  height: auto;
+  filter: blur(10px);
+  transition: filter 0.3s ease;
+}
+.lazy-load-image {
+  filter: blur(10px);
+  max-width: 100%;
+  height: auto;
+  transition: filter 0.3s ease;
+}
+.loaded {
+  filter: blur(0) !important;
+}
+
+.placeholder-tag {
+  transition:
+    transform ease-in-out 3s,
+    filter ease-in-out 3s !important;
+}

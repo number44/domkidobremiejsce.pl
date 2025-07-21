@@ -1,0 +1,213 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-domki-reservation-domki-reservation {
+  p {
+  }
+  .no-wrap {
+    white-space: nowrap;
+  }
+  .button-reservation-clear {
+    width: fit-content !important;
+    align-self: center;
+    padding-inline: 2rem !important;
+  }
+  .oferta-section {
+    padding-top: 56px;
+    text-align: center;
+    font-weight: 600;
+  }
+  .oferta-section h1 {
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  .oferta-section .of {
+    display: flex;
+    justify-content: center;
+  }
+  .content {
+    margin-top: 40px;
+    margin-bottom: 1rem;
+    font-family: Montserrat;
+
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 0px;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .oferta-section .btns {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+  @media (max-width: 768px) {
+    .oferta-section .btns {
+      flex-direction: column;
+    }
+  }
+  .oferta-section .btns .btn {
+    width: 100%;
+    max-width: 256px;
+    align-items: center;
+    justify-content: space-between;
+    background: #e4f5eb;
+    border-radius: 50px;
+    padding: 1rem 24px;
+    display: flex;
+    gap: 1rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+    word-wrap: none;
+    white-space: nowrap;
+  }
+  .no-wrap {
+    white-space: nowrap;
+  }
+  .oferta-section .btns .btn .circle {
+    width: 20px;
+    height: 20px;
+    aspect-ratio: 1;
+    background: white;
+    border-radius: 50%;
+    border: solid white 4px;
+  }
+  .oferta-section .btns .btn-left {
+    margin-bottom: 1rem;
+  }
+  .button-reservation {
+    width: fit-content !important;
+    max-width: fit-content;
+  }
+  @media (min-width: 768px) {
+    .oferta-section .btns .btn-left {
+      margin-right: 1rem;
+    }
+  }
+  .oferta-section .btns .btn-right {
+    margin-bottom: 1rem;
+  }
+  @media (min-width: 768px) {
+    .oferta-section .btns .btn-right {
+      margin-left: 1rem;
+    }
+  }
+  .oferta-section .btns .btn--active {
+    background: #144d29 !important;
+    color: #fff;
+  }
+  .oferta-section .btns .btn--active .circle {
+    background: #144d29;
+  }
+  .oferta {
+    padding: 5px 20px;
+    color: #fff;
+    border-radius: 50px;
+    background: #fc7846;
+    align-self: center;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0px;
+    text-align: center;
+    margin-bottom: 27px;
+  }
+  .promocja {
+    border-radius: 16px;
+    background: #e6ece7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px;
+  }
+  .promocja h4 {
+    text-transform: uppercase;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 24px;
+    letter-spacing: 0px;
+    text-align: center;
+    padding-bottom: 8px;
+    margin-block-end: 0;
+    margin-block-start: 0;
+  }
+  .promocja p {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0px;
+    text-align: center;
+    padding-bottom: 1rem;
+    margin-block-end: 0;
+    margin-block-start: 0;
+  }
+  .promocja .icona {
+    margin-bottom: 16px;
+    width: 88px;
+    height: 88px;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+  }
+  .promocja .cena {
+    padding-bottom: 24px;
+    color: #144d29;
+    font-family: Montserrat;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 48px;
+    letter-spacing: 0px;
+    text-align: center;
+  }
+  .promocja .btn {
+    background: #144d29;
+    color: #fff;
+    border-radius: 50px;
+    width: 276px;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    padding: 18px;
+    line-height: 16px;
+    letter-spacing: 0px;
+    text-align: center;
+  }
+  @media (min-width: 576px) {
+    .promocja .btn {
+      width: 80%;
+    }
+  }
+  .promocja .btn:hover {
+    color: #144d29;
+    background: #e4f5eb;
+  }
+  .oferty {
+    gap: 2rem;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+  @media (min-width: 768px) {
+    .oferty {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 968px) {
+    .oferty {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+}

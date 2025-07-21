@@ -13,9 +13,9 @@ class Scripts
         add_action('wp_enqueue_scripts', function ($hook) {
             $this->ds_front_scripts($hook);
         });
-        // add_action('enqueue_block_assets', function () {
-        //     $this->block_scripts();
-        // });
+        add_action('enqueue_block_assets', function () {
+            $this->block_scripts();
+        });
     }
     public function ds_admin_scripts($hook)
     {
@@ -73,17 +73,21 @@ class Scripts
     }
     public function block_scripts()
     {
-
         $post_id = get_the_ID() ?? 0;
         $getPost = get_post($post_id);
         $tags = get_tags(array(
             'hide_empty' => false, // Set to true if you want only tags that have posts
         ));
 
-        wp_enqueue_script('frontjs', get_template_directory_uri() . '/dist/front/front.js', array(), '1.0.0', true);
+        // http://localhost/wp-json/lesio_theme_api/v1/
+        wp_enqueue_script('frontjs', get_template_directory_uri() . '/dist/front/main.js', array(), '1.0.0', true);
         wp_localize_script('frontjs', 'wpApiSettings', array(
             "home_url" => get_home_url(),
+            "theme_url" => get_template_directory_uri(),
+            'nonce' => wp_create_nonce('wp_rest'),
+            "api_url" => get_home_url() . "/wp-json/lesio_theme_api/v1/",
+            "media_api_url" => get_home_url() . "/wp-json/wp/v2/media/",
         ));
-        wp_enqueue_style('frontcss', get_template_directory_uri() . '/dist/front/front.css', array(), '1.0.0');
+        wp_enqueue_style('frontcss', get_template_directory_uri() . '/dist/front/main.css', array(), '1.0.0');
     }
 }

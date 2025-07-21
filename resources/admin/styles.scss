@@ -1,3 +1,26 @@
-body {
-  background-color: darkcyan;
+.paper {
+  border: solid 1px #ccc;
+  width: 100%;
+}
+.w-full {
+  width: 100%;
+}
+.text-center {
+  text-align: center;
+}
+.images-container {
+  height: 25rem !important;
+  overflow-y: auto;
+}
+.block {
+  display: block;
+}
+.success {
+  box-sizing: border-box;
+  font-weight: 700;
+  padding-inline: 1rem;
+  border-left: solid 5px rgb(44, 185, 44);
+  padding-block: 0.3rem;
+  box-shadow: 0 0 3px #ccc;
+  width: fit-content;
 }

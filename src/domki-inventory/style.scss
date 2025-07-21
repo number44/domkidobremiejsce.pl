@@ -1,0 +1,43 @@
+.wp-block-domki-inventory-domki-inventory {
+  background-color: var(--wp--preset--color--pale);
+  padding-block: 6rem;
+  position: relative;
+  .inv-pattern-1 {
+    position: absolute;
+    inset-inline-start: 0;
+    inset-block-start: 0;
+    width: fit-content;
+  }
+}
+.wp-block-domki-inventory-domki-inventory .container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  .sticky {
+    position: sticky !important;
+    top: 6rem;
+  }
+  .center {
+    position: relative;
+    align-content: center;
+  }
+  .inv-pattern-2 {
+    position: absolute;
+    inset-inline-end: 0;
+    inset-block-start: 0;
+    transform: translate(50%, -10%);
+    width: fit-content;
+    opacity: 0.6;
+    z-index: 1;
+  }
+  .right {
+    display: grid;
+    gap: 1.5rem;
+  }
+}
+@media screen and (min-width: 62rem) {
+  .wp-block-domki-inventory-domki-inventory .container {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+  }
+}

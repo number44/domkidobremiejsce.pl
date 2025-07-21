@@ -1,0 +1,21 @@
+.hide-on-small {
+  @media (max-width: 62em) {
+    display: none !important;
+  }
+}
+.hide-on-large {
+  @media (min-width: 62em) {
+    display: none !important;
+  }
+}
+
+.hide-on-medium {
+  @media (max-width: 80em) {
+    display: none !important;
+  }
+}
+.hide-on-xlarge {
+  @media (min-width: 80em) {
+    display: none !important;
+  }
+}

@@ -1,0 +1,31 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "domki-empty/domki-empty",
+	"version": "0.1.0",
+	"title": "Empty Block",
+	"category": "theme",
+	"icon": "layout",
+	"supports": {
+		"html": false,
+		"align": true
+	},
+  "example":{},
+	"attributes": {
+		"align": {
+			"type": "string",
+			"default": "wide"
+		},
+		"identifier": {
+			"type": "string"
+		},
+		"title": {
+			"type": "string",
+			"default": "Empty Block"
+		}
+	},
+	"textdomain": "domki-empty",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}

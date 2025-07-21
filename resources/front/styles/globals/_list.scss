@@ -1,0 +1,138 @@
+.list-items {
+  border: 1px solid #d9d9d9;
+}
+.list-item {
+  padding-inline: 1rem;
+
+  border-bottom: 1px solid #d9d9d9;
+  min-height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #1a1a1a;
+}
+// .list-item:last-child {
+//   border-bottom: none;
+// }
+.item-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.action-button {
+  background-color: white;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.action-button svg {
+  inset: 0;
+  width: 39px;
+  height: 39px;
+  transition: fill 0.3s ease-in-out;
+}
+.delete-button:hover svg .bin-path {
+  fill: white;
+}
+.delete-button:hover {
+  background-color: var(--wp--preset--color--custom-primary);
+}
+
+.edit-icon {
+  cursor: pointer;
+  & > * {
+    transition: all ease-in-out 3s;
+  }
+}
+.edit-icon:hover {
+  fill: var(--blue);
+  stroke: #fff;
+  .path-one {
+    stroke: white;
+  }
+  .path-two {
+    stroke: white;
+    fill: white;
+  }
+  .path-three {
+    stroke: white;
+    fill: white;
+  }
+}
+.item-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.sort-buttons {
+  border-left: 1px solid #d9d9d9;
+  /* background-color: #d9d9d9; */
+  display: grid;
+  gap: 1px;
+  grid-template-rows: 1fr 1fr;
+}
+.sort-button {
+  /* background-color: #fff; */
+  box-sizing: content-box;
+  width: 1.5rem;
+  padding-block: 0.2rem;
+  padding-inline: 0.25rem;
+  height: 1.5rem;
+  aspect-ratio: 1;
+  transition: background-color 0.3s ease-in-out;
+}
+.sort-button svg {
+  stroke: hsl(0, 0%, 43%);
+}
+.sort-button:hover {
+  background-color: #d9d9d9;
+}
+.sort-button:hover svg {
+  stroke: hsl(0, 0%, 14%);
+}
+button {
+  /* Remove default styles */
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+
+  /* Optional: you might want to add some basic padding */
+}
+
+/* Preserve focus outline */
+button:focus {
+  // outline: auto; /* or specific style like: outline: 2px solid blue; */
+  outline: 0.2rem solid rgba(0, 123, 255, 0.25);
+  outline-offset: 0.1rem;
+}
+
+/* Preserve active state */
+button:active {
+  outline: 0.2rem solid rgba(0, 123, 255, 0.25);
+  outline-offset: 0.1rem;
+  // outline: auto; /* or your preferred active style */
+}
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.2;
+}
+
+.button {
+  padding-inline: 1rem;
+  padding-block: 0.5rem;
+  background-color: var(--wp--preset--color--custom-primary);
+  color: white;
+}

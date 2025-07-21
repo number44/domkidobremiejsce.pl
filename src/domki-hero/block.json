@@ -1,0 +1,116 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "domki-hero/domki-hero",
+  "version": "0.1.0",
+  "title": "Hero block",
+  "category": "theme",
+  "icon": "layout",
+  "description": "Heroblock with carousel",
+  "example": {},
+  "supports": {
+    "interactivity": true
+  },
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": "full"
+    },
+    "identifier": {
+      "type": "string"
+    },
+    "facebook": {
+      "type": "string",
+      "default": "103225564451781"
+    },
+    "instagram": {
+      "type": "string",
+      "default": "domki_dobre_miejsce"
+    },
+    "phone": {
+      "type": "object",
+      "default": {
+        "text": "534 478 005",
+        "url": "+48 534 478 005"
+      }
+    },
+    "reservation": {
+      "type": "object",
+      "default": {
+        "text": "Zarezerwuj termin",
+        "url": "https://domkidobremiejsce.pl/rezerwacje/"
+      }
+    },
+    "links": {
+      "type": "array",
+      "default": [
+        {
+          "text": "O nas",
+          "url": "#onas",
+          "order_by": 1
+        },
+        {
+          "text": "Galeria",
+          "url": "#galeria",
+          "order_by": 2
+        },
+        {
+          "text": "Atrakcje dla dzieci",
+          "url": "#dzieci",
+          "order_by": 3
+        },
+        {
+          "text": "Atrakcje w okolicy",
+          "url": "#okolica",
+          "order_by": 4
+        },
+        {
+          "text": "Domki",
+          "url": "#domki",
+          "order_by": 5
+        },
+        {
+          "text": "Oferta",
+          "url": "#oferta",
+          "order_by": 6
+        },
+        {
+          "text": "Kontakt",
+          "url": "#kontakt",
+          "order_by": 7
+        }
+      ]
+    },
+    "logo": {
+      "type": "object",
+      "default": {
+        "media_id": 0,
+        "alt": 0
+      }
+    },
+    "images": {
+      "type": "array",
+      "default": [
+        {
+          "media_id": 0,
+          "text": "Atrakcje",
+          "alt": "Atrakcje - Domki Dobre Miejsce",
+          "order_by": 1
+        }
+      ]
+    },
+    "carousel": {
+      "type": "object",
+      "default": {
+        "autoplay": 3000,
+        "loop": true
+      }
+    }
+  },
+  "textdomain": "domki-hero",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php",
+  "viewScriptModule": "file:./view.ts"
+}

@@ -1,0 +1,61 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "domki-kids/domki-kids",
+  "version": "0.1.0",
+  "title": "Domki. Atrakcje dla dzieci.",
+  "category": "theme",
+  "icon": "layout",
+  "description": "Domki. Atrakcje dla dzieci z galerią.",
+  "example": {},
+  "supports": {
+    "interactivity": true
+  },
+  "attributes": {
+    "identifier": {
+      "type": "string",
+      "default": "atrakcjedladzieci"
+    },
+    "title": {
+      "type": "object",
+      "default": {
+        "text": "Atrakcje dla dzieci",
+        "show": true
+      }
+    },
+    "images": {
+      "type": "array",
+      "default": []
+    },
+    "button": {
+      "type": "object",
+      "default": {
+        "text": "Zobacz więcej",
+        "link": "#",
+        "show": true
+      }
+    },
+    "apiGallery": {
+      "type": "object",
+      "default": {
+        "id": 0,
+        "title": "Wybierz galerię",
+        "media_ids": ""
+      }
+    },
+    "gallery": {
+      "type": "object",
+      "default": {
+        "order_by": 0,
+        "title": "",
+        "gallery_id": 0
+      }
+    }
+  },
+  "textdomain": "domki-kids",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php",
+  "viewScriptModule": "file:./view.ts"
+}

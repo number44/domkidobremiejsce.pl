@@ -12,16 +12,14 @@
     "resolveJsonModule": true,
     "forceConsistentCasingInFileNames": true,
     "paths": {
-      "@wordpress/*": ["node_modules/@wordpress/*"]
+      "@components/*": ["./src/components/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@assets/*": ["./assets/*"], // Example if you have a top-level assets folder
+      "@/*": ["./src/*"], // A common alias for the src root itself
+      "@resources/*": ["./resources/*"]
     }
   },
-  "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    "src/wordpress.d.ts",
-    "cli",
-    "./webpack.config.ts"
-  ],
+  "include": ["**/*.ts", "**/*.tsx", "./src/wordpress.d.ts", "./src/global.d.ts", "cli", "./webpack.config.ts"],
   "exclude": [
     "**/node_modules/**",
     "build/**",
@@ -31,6 +29,7 @@
     "**/assets/**",
     "./inc/**",
     "./node_modules/**",
-    "./node_modules"
+    "./node_modules",
+    "./wip"
   ]
 }

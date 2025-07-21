@@ -1,18 +1,11 @@
 import './styles.scss';
-import PluginDocumentSettingPanelDemo from './Post/PluginDocumentSettingPanelDemo';
-import { registerPlugin } from '@wordpress/plugins';
-import PluginPrePublishPanelTest from './Post/PluginPrePublishPanelTest';
-import PluginBlockSettingsMenuGroupTest from './Post/PluginBlockSettingsMenuGroupTest';
+import { registerPlugin, PluginArea } from '@wordpress/plugins';
 
+import PluginMoreMenuItemComponent from './Post/PluginMoreMenuItemComponent';
+import GalleryPanel from './Gallery/Galleries';
 registerPlugin('my-custom-fields-plugin', {
-  render: PluginDocumentSettingPanelDemo,
-  icon: 'palmtree', // Choose an appropriate Dashicon for your panel
+  render: GalleryPanel,
+  icon: 'images-alt',
 });
 
-registerPlugin('pre-publish-panel-test', {
-  render: PluginPrePublishPanelTest,
-});
-
-registerPlugin('block-settings-menu-group-test', {
-  render: PluginBlockSettingsMenuGroupTest,
-});
+registerPlugin('more-menu-item-test', { render: PluginMoreMenuItemComponent });

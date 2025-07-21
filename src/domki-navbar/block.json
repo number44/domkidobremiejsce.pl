@@ -1,0 +1,100 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "domki-navbar/domki-navbar",
+  "version": "0.1.0",
+  "title": "Menu górne",
+  "category": "theme",
+  "icon": "layout",
+  "description": "Menu górne - domki dobre miejsce",
+  "example": {},
+  "supports": {
+    "interactivity": true
+  },
+
+  "attributes": {
+    "pattern": {
+      "type": "object",
+      "default": {
+        "media_id": 0,
+        "alt": 0
+      }
+    },
+    "logo": {
+      "type": "object",
+      "default": {
+        "media_id": 0,
+        "alt": 0
+      }
+    },
+    "align": {
+      "type": "string",
+      "default": "full"
+    },
+    "facebook": {
+      "type": "string",
+      "default": "103225564451781"
+    },
+    "instagram": {
+      "type": "string",
+      "default": "domki_dobre_miejsce"
+    },
+    "phone": {
+      "type": "object",
+      "default": {
+        "text": "534 478 005",
+        "url": "+48 534 478 005"
+      }
+    },
+    "mobile": {
+      "type": "object",
+      "default": {
+        "line_1": "DOMKI DOBRE MIEJSCE",
+        "line_2": "RABKA-ZDRÓJ",
+        "reservation_text": "ZAREZERWUJ"
+      }
+    },
+    "reservation": {
+      "type": "object",
+      "default": {
+        "text": "Zarezerwuj termin",
+        "url": "https://domkidobremiejsce.pl/rezerwacje/"
+      }
+    },
+    "links": {
+      "type": "array",
+      "default": [
+        {
+          "text": "O nas",
+          "url": "#onas"
+        },
+        {
+          "text": "Galeria",
+          "url": "#galeria"
+        },
+        {
+          "text": "Atrakcje dla dzieci",
+          "url": "#dzieci"
+        },
+        {
+          "text": "Atrakcje w okolicy",
+          "url": "#okolica"
+        },
+        {
+          "text": "Oferta",
+          "url": "#oferta"
+        },
+        {
+          "text": "Kontakt",
+          "url": "#kontakt"
+        }
+      ]
+    }
+  },
+  "textdomain": "domki-navbar",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php",
+  "viewScriptModule": "file:./view.ts"
+}

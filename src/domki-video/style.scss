@@ -1,0 +1,24 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-domki-video-domki-video {
+  padding-block: 2.5rem;
+}
+@media screen and (min-width: 62rem) {
+  .wp-block-domki-video-domki-video {
+    padding-block: 2.5rem;
+    .container {
+      display: grid;
+    }
+  }
+  .gallery-modal {
+    position: fixed;
+    inset: 0;
+    background-color: #fff;
+    z-index: 999999;
+  }
+}

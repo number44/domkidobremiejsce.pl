@@ -1,0 +1,55 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "domki-about/domki-about",
+  "version": "0.1.0",
+  "title": "Domki - O nas",
+  "category": "theme",
+  "icon": "layout",
+  "description": "Domki O nas sekcja",
+  "example": {},
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": "full"
+    },
+    "identifier": {
+      "type": "string",
+      "default": "onas"
+    },
+    "content": {
+      "type": "string",
+      "default": ""
+    },
+    "image_one": {
+      "type": "object",
+      "default": {
+        "media_id": 0,
+        "alt": 0
+      }
+    },
+    "image_two": {
+      "type": "object",
+      "default": {
+        "media_id": 0,
+        "alt": 0
+      }
+    },
+    "pattern": {
+      "type": "object",
+      "default": {
+        "media_id": 0,
+        "alt": 0
+      }
+    }
+  },
+  "textdomain": "domki-about",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php",
+  "viewScript": "file:./view.js"
+}

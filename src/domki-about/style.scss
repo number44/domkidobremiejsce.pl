@@ -1,0 +1,67 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-domki-about-domki-about {
+  padding-block: 1.5rem;
+  .img-about_one {
+    position: sticky !important;
+    top: 6rem;
+    margin-right: auto;
+  }
+
+  .container {
+    display: flex;
+    gap: 1.5rem;
+    flex-direction: column-reverse;
+    grid-template-columns: 1fr;
+    place-content: center;
+  }
+  .img-about_one {
+    position: relative;
+    border-radius: 0.2rem;
+    margin-inline: auto;
+    max-width: 384px !important;
+  }
+  .img-about_one .sticky {
+    position: sticky;
+    top: 6rem;
+  }
+  .left {
+    gap: 1.5rem;
+    align-items: flex-start;
+    justify-content: flex-start;
+    display: flex;
+    justify-content: flex-start;
+  }
+  .pattern {
+    position: absolute;
+    inset-inline-end: 0;
+    inset-block-start: 0;
+    z-index: 1;
+    transform: translate(35%, -25%);
+    width: 19.625rem;
+    height: 21.875rem;
+  }
+  .right {
+    display: grid;
+    gap: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 62rem) {
+  .wp-block-domki-about-domki-about {
+    padding-block: 5rem;
+    .container {
+      display: grid;
+      grid-template-columns: auto 1fr;
+    }
+    .left {
+      padding-inline-end: 6rem;
+      padding-inline-start: 2rem;
+    }
+  }
+}

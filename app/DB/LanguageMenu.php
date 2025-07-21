@@ -3,7 +3,6 @@ namespace App\DB;
 
 class LanguageMenu
 {
-
     public static function create()
     {
         global $wpdb;
@@ -37,6 +36,7 @@ class LanguageMenu
             ) $charset_collate;
         ";
         require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+
         dbDelta($sql);
     }
 }

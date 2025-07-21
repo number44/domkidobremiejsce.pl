@@ -1,0 +1,55 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+// .wp-block-hero-block-hero-block {
+// }
+
+.wp-block-domki-instagram-domki-instagram {
+  .insta {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+  .insta .container {
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    grid-template-columns: repeat(1fr);
+  }
+  @media (min-width: 968px) {
+    .insta .container {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  @media (min-width: 1024px) {
+    .insta .container {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .insta .insta-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .insta .insta-head {
+    margin-top: 80px;
+    color: #144d29;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .insta .insta-head svg {
+    margin-right: 1rem;
+  }
+  @media (max-width: 768px) {
+    #hashtag {
+      font-size: 1.4rem;
+    }
+  }
+}

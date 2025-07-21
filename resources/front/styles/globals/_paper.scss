@@ -1,0 +1,16 @@
+.paper {
+  background: #fff;
+  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.12);
+  padding-block: 1.5rem;
+  padding-inline: 1rem;
+  display: grid;
+  gap: 1.88rem;
+  width: min(45rem, 100% - 2rem);
+  margin-inline: auto;
+}
+@media (min-width: 62em) {
+  .paper {
+    padding-inline: 3.25rem;
+    padding-block: 2.5rem;
+  }
+}

@@ -1,0 +1,28 @@
+$spacings: (
+  1: 0.5rem,
+  2: 1rem,
+  3: 1.5rem,
+  4: 2rem,
+  5: 2.5rem,
+);
+
+@mixin generate-classes($property, $prefix) {
+  @each $key, $value in $spacings {
+    .#{$prefix}-#{$key} {
+      #{$property}: $value;
+    }
+  }
+}
+.test-elem {
+}
+@include generate-classes(margin-top, 'mt');
+@include generate-classes(margin-bottom, 'mb');
+@include generate-classes(margin-block, 'my');
+@include generate-classes(margin-inline, 'mx');
+
+@include generate-classes(padding-top, 'pt');
+@include generate-classes(padding-bottom, 'pb');
+@include generate-classes(padding-block, 'py');
+@include generate-classes(padding-inline, 'px');
+
+@include generate-classes(gap, 'gap');

@@ -1,0 +1,62 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "domki-footer/domki-footer",
+  "version": "0.1.0",
+  "title": "Footer Block",
+  "category": "theme",
+  "icon": "layout",
+  "supports": {
+    "html": true,
+    "align": true
+  },
+  "example": {},
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": "full"
+    },
+    "identifier": {
+      "type": "string"
+    },
+    "logo": {
+      "type": "object",
+      "default": {
+        "media_id": 0,
+        "alt": 0
+      }
+    },
+    "title": {
+      "type": "string",
+      "default": "Footer Block"
+    },
+    "privacy": {
+      "type": "object",
+      "default": {
+        "url": "string",
+        "text": "Ta strona używa cookies. Korzystając z niej wyrażasz zgodę na wykorzystywanie cookies, zgodnie z ustawieniami Twojej przeglądarki. Więcej w Polityce Prywatności lub przeczytaj Regulamin"
+      }
+    },
+    "rules": {
+      "type": "string",
+      "default": "#"
+    },
+    "left": {
+      "type": "string",
+      "default": "Polityka prywatności.</br>Regulamin"
+    },
+    "right": {
+      "type": "string",
+      "default": "Design: <a href='https://www.mocio.co/'>mocio.co</a>"
+    },
+    "center": {
+      "type": "string",
+      "default": "© 2020 DOBRE MIEJSCE. All rights reserved."
+    }
+  },
+  "textdomain": "domki-footer",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php"
+}

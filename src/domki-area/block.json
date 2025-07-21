@@ -1,0 +1,62 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "domki-area/domki-area",
+  "version": "0.1.0",
+  "title": "Domki. Atrakcje w okolicy.",
+  "category": "theme",
+  "icon": "layout",
+  "description": "Domki. Atrakcje w okolicy z galerią.",
+  "example": {},
+  "supports": {
+    "interactivity": true
+  },
+  "attributes": {
+    "identifier": {
+      "type": "string",
+      "default": "atrakcjewokolicy"
+    },
+    "title": {
+      "type": "object",
+      "default": {
+        "text": "Atrakcje w okolicy",
+        "show": true
+      }
+    },
+
+    "links": {
+      "type": "array",
+      "default": []
+    },
+    "button": {
+      "type": "object",
+      "default": {
+        "text": "Zobacz więcej",
+        "link": "#",
+        "show": true
+      }
+    },
+    "apiGallery": {
+      "type": "object",
+      "default": {
+        "id": 0,
+        "title": "Wybierz galerię",
+        "media_ids": ""
+      }
+    },
+    "gallery": {
+      "type": "object",
+      "default": {
+        "order_by": 0,
+        "title": "",
+        "gallery_id": 0
+      }
+    }
+  },
+  "textdomain": "domki-area",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php",
+  "viewScriptModule": "file:./view.ts"
+}

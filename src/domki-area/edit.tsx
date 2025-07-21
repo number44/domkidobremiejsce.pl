@@ -159,9 +159,10 @@ export default function Edit({ attributes, setAttributes }: PropsI) {
           ))}
         </div>
         <div className="grid-3 gap-3 my-4">
-          {attributes.gallery.images.map((gimage, index) => (
-            <ImageComponent key={index} media_id={gimage.media_id} style={{ aspectRatio: '16/9' }} />
-          ))}
+          {attributes.gallery.images.length > 0 &&
+            attributes.gallery.images.map((gimage, index) => (
+              <ImageComponent key={index} media_id={gimage.media_id} style={{ aspectRatio: '16/9' }} />
+            ))}
         </div>
       </section>
     </>

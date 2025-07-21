@@ -43,18 +43,26 @@ const storeDef = {
       if (!formData.get('firstname')) {
         context.errorFirstname = true;
         return;
+      } else {
+        context.errorFirstname = false;
       }
       if (!formData.get('email')) {
         context.errorEmail = true;
         return;
+      } else {
+        context.errorEmail = false;
       }
       if (!formData.get('message')) {
         context.errorMessage = true;
         return;
+      } else {
+        context.errorMessage = false;
       }
       if (!formData.get('consent')) {
         context.errorConsent = true;
         return;
+      } else {
+        context.errorConsent = false;
       }
       context.loading = true;
 
@@ -67,7 +75,6 @@ const storeDef = {
 
       console.log('data', data);
       console.log('data', JSON.parse(JSON.stringify(data)));
-      context.loading = false;
 
       console.log('wpApi', JSON.parse(JSON.stringify(wpApiSettings.root)));
       try {
@@ -82,12 +89,16 @@ const storeDef = {
           throw new Error('Network response was not ok');
         }
         const json = await response.json();
-        if (json.success) {
+        console.log('json', JSON.parse(JSON.stringify(json)));
+        if (json.status >= 200 && json.status < 300) {
           context.success = true;
           setTimeout(() => {
             context.success = false;
           }, 3000);
         }
+        context.loading = false;
+        context.success = true;
+        form.reset();
       } catch (error) {
         console.log('error', error);
       }

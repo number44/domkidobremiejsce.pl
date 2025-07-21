@@ -31,9 +31,10 @@ echo get_block_wrapper_attributes(); ?> data-wp-interactive="domki-form" <?php e
 			</section>
 			<section class="right">
 				<form class="form grid gap-2" data-wp-on--submit="actions.handleSubmit" novalidate>
-					<!-- <div class="loader-box" data-wp-class--hide="!context.loading">
-						<div class="loader"></div>
-					</div> -->
+					<div class="loader-box" data-wp-class--loader-box__hide="!context.success">
+						<div>Dziękujemy za wiadomość! <span>&#x2714;
+							</span></div>
+					</div>
 					<div class="grid-3 gap-4 flex-wrap">
 						<section class="grid">
 							<label for="firstname">
@@ -75,11 +76,9 @@ echo get_block_wrapper_attributes(); ?> data-wp-interactive="domki-form" <?php e
 							<span data-wp-class--hide="context.loading">Wyślij</span><span
 								data-wp-class--hide="!context.loading" class="loader"></span>
 						</button>
-						<div data-wp-class--hide="!context.success" class="success">Wiadomość została wysłana</div>
 					</div>
 				</form>
 			</section>
 		</div>
-
 	</div>
 </div>

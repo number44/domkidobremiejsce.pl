@@ -15,10 +15,10 @@ add_action('after_setup_theme', function () {
 
     $message_table = new MessageTable();
     $message_table::create();
-
+    $gallery_table = new GalleryTable();
+    $gallery_table::create();
     if (!get_option('lesio_eu_tables_created')) {
-        $gallery_table = new GalleryTable();
-        $gallery_table::create();
+
         update_option('lesio_eu_tables_created', 1);
     }
 });

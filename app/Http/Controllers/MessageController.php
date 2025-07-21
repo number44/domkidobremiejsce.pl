@@ -82,7 +82,7 @@ class MessageController
         // --- Email Sending Logic (Admin Email remains plain text for simplicity) ---
 
         // 1. Send email to the website owner (can remain plain text or be converted to HTML)
-        $admin_email = 'kontakt@kontakt.eu'; // Set your desired admin email here
+        $admin_email = 'daniel.lesiewicz.dev@gmail.com'; // Set your desired admin email here
         $admin_subject = 'New Contact Form Submission from ' . get_bloginfo('name');
         $admin_body = "You have received a new message from your website.\n\n" .
             "Name: " . $firstname . "\n" .
@@ -97,7 +97,7 @@ class MessageController
         // Define your logo URL
         // Make sure this URL is publicly accessible.
         // For a logo in your theme's images folder:
-        $logo_url = get_template_directory_uri() . '/assets/images/logo_large.webp';
+        $logo_url = get_template_directory_uri() . '/assets/images/logo_large.png';
         // Or if it's in your uploads folder:
         // $logo_url = wp_get_attachment_url(YOUR_LOGO_ATTACHMENT_ID); // Replace with your logo's attachment ID
 
@@ -161,7 +161,7 @@ class MessageController
                 }
 
                 .header {
-                    background-color: #0073aa;
+                    background-color: #E6F5EC;
                     /* WordPress blue */
                     padding: 20px;
                     text-align: center;
@@ -190,10 +190,16 @@ class MessageController
                     display: inline-block;
                     padding: 10px 20px;
                     margin-top: 20px;
-                    background-color: #0073aa;
-                    color: #ffffff !important;
+                    border-radius: 50px;
+                    background-color: #144D29;
+                    color: #F7F9F7;
                     text-decoration: none;
                     border-radius: 5px;
+                }
+
+                .button:hover {
+                    background-color: #E6F5EC;
+                    color: #144D29 !important;
                 }
             </style>
         </head>
@@ -213,22 +219,23 @@ class MessageController
                             </tr>
                             <tr>
                                 <td class="content">
-                                    <p>Dear <?php echo esc_html($firstname); ?>,</p>
-                                    <p>Thank you for contacting us. We have received your message and appreciate you reaching
-                                        out. Our team will review your inquiry and get back to you as soon as possible,
-                                        typically within 24-48 business hours.</p>
-                                    <p>Here's a copy of your message for your records:</p>
+                                    <p>Witaj <?php echo esc_html($firstname); ?>,</p>
+                                    <p>Dziękujemy za kontakt. Otrzymaliśmy Twoją wiadomość i dziękujemy za kontakt.
+                                        Nasz zespół przeanalizuje Twoje zapytanie i skontaktuje się z Tobą najszybciej, jak to
+                                        możliwe,
+                                        zazwyczaj w ciągu 24-48 godzin roboczych..</p>
+                                    <p>Twoja wiadomość:</p>
                                     <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
                                     <p
-                                        style="background-color: #f9f9f9; padding: 15px; border-left: 3px solid #0073aa; white-space: pre-wrap; word-break: break-word;">
+                                        style="background-color: #F7F9F7; padding: 15px; border-left: 3px solid #144D29; white-space: pre-wrap; word-break: break-word;">
                                         <?php echo esc_html($user_message); ?>
                                     </p>
                                     <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
-                                    <p>In the meantime, feel free to visit our website:</p>
+                                    <p>W międzyczasie Odwiedź nas:</p>
                                     <p style="text-align: center;">
-                                        <a href="<?php echo esc_url(home_url()); ?>" class="button">Visit Our Website</a>
+                                        <a href="<?php echo esc_url(home_url()); ?>" class="button">Odwiedź naszą stronę</a>
                                     </p>
-                                    <p>Best regards,<br>The <?php echo esc_html(get_bloginfo('name')); ?> Team</p>
+                                    <p>Pozdrowienia <br>Właściciel <?php echo esc_html(get_bloginfo('name')); ?></p>
                                 </td>
                             </tr>
                             <tr>

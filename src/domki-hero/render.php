@@ -106,7 +106,7 @@ $loop = $carousel["loop"] ? "true" : "false";
 							<div class="embla__container">
 								<?php foreach ($attributes['images'] as $image): ?>
 									<div class="embla__slide">
-										z
+										<?php echo my_lazy_load_image($image['media_id'], "carousel"); ?>
 										<h1 class="embla__slide-text">
 											<?php echo $image['text']; ?>
 										</h1>
@@ -128,16 +128,14 @@ $loop = $carousel["loop"] ? "true" : "false";
 			</section>
 		</div>
 	</div>
-	<section class="carousel-mobile hide-on-large" data-wp-watch="callbacks.initCarousel">
+	<section class="carousel-mobile hide-on-large">
 		<div class="carousel-box">
 			<div class="embla" data-carousel-autoplay="<?php echo esc_attr($carousel['autoplay']); ?>"
-				data-carousel-loop="<?php echo esc_attr($loop); ?>">
+				data-carousel-loop="<?php echo esc_attr($loop); ?>" data-wp-watch="callbacks.initCarousel">
 				<div class="embla__viewport">
 					<div class="embla__container">
-						<?php foreach ($attributes['images'] as $image): ?>
+						<?php foreach ($attributes['images'] as $key => $image): ?>
 							<div class="embla__slide">
-								<?php $imgurlmobile = wp_get_attachment_image_url($image["media_id"], 'carousel_mobile-lg'); //use custom set size ?>
-
 								<?php echo my_lazy_load_image($image['media_id'], "carousel_mobile"); ?>
 								<h1 class="embla__slide-text">
 									<?php echo $image['text']; ?>
@@ -159,5 +157,4 @@ $loop = $carousel["loop"] ? "true" : "false";
 
 		</div>
 	</section>
-	<h1>
 </section>

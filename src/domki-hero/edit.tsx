@@ -248,7 +248,7 @@ export default function Edit({ attributes, isSelected, setAttributes }: PropsI) 
                 <a title="facebook link" href="#" className="c">
                   <img src={wpApiSettings.theme_url + '/assets/icons/facebook.svg'} alt="facebook-icon" />
                 </a>
-                <a title="instagram link" href="#">
+                <a title="instagram link" href="#" className="c">
                   <img src={wpApiSettings.theme_url + '/assets/icons/instagram.svg'} alt="instagram-icon" />
                 </a>
               </section>

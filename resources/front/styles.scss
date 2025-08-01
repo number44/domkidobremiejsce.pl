@@ -1,14 +1,15 @@
-@use './styles/global';
-@use './styles/buttons';
-@use './styles/lazyload';
-@use './styles/layout';
+@use "./styles/global";
+@use "./styles/buttons";
+@use "./styles/lazyload";
+@use "./styles/layout";
 // @use './styles/layouts/flex';
-@use './styles/globals/spacing';
-@use './styles/globals/mq';
-@use './styles/globals/flex';
-@use './styles/globals/grid';
-@use './styles/globals/accordion';
-
+@use "./styles/globals/spacing";
+@use "./styles/globals/mq";
+@use "./styles/globals/flex";
+@use "./styles/globals/grid";
+@use "./styles/globals/accordion";
+@use "./styles//post-styles";
+@use "./styles/google_consent";
 // body {
 //   background-color: hsl(250, 18%, 7%);
 //   color: white;
@@ -24,6 +25,9 @@ html {
   min-height: 100vh;
 }
 
+html {
+  scroll-behavior: smooth;
+}
 strong {
   font-weight: 700;
 }
@@ -49,14 +53,13 @@ img {
   /* border: 3px solid rgba(0, 123, 255, 0.5); */
 }
 
-.container {
-  width: min(75rem, 100% - 2rem);
-  margin-inline: auto;
-}
-
 .overflow-hidden {
   overflow: hidden;
 }
 .border-small {
   border: solid 1px #ccc;
+}
+
+.contrast {
+  color: var(--wp--preset--color--contrast) !important;
 }

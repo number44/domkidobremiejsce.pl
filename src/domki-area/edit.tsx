@@ -1,15 +1,17 @@
-import { __ } from '@wordpress/i18n';
+import { __ } from "@wordpress/i18n";
 
-import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
-import { ApiGalleryI, AttributesI } from './types';
-import { Button, CheckboxControl, Modal, Panel, PanelBody, Spinner, TextControl } from '@wordpress/components';
-import SortableImagesWithText from '@components/SortableImagesWithText';
-import { useEffect, useState } from 'react';
-import { getHeaders } from '@/helpers/http';
-import Category from './components/Category';
-import GalleryImages from './components/GalleryImages';
-import SortableTexts from '@components/SortableTexts';
-import ImageComponent from '@components/ImageComponent';
+import { InspectorControls, useBlockProps } from "@wordpress/block-editor";
+import { ApiGalleryI, AttributesI } from "./types";
+import { Button, CheckboxControl, Modal, Panel, PanelBody, Spinner, TextControl } from "@wordpress/components";
+import SortableImagesWithText from "@components/SortableImagesWithText";
+import { useEffect, useState } from "react";
+import { getHeaders } from "@/helpers/http";
+import Category from "./components/Category";
+import GalleryImages from "./components/GalleryImages";
+import SortableTexts from "@components/SortableTexts";
+import ImageComponent from "@components/ImageComponent";
+import SortableElements from "@components/SortableElements";
+import ButtonLink from "@components/ButtonLink";
 
 interface PropsI {
   attributes: AttributesI;
@@ -27,12 +29,12 @@ export default function Edit({ attributes, setAttributes }: PropsI) {
   };
   const fetchGalleries = async () => {
     try {
-      const response = await fetch(wpApiSettings.api_url + 'gallery', {
-        method: 'GET',
+      const response = await fetch(wpApiSettings.api_url + "gallery", {
+        method: "GET",
         headers: getHeaders(),
       });
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+        throw new Error("Network response was not ok");
       }
       const respJson = await response.json();
       setApiGalleries(respJson.data);
@@ -90,7 +92,7 @@ export default function Edit({ attributes, setAttributes }: PropsI) {
             />
           </PanelBody>
           <PanelBody title="Atrakcje" initialOpen={false}>
-            <SortableTexts attributes={attributes} setAttributes={setAttributes} />
+            <SortableElements attributes={attributes} setAttributes={setAttributes} />
           </PanelBody>
           <PanelBody title="Zdjęcia" initialOpen={false}>
             <Button
@@ -118,51 +120,37 @@ export default function Edit({ attributes, setAttributes }: PropsI) {
             )}
           </PanelBody>
           <PanelBody title="Przycisk" initialOpen={false}>
-            <TextControl
-              value={attributes.button.text}
-              onChange={(value) => {
-                setAttributes({
-                  ...attributes,
-                  button: {
-                    ...attributes.button,
-                    text: value,
-                  },
-                });
-              }}
-            />
-            <CheckboxControl
-              checked={attributes.button.show}
-              label="Pokaż przycisk"
-              onChange={(value) => {
-                setAttributes({
-                  ...attributes,
-                  button: {
-                    ...attributes.button,
-                    show: value,
-                  },
-                });
-              }}
-            />
+            <ButtonLink attributes={attributes} setAttributes={setAttributes} />
           </PanelBody>
         </Panel>
       </InspectorControls>
-      <section {...blockProps}>
+      <section {...blockProps} id={attributes.identifier}>
         <div className="container">
           <h2 className="text-center mb-4">{attributes.title.text}</h2>
-        </div>
-        <div className="grid-3 gap-4 py-4 elements">
-          {attributes.links.map((link, index) => (
-            <div key={index} className="flex gap-4 items-center">
-              <h3>{link.text}</h3>
-              <h4>{link.url}</h4>
-            </div>
-          ))}
-        </div>
-        <div className="grid-3 gap-3 my-4">
-          {attributes.gallery.images.length > 0 &&
-            attributes.gallery.images.map((gimage, index) => (
-              <ImageComponent key={index} media_id={gimage.media_id} style={{ aspectRatio: '16/9' }} />
+          <div className="grid-3 gap-4 py-4 elements">
+            {attributes.elements.map((link, index) => (
+              <div key={index} className="area-item">
+                <h3>
+                  {link.text}
+                  <small className="unit">{link.unit}</small>
+                </h3>
+                <h4 className="contrast">{link.url}</h4>
+              </div>
             ))}
+          </div>
+          <div className="grid-3 gap-3 my-4">
+            {attributes.gallery.images.length > 0 &&
+              attributes.gallery.images.map((gimage, index) => (
+                <ImageComponent key={index} media_id={gimage.media_id} style={{ aspectRatio: "16/9" }} />
+              ))}
+          </div>
+          {attributes.button.show && (
+            <div className="flex justify-center items-center">
+              <a href={attributes.button.link} className="button-md">
+                <span>{attributes.button.text}</span>
+              </a>
+            </div>
+          )}
         </div>
       </section>
     </>

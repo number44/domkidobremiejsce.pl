@@ -1,11 +1,11 @@
-import { __ } from '@wordpress/i18n';
-import { InnerBlocks, InspectorControls, MediaUpload, MediaUploadCheck, useBlockProps } from '@wordpress/block-editor';
-import { PanelBody, Panel, PanelRow, TextControl, Button } from '@wordpress/components';
-import './editor.scss';
-import React, { Fragment, CSSProperties, useState } from 'react';
-import InstagramIcon from './components/InstagramIcon';
-import { AttributesI } from './types';
-const ALLOWED_BLOCKS = ['core/heading', 'core/paragraph', 'core/spacer', 'core/list'];
+import { __ } from "@wordpress/i18n";
+import { InnerBlocks, InspectorControls, MediaUpload, MediaUploadCheck, useBlockProps } from "@wordpress/block-editor";
+import { PanelBody, Panel, PanelRow, TextControl, Button } from "@wordpress/components";
+import "./editor.scss";
+import React, { Fragment, CSSProperties, useState } from "react";
+import InstagramIcon from "./components/InstagramIcon";
+import { AttributesI } from "./types";
+const ALLOWED_BLOCKS = ["core/heading", "core/paragraph", "core/spacer", "core/list"];
 
 interface PropsI {
   attributes: AttributesI;
@@ -45,60 +45,65 @@ export default function Edit({ setAttributes, isSelected, attributes }: PropsI) 
       </Panel>
 
       <div {...useBlockProps()}>
-        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-          <InstagramIcon />
-          <h1>#{attributes.title}</h1>
-        </div>
-        <InnerBlocks />
+        <section className="insta">
+          <div className="insta-head">
+            <InstagramIcon />
+
+            <h1 id="hashtag">#{attributes.title}</h1>
+          </div>
+          <div className="container text-center d-block">
+            <InnerBlocks />
+          </div>
+        </section>
       </div>
     </Fragment>
   );
 }
 const btnStyle: CSSProperties = {
-  background: '#144D29',
-  color: '#fff',
-  paddingBlock: '1rem',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  borderRadius: '.3rem',
+  background: "#144D29",
+  color: "#fff",
+  paddingBlock: "1rem",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  borderRadius: ".3rem",
 };
 const btnPrimary: CSSProperties = {
-  color: 'white',
-  background: '#144D29',
-  paddingBlock: '1rem',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  borderRadius: '30rem',
+  color: "white",
+  background: "#144D29",
+  paddingBlock: "1rem",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  borderRadius: "30rem",
 };
 const btnSecondary: CSSProperties = {
-  color: '#144D29',
-  background: '#E4F5EB',
-  paddingBlock: '1rem',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  borderRadius: '30rem',
+  color: "#144D29",
+  background: "#E4F5EB",
+  paddingBlock: "1rem",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  borderRadius: "30rem",
 };
 const ImagePlaceholder: CSSProperties = {
-  boxShadow: '0px 0px 3px #434343',
-  borderRadius: '.5rem',
-  background: '#ccc',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  width: '100%',
-  cursor: 'pointer',
+  boxShadow: "0px 0px 3px #434343",
+  borderRadius: ".5rem",
+  background: "#ccc",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  width: "100%",
+  cursor: "pointer",
 };
 const deleteBtn: CSSProperties = {
-  background: 'darkred',
-  color: '#fff',
-  paddingBlock: '1rem',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  borderRadius: '.3rem',
-  padding: '.5rem 2rem',
-  cursor: 'pointer',
+  background: "darkred",
+  color: "#fff",
+  paddingBlock: "1rem",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  borderRadius: ".3rem",
+  padding: ".5rem 2rem",
+  cursor: "pointer",
 };

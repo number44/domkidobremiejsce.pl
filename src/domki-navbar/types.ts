@@ -1,4 +1,5 @@
 export interface AttributesI {
+  fixed: boolean;
   align: string;
   facebook: string;
   instagram: string;
@@ -24,4 +25,5 @@ export interface MobileI {
 export interface LinkI {
   text: string;
   url: string;
+  order_by: number;
 }

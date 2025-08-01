@@ -1,0 +1,22 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-domki-section-domki-section {
+  scroll-margin-block-start: 2rem;
+}
+@media screen and (min-width: 62rem) {
+  .wp-block-domki-section-domki-section {
+    scroll-margin-block-start: 6rem;
+    padding-block-end: 0;
+    .container {
+      display: grid;
+      h2 {
+        margin-block-start: 0;
+      }
+    }
+  }
+}

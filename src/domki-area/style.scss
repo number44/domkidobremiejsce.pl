@@ -5,18 +5,58 @@
  * Replace them with your own styles or remove the file completely.
  */
 
+// .wp-block-domki-area-domki-area {
+//   padding-block: 1rem;
+//   h2 {
+//     margin-block: 0;
+//   }
+// }
+// @media screen and (min-width: 48rem) {
+//   .wp-block-domki-area-domki-area .grid-3-2 {
+//     grid-template-columns: repeat(2, minmax(0, 1fr));
+//   }
+// }
+// @media screen and (min-width: 62rem) {
+//   .wp-block-domki-area-domki-area {
+//     padding-block: 1.5rem;
+//     scroll-margin-block-start: 2.5rem;
+//   }
+//   .wp-block-domki-area-domki-area .grid-3-2 {
+//     grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+//   }
+// }
+
 .wp-block-domki-area-domki-area {
-  padding-block: 1.5rem;
-  .elements {
-    place-content: center;
-  }
-  .elements img {
-    width: 100px;
-    height: auto;
+  .unit {
+    font-size: 1.1rem !important;
+    font-weight: 500;
+    font-style: italic;
   }
   .elements h3 {
     font-size: 2rem;
     color: var(--wp--preset--color--primary);
+  }
+
+  .elements {
+    display: grid;
+    gap: 0.5rem;
+  }
+  .area-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    box-shadow: 0 0 0.2rem var(--wp--preset--color--pale);
+    gap: 1rem;
+    padding-inline: 1rem;
+    align-items: center;
+  }
+
+  .fit-content {
+  }
+  .elements h3 {
+    white-space: nowrap;
+    gap: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
   }
   .hide {
     display: none !important;
@@ -33,21 +73,7 @@
     animation: appear 1s;
   }
 }
-@media screen and (min-width: 62rem) {
-  .wp-block-domki-area-domki-area {
-    padding-block: 2.5rem;
-    .container {
-      display: grid;
-    }
-  }
 
-  .gallery-modal {
-    position: fixed;
-    inset: 0;
-    background-color: #fff;
-    z-index: 999999;
-  }
-}
 @keyframes appear {
   from {
     scale: 0.9;

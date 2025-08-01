@@ -16,9 +16,12 @@ foreach ($gallery["images"] as $image) {
 $galleryApi = $galleryDbService->getOneWhere(["id" => $gallery["gallery_id"]]);
 $galleryIdsArray = array_map('intval', explode(',', implode(",", $galleryIds)));
 $apiMediaIdsArray = [];
-if (!empty($galleryApi->media_ids)) {
+
+// Check if $galleryApi is an object before accessing its properties
+if ($galleryApi && !empty($galleryApi->media_ids)) { // Modified line
 	$apiMediaIdsArray = array_map('intval', explode(',', $galleryApi->media_ids));
 }
+
 $api_diff = array_diff($apiMediaIdsArray, $galleryIdsArray);
 
 $apiGalleryUniqueIds = array_unique($api_diff);
@@ -32,12 +35,14 @@ $slidingGallery = [
 	"title" => $gallery["title"],
 	"order_by" => $gallery["order_by"],
 	"images" => implode(",", $galleryIds), // Keeping this as a comma-separated string as per your original output
-	"api" => $galleryApi->media_ids, // Keeping this as is
-	"media_ids" => $concatedArr
+	"api" => ($galleryApi && $galleryApi->media_ids) ? $galleryApi->media_ids : [], // Added check here too
+	"media_ids" => $concatedArr ? $concatedArr : [],
 ];
 $showButton = $attributes["button"]["show"] ?? true;
 $buttonText = $attributes["button"]["text"] ?? "Zobacz Więcej";
 $buttonLink = $attributes["button"]["link"] ?? "#";
+
+
 ?>
 
 <div <?php echo get_block_wrapper_attributes(); ?> data-wp-interactive="domki-area" <?php echo wp_interactivity_data_wp_context(array(
@@ -45,19 +50,20 @@ $buttonLink = $attributes["button"]["link"] ?? "#";
 		"showCarousel" => false,
 	)); ?>
 	id="<?php echo esc_attr($attributes["identifier"]) ?>" data-wp-on-document--keyup="callbacks.detectKeys">
+	<?php if ($title["show"]): ?>
+		<h2 class="text-center"><?= $title["text"] ?></h2>
+	<?php endif; ?>
+	<div class="grid-3 gap-4 py-2 elements container">
+		<?php foreach ($attributes["elements"] as $key => $element): ?>
+			<div class="area-item">
+				<h3><?php echo $element["text"]; ?><small class="unit"><?php echo $element["unit"]; ?></small>
+				</h3>
+				<h4 class="contrast"><?= $element["url"]; ?></h4>
+			</div>
+		<?php endforeach; ?>
+	</div>
 	<div class="container">
-		<?php if ($title["show"]): ?>
-			<h2 class="text-center mb-4"><?= $title["text"] ?></h2>
-		<?php endif; ?>
 
-		<div class="grid-3 gap-4 py-4 elements">
-			<?php foreach ($attributes["links"] as $key => $element): ?>
-				<div class="flex gap-4 items-center">
-					<h3><?php echo $element["text"] ?></h3>
-					<h4 class="no-wrap"><?= $element["url"]; ?></h4>
-				</div>
-			<?php endforeach; ?>
-		</div>
 		<div class=" grid-3 gap-3 my-4">
 			<?php foreach ($gallery["images"] as $key => $image): ?>
 				<div data-wp-context='{"image" : { "selected" : <?php echo $key + 1; ?> } }' class="show-image"
@@ -67,8 +73,8 @@ $buttonLink = $attributes["button"]["link"] ?? "#";
 			<?php endforeach; ?>
 		</div>
 		<?php if ($showButton): ?>
-			<div class="flex justify-center items-center  my-5">
-				<a href="<?php echo esc_attr($buttonLink); ?>" class="button"><?= $buttonText ?></a>
+			<div class="flex justify-center items-center">
+				<a href="<?php echo esc_attr($buttonLink); ?>" class="button-md"><?= $buttonText ?></a>
 			</div>
 		<?php endif; ?>
 	</div>

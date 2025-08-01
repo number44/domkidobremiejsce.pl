@@ -13,6 +13,13 @@ $instagram_icon_url = $theme_url . "/assets/icons/instagram.svg";
 $facebook_icon_url = $theme_url . "/assets/icons/facebook.svg";
 // Adds the global state.
 $links = isset($attributes['links']) ? $attributes['links'] : [];
+
+// sort links by "order_by" .
+usort($links, function ($a, $b) {
+	return $a['order_by'] - $b['order_by'];
+});
+
+
 $reservation = isset($attributes['reservation']) ? $attributes['reservation'] : ['url' => '#', 'text' => ''];
 $phone = isset($attributes['phone']) ? $attributes['phone'] : ['url' => '', 'text' => ''];
 $carousel = isset($attributes['carousel']) ? $attributes['carousel'] : false;
@@ -20,13 +27,19 @@ $carousel = isset($attributes['carousel']) ? $attributes['carousel'] : false;
 $loop = $carousel["loop"] ? "true" : "false";
 
 ?>
+<?php
+
+wp_interactivity_state('domki-hero', array(
+	"links" => $links
+));
+?>
 
 <section <?php echo get_block_wrapper_attributes(); ?> data-wp-interactive="domki-hero" <?php echo wp_interactivity_data_wp_context(
 		[
 			'isOpen' => false
 		]
 	);
-	?>>
+	?> data-wp-init="callbacks.init">
 
 	<div class="container hide-on-small">
 		<svg class="mouse " width="32" height="90" viewBox="0 0 32 90">
@@ -40,7 +53,6 @@ $loop = $carousel["loop"] ? "true" : "false";
 			</g>
 		</svg>
 		<div class="left">
-
 			<div class="hero-logo">
 				<?php echo my_lazy_load_image($hero_logo['media_id'], $hero_logo['size_prefix'], "rounded"); ?>
 			</div>
@@ -116,10 +128,10 @@ $loop = $carousel["loop"] ? "true" : "false";
 						</div>
 						<div class="embla__buttons">
 							<button class="embla__button embla__button--prev" type="button">
-								<img src="<?php echo esc_url($theme_url); ?>/assets/icons/arrow-icon.svg" alt="">
+								<img src="<?php echo esc_url($theme_url); ?>/assets/icons/arrow-icon.svg" alt="" />
 							</button>
 							<button class="embla__button embla__button--next" type="button">
-								<img src="<?php echo esc_url($theme_url); ?>/assets/icons/arrow-icon.svg" alt="">
+								<img src="<?php echo esc_url($theme_url); ?>/assets/icons/arrow-icon.svg" alt="" />
 							</button>
 						</div>
 						<div class="embla__dots"></div>
@@ -146,10 +158,10 @@ $loop = $carousel["loop"] ? "true" : "false";
 				</div>
 				<div class="embla__buttons hide">
 					<button class="embla__button embla__button--prev" type="button">
-						<img src="<?php echo esc_url($theme_url); ?>/assets/icons/arrow-icon.svg" alt="">
+						<img src="<?php echo esc_url($theme_url); ?>/assets/icons/arrow-icon.svg" alt="arrow-prev" />
 					</button>
 					<button class="embla__button embla__button--next" type="button">
-						<img src="<?php echo esc_url($theme_url); ?>/assets/icons/arrow-icon.svg" alt="">
+						<img src="<?php echo esc_url($theme_url); ?>/assets/icons/arrow-icon.svg" alt="arrow-next" />
 					</button>
 				</div>
 				<div class="embla__dots"></div>

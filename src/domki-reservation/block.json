@@ -8,10 +8,28 @@
   "icon": "layout",
   "supports": {
     "html": true,
-    "align": true
+    "align": true,
+    "background": {
+      "backgroundImage": true,
+      "backgroundSize": true
+    },
+    "color": {
+      "heading": true,
+      "enableContrastChecker": true,
+      "background": true,
+      "gradients": true,
+      "link": false,
+      "button": false,
+
+      "text": false
+    }
   },
   "example": {},
   "attributes": {
+    "className": {
+      "type": "string",
+      "default": "section"
+    },
     "align": {
       "type": "string",
       "default": "wide"

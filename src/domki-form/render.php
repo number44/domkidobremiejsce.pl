@@ -16,15 +16,15 @@ echo get_block_wrapper_attributes(); ?> data-wp-interactive="domki-form" <?php e
    		"errorEmail" => false,
    		"errorMessage" => false,
    		"errorConsent" => false,
-   		"success" => false
+   		"success" => false,
+   		"logo_id" => $attributes['logo']["media_id"] ?: 0
    	]
-   ); ?>
-	id="<?php echo esc_attr($attributes["identifier"]) ?>">
-	<div class="container">
+   ); ?> id="<?php echo esc_attr($attributes["identifier"]) ?>">
+	<div class="container mb-4">
 		<?php if ($title["show"]): ?>
 			<h2 class="text-center mb-4"><?= $title["text"] ?></h2>
 		<?php endif; ?>
-		<div class="content">
+		<div class="content my-4">
 
 			<section class="left">
 				<?php echo $content; ?>
@@ -38,9 +38,10 @@ echo get_block_wrapper_attributes(); ?> data-wp-interactive="domki-form" <?php e
 					<div class="grid-3 gap-4 flex-wrap">
 						<section class="grid">
 							<label for="firstname">
+
 								Imię
 							</label>
-							<input required type="text" name="firstname" id="firstname">
+							<input required type="text" name="firstname" id="firstname" />
 							<div data-wp-class--noerror="!context.errorFirstname" class="error">Uzupełnij Pole
 							</div>
 						</section>
@@ -48,12 +49,12 @@ echo get_block_wrapper_attributes(); ?> data-wp-interactive="domki-form" <?php e
 							<label for="email">
 								Email
 							</label>
-							<input required type="email" name="email" id="email">
+							<input required type="email" name="email" id="email" />
 							<div data-wp-class--noerror="!context.errorEmail" class="error">Uzupełnij Pole</div>
 						</section>
 						<section class="grid">
 							<label for="phone">Telefon (opcjonalne)</label>
-							<input type="tel" id="phone" name="phone" pattern="[0-9]+">
+							<input type="tel" id="phone" name="phone" pattern="[0-9]+" />
 							<div class="error"></div>
 						</section>
 					</div>
@@ -64,7 +65,7 @@ echo get_block_wrapper_attributes(); ?> data-wp-interactive="domki-form" <?php e
 
 					</div>
 					<div class="flex gap-2 flex-wrap">
-						<input type="checkbox" name="consent" id="consent">
+						<input type="checkbox" name="consent" id="consent" />
 						<label for="consent">Oświadczam, że zapoznałem się i akceptuję treść <a href="#">Polityki
 								Prywatności</a></label>
 						<div data-wp-class--noerror="!context.errorConsent" class="error w-full grow">Uzupełnij Pole
@@ -72,13 +73,15 @@ echo get_block_wrapper_attributes(); ?> data-wp-interactive="domki-form" <?php e
 					</div>
 
 					<div class="grid place-center">
-						<button data-wp-bind--disabled="context.loading" type="submit" class="button cp">
+						<button data-wp-bind--disabled="context.loading" type="submit"
+							class="button-md flex justify-center items-center">
 							<span data-wp-class--hide="context.loading">Wyślij</span><span
 								data-wp-class--hide="!context.loading" class="loader"></span>
 						</button>
 					</div>
 				</form>
 			</section>
+
 		</div>
 	</div>
 </div>

@@ -13,6 +13,10 @@
   },
 
   "attributes": {
+    "fixed": {
+      "type": "boolean",
+      "default": false
+    },
     "pattern": {
       "type": "object",
       "default": {
@@ -66,27 +70,38 @@
       "default": [
         {
           "text": "O nas",
-          "url": "#onas"
+          "url": "#onas",
+          "order_by": 1
         },
         {
           "text": "Galeria",
-          "url": "#galeria"
+          "url": "#galeria",
+          "order_by": 2
         },
         {
           "text": "Atrakcje dla dzieci",
-          "url": "#dzieci"
+          "url": "#dzieci",
+          "order_by": 3
         },
         {
           "text": "Atrakcje w okolicy",
-          "url": "#okolica"
+          "url": "#okolica",
+          "order_by": 4
+        },
+        {
+          "text": "Domki",
+          "url": "#domki",
+          "order_by": 5
         },
         {
           "text": "Oferta",
-          "url": "#oferta"
+          "url": "#oferta",
+          "order_by": 6
         },
         {
           "text": "Kontakt",
-          "url": "#kontakt"
+          "url": "#kontakt",
+          "order_by": 7
         }
       ]
     }

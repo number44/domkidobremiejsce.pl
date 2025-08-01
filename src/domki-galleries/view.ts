@@ -1,9 +1,9 @@
 /**
  * WordPress dependencies
  */
-import { store, getContext, getElement } from '@wordpress/interactivity';
-import carousel from '@/scripts/carousel';
-import { EmblaCarouselType } from 'embla-carousel'; // Import EmblaCarouselType
+import { store, getContext, getElement } from "@wordpress/interactivity";
+import carousel from "@/scripts/carousel";
+import { EmblaCarouselType } from "embla-carousel"; // Import EmblaCarouselType
 interface EmblaCarouselHTMLElement extends HTMLElement {
   emblaApiInstance?: EmblaCarouselType; // Use '?' because it might not be set initially
 }
@@ -59,7 +59,7 @@ const storeDef = {
     closeCarousel() {
       const context = getContext<ContextI>();
       if (!context) return;
-      context.showCarousel = !context.showCarousel;
+      context.showCarousel = false;
     },
     initCarousel() {
       const { ref } = getElement();
@@ -72,7 +72,7 @@ const storeDef = {
         // Pass the root Embla node
         element.emblaApiInstance = carousel(element);
         // Optional: Listen for Embla's slide changes and update the context
-        element.emblaApiInstance?.on('select', callbacks.updateImageSelectedFromEmbla);
+        element.emblaApiInstance?.on("select", callbacks.updateImageSelectedFromEmbla);
       }
       const emblaApi = element.emblaApiInstance;
       if (emblaApi && context.imageSelected !== undefined) {
@@ -102,7 +102,7 @@ const storeDef = {
       const context = getContext<ContextI>();
       if (!context) return;
 
-      if (event.key === 'Escape') {
+      if (event.key === "Escape") {
         // context.showCarousel = false;
         callbacks.closeCarousel();
       }
@@ -129,4 +129,4 @@ const storeDef = {
 
 type Store = ServerState & typeof storeDef;
 
-const { state, actions, callbacks } = store<Store>('domki-galleries', storeDef);
+const { state, actions, callbacks } = store<Store>("domki-galleries", storeDef);

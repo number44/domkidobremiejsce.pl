@@ -120,7 +120,6 @@
   line-height: 16px;
   width: 276px;
   max-width: 100%;
-  margin-top: 40px !important;
   background: #144d29;
   color: #fff;
   font-weight: 700;
@@ -135,7 +134,28 @@
   background: #e4f5eb;
   color: #144d29;
 }
-
+.button-md {
+  padding-inline: 1.5rem;
+  display: block;
+  min-height: 3.25rem;
+  min-width: 11.625rem;
+  text-align: center;
+  font-size: var(--wp--preset--font-size--small);
+  color: var(--wp--preset--color--base);
+  background: var(--wp--preset--color--primary);
+  border-radius: 50rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 700;
+  line-height: 3rem;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+.button-md:hover {
+  background: var(--wp--preset--color--secondary);
+  color: var(--wp--preset--color--primary);
+}
 .btn-fix {
   transition: all ease-in-out 0.3s;
   display: flex !important;

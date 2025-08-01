@@ -1,0 +1,59 @@
+.button-group {
+  margin-block: 1rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 60rem;
+  padding-right: 2rem;
+}
+
+#consent-banner :is(p, a) {
+  font-size: 0.8rem;
+}
+
+#consent-banner :is(a) {
+  color: #fff;
+  text-decoration: underline;
+}
+
+#consent-banner {
+  border-radius: 0.5rem;
+  position: fixed;
+  inset-block-end: 0rem;
+  inset-inline-start: 0rem;
+  color: white;
+  width: min(100%, 60rem);
+  background-color: #144e2b;
+  padding: 20px;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+@media (min-width: 75rem) {
+  #consent-banner {
+    inset-block-end: 1rem;
+    inset-inline-start: 1rem;
+  }
+}
+
+#accept-consent {
+  border: solid #144e2b 2px;
+  padding-inline: 2rem;
+  font-weight: 700;
+  background-color: white;
+  color: #144e2b;
+}
+
+.consent-btn {
+  cursor: pointer;
+  all: unset;
+  font-size: 0.8rem;
+  padding-inline: 1rem;
+  padding-block: 0.3rem;
+  border-radius: 50px;
+}
+
+#decline-consent {
+  text-decoration: underline;
+}

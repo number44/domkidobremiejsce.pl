@@ -1,5 +1,5 @@
-import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
-import React from 'react';
+import { InnerBlocks, useBlockProps } from "@wordpress/block-editor";
+import React from "react";
 interface PropsI {
   attributes: AttributesI;
 }

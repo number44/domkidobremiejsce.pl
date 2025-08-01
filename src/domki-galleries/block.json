@@ -9,9 +9,34 @@
   "description": "Domki Galerie ",
   "example": {},
   "supports": {
-    "interactivity": true
+    "interactivity": true,
+    "background": {
+      "backgroundImage": true,
+      "backgroundSize": true
+    },
+    "color": {
+      "heading": true,
+      "enableContrastChecker": true,
+      "background": true,
+      "gradients": true,
+      "link": false,
+      "button": false,
+      "text": false
+    },
+    "dimensions": {
+      "minHeight": true
+    },
+    "spacing": {
+      "gap": true,
+      "margin": true,
+      "padding": true
+    }
   },
   "attributes": {
+    "className": {
+      "type": "string",
+      "default": "section"
+    },
     "identifier": {
       "type": "string",
       "default": "galeria"
@@ -50,7 +75,7 @@
       "type": "object",
       "default": {
         "text": "Zobacz więcej",
-        "link": "#",
+        "link": "galeria",
         "show": true
       }
     }

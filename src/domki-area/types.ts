@@ -1,14 +1,15 @@
 export interface AttributesI {
   identifier: string;
   title: TitleI;
-  links: LinkI[];
+  elements: ElementI[];
   apiGallery: ApiGalleryI;
   gallery: GalleryI;
   button: ButtonI;
 }
 interface ElementI {
-  media_id: string;
   text: string;
+  unit: string;
+  url: string;
   order_by: number;
 }
 export interface TitleI {
@@ -45,5 +46,11 @@ export interface ButtonI {
 export interface LinkI {
   text: string;
   url: string;
+  order_by: number;
+}
+
+interface ElementI {
+  distance: string;
+  fullname: string;
   order_by: number;
 }

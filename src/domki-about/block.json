@@ -9,7 +9,14 @@
   "description": "Domki O nas sekcja",
   "example": {},
   "supports": {
-    "html": false
+    "html": false,
+    "background": {
+      "backgroundImage": true,
+      "backgroundSize": true
+    },
+    "color": {
+      "background": true
+    }
   },
   "attributes": {
     "align": {

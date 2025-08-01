@@ -1,11 +1,11 @@
-import { __ } from '@wordpress/i18n';
-import { InnerBlocks, InspectorControls, MediaUpload, MediaUploadCheck, useBlockProps } from '@wordpress/block-editor';
-import { PanelBody, Panel, PanelRow, TextControl, Button, SelectControl } from '@wordpress/components';
-import './editor.scss';
-import React, { Fragment, CSSProperties, useState } from 'react';
-import { AspectRatioT, AttributesI } from './types';
-import ImageComponent from '@components/ImageComponent';
-const ALLOWED_BLOCKS = ['core/heading', 'core/paragraph', 'core/spacer', 'core/list'];
+import { __ } from "@wordpress/i18n";
+import { InnerBlocks, InspectorControls, MediaUpload, MediaUploadCheck, useBlockProps } from "@wordpress/block-editor";
+import { PanelBody, Panel, PanelRow, TextControl, Button, SelectControl } from "@wordpress/components";
+import "./editor.scss";
+import React, { Fragment, CSSProperties, useState } from "react";
+import { AspectRatioT, AttributesI } from "./types";
+import ImageComponent from "@components/ImageComponent";
+const ALLOWED_BLOCKS = ["core/heading", "core/paragraph", "core/spacer", "core/list"];
 
 interface PropsI {
   attributes: AttributesI;
@@ -43,18 +43,18 @@ export default function Edit({ setAttributes, isSelected, attributes }: PropsI) 
                       },
                     });
                   }}
-                  allowedTypes={['image']}
+                  allowedTypes={["image"]}
                   render={({ open }) => {
                     if (attributes.image_one.media_id) {
                       return (
                         <div
                           style={{
-                            width: '100%',
-                            backgroundColor: '#434343',
+                            width: "100%",
+                            backgroundColor: "#434343",
                             aspectRatio: attributes.image_one.aspect_ratio,
-                            position: 'relative',
-                            display: 'grid',
-                            placeContent: 'center',
+                            position: "relative",
+                            display: "grid",
+                            placeContent: "center",
                           }}
                           onClick={open}
                         >
@@ -62,20 +62,20 @@ export default function Edit({ setAttributes, isSelected, attributes }: PropsI) 
                             media_id={attributes.image_one.media_id}
                             alt={attributes.image_one.alt}
                             style={{
-                              width: '100',
-                              aspectRatio: '4/3',
-                              position: 'absolute',
+                              width: "100",
+                              aspectRatio: "4/3",
+                              position: "absolute",
                               inset: 0,
-                              objectFit: 'cover',
-                              height: '100%',
+                              objectFit: "cover",
+                              height: "100%",
                             }}
                           />
                         </div>
                       );
                     } else {
                       return (
-                        <Button onClick={open} className="components-panel__body__toggle" icon={'images-alt'}>
-                          {'Wybierz obraz'}
+                        <Button onClick={open} className="components-panel__body__toggle" icon={"images-alt"}>
+                          {"Wybierz obraz"}
                         </Button>
                       );
                     }
@@ -83,19 +83,19 @@ export default function Edit({ setAttributes, isSelected, attributes }: PropsI) 
                 />
               </MediaUploadCheck>
             </PanelRow>
-            <div style={{ display: 'grid', marginBlock: '.5rem' }}>
+            <div style={{ display: "grid", marginBlock: ".5rem" }}>
               <SelectControl
                 label="Proporcje zdjęcia"
                 value={attributes.image_one.aspect_ratio}
                 options={[
-                  { label: '16/9', value: '16/9' },
-                  { label: '4/3', value: '4/3' },
-                  { label: '1/1', value: '1/1' },
-                  { label: '3/4', value: '3/4' },
+                  { label: "16/9", value: "16/9" },
+                  { label: "4/3", value: "4/3" },
+                  { label: "1/1", value: "1/1" },
+                  { label: "3/4", value: "3/4" },
                 ]}
                 onChange={(newSize) => {
                   const newAspect: AspectRatioT =
-                    newSize === '16/9' || newSize === '4/3' || newSize === '1/1' || newSize === '3/4' ? newSize : '4/3';
+                    newSize === "16/9" || newSize === "4/3" || newSize === "1/1" || newSize === "3/4" ? newSize : "4/3";
                   setAttributes({
                     ...attributes,
                     image_one: {
@@ -124,18 +124,18 @@ export default function Edit({ setAttributes, isSelected, attributes }: PropsI) 
                       },
                     });
                   }}
-                  allowedTypes={['image']}
+                  allowedTypes={["image"]}
                   render={({ open }) => {
                     if (attributes.image_two.media_id) {
                       return (
                         <div
                           style={{
-                            width: '100%',
-                            backgroundColor: '#434343',
+                            width: "100%",
+                            backgroundColor: "#434343",
                             aspectRatio: attributes.image_two.aspect_ratio,
-                            position: 'relative',
-                            display: 'grid',
-                            placeContent: 'center',
+                            position: "relative",
+                            display: "grid",
+                            placeContent: "center",
                           }}
                           onClick={open}
                         >
@@ -143,20 +143,20 @@ export default function Edit({ setAttributes, isSelected, attributes }: PropsI) 
                             media_id={attributes.image_two.media_id}
                             alt={attributes.image_two.alt}
                             style={{
-                              width: '100',
-                              aspectRatio: '4/3',
-                              position: 'absolute',
+                              width: "100",
+                              aspectRatio: "4/3",
+                              position: "absolute",
                               inset: 0,
-                              objectFit: 'cover',
-                              height: '100%',
+                              objectFit: "cover",
+                              height: "100%",
                             }}
                           />
                         </div>
                       );
                     } else {
                       return (
-                        <Button onClick={open} className="components-panel__body__toggle" icon={'images-alt'}>
-                          {'Wybierz obraz'}
+                        <Button onClick={open} className="components-panel__body__toggle" icon={"images-alt"}>
+                          {"Wybierz obraz"}
                         </Button>
                       );
                     }
@@ -164,19 +164,19 @@ export default function Edit({ setAttributes, isSelected, attributes }: PropsI) 
                 />
               </MediaUploadCheck>
             </PanelRow>
-            <div style={{ display: 'grid', marginBlock: '.5rem' }}>
+            <div style={{ display: "grid", marginBlock: ".5rem" }}>
               <SelectControl
                 label="Proporcje zdjęcia"
                 value={attributes.image_two.aspect_ratio}
                 options={[
-                  { label: '16/9', value: '16/9' },
-                  { label: '4/3', value: '4/3' },
-                  { label: '1/1', value: '1/1' },
-                  { label: '3/4', value: '3/4' },
+                  { label: "16/9", value: "16/9" },
+                  { label: "4/3", value: "4/3" },
+                  { label: "1/1", value: "1/1" },
+                  { label: "3/4", value: "3/4" },
                 ]}
                 onChange={(newSize) => {
                   const newAspect: AspectRatioT =
-                    newSize === '16/9' || newSize === '4/3' || newSize === '1/1' || newSize === '3/4' ? newSize : '4/3';
+                    newSize === "16/9" || newSize === "4/3" || newSize === "1/1" || newSize === "3/4" ? newSize : "4/3";
                   setAttributes({
                     ...attributes,
                     image_two: {
@@ -205,18 +205,18 @@ export default function Edit({ setAttributes, isSelected, attributes }: PropsI) 
                       },
                     });
                   }}
-                  allowedTypes={['image']}
+                  allowedTypes={["image"]}
                   render={({ open }) => {
                     if (attributes.image_three.media_id) {
                       return (
                         <div
                           style={{
-                            width: '100%',
-                            backgroundColor: '#434343',
+                            width: "100%",
+                            backgroundColor: "#434343",
                             aspectRatio: attributes.image_three.aspect_ratio,
-                            position: 'relative',
-                            display: 'grid',
-                            placeContent: 'center',
+                            position: "relative",
+                            display: "grid",
+                            placeContent: "center",
                           }}
                           onClick={open}
                         >
@@ -224,20 +224,20 @@ export default function Edit({ setAttributes, isSelected, attributes }: PropsI) 
                             media_id={attributes.image_three.media_id}
                             alt={attributes.image_three.alt}
                             style={{
-                              width: '100',
-                              aspectRatio: '4/3',
-                              position: 'absolute',
+                              width: "100",
+                              aspectRatio: "4/3",
+                              position: "absolute",
                               inset: 0,
-                              objectFit: 'cover',
-                              height: '100%',
+                              objectFit: "cover",
+                              height: "100%",
                             }}
                           />
                         </div>
                       );
                     } else {
                       return (
-                        <Button onClick={open} className="components-panel__body__toggle" icon={'images-alt'}>
-                          {'Wybierz obraz'}
+                        <Button onClick={open} className="components-panel__body__toggle" icon={"images-alt"}>
+                          {"Wybierz obraz"}
                         </Button>
                       );
                     }
@@ -245,19 +245,19 @@ export default function Edit({ setAttributes, isSelected, attributes }: PropsI) 
                 />
               </MediaUploadCheck>
             </PanelRow>
-            <div style={{ display: 'grid', marginBlock: '.5rem' }}>
+            <div style={{ display: "grid", marginBlock: ".5rem" }}>
               <SelectControl
                 label="Proporcje zdjęcia"
                 value={attributes.image_three.aspect_ratio}
                 options={[
-                  { label: '16/9', value: '16/9' },
-                  { label: '4/3', value: '4/3' },
-                  { label: '1/1', value: '1/1' },
-                  { label: '3/4', value: '3/4' },
+                  { label: "16/9", value: "16/9" },
+                  { label: "4/3", value: "4/3" },
+                  { label: "1/1", value: "1/1" },
+                  { label: "3/4", value: "3/4" },
                 ]}
                 onChange={(newSize) => {
                   const newAspect: AspectRatioT =
-                    newSize === '16/9' || newSize === '4/3' || newSize === '1/1' || newSize === '3/4' ? newSize : '4/3';
+                    newSize === "16/9" || newSize === "4/3" || newSize === "1/1" || newSize === "3/4" ? newSize : "4/3";
                   setAttributes({
                     ...attributes,
                     image_three: {
@@ -286,18 +286,18 @@ export default function Edit({ setAttributes, isSelected, attributes }: PropsI) 
                       },
                     });
                   }}
-                  allowedTypes={['image']}
+                  allowedTypes={["image"]}
                   render={({ open }) => {
                     if (attributes.pattern.media_id) {
                       return (
                         <div
                           style={{
-                            width: '100%',
-                            backgroundColor: '#434343',
-                            aspectRatio: '4/3',
-                            position: 'relative',
-                            display: 'grid',
-                            placeContent: 'center',
+                            width: "100%",
+                            backgroundColor: "#434343",
+                            aspectRatio: "4/3",
+                            position: "relative",
+                            display: "grid",
+                            placeContent: "center",
                           }}
                           onClick={open}
                         >
@@ -305,20 +305,20 @@ export default function Edit({ setAttributes, isSelected, attributes }: PropsI) 
                             media_id={attributes.pattern.media_id}
                             alt={attributes.pattern.alt}
                             style={{
-                              width: '100',
-                              aspectRatio: '4/3',
-                              position: 'absolute',
+                              width: "100",
+                              aspectRatio: "4/3",
+                              position: "absolute",
                               inset: 0,
-                              objectFit: 'cover',
-                              height: '100%',
+                              objectFit: "cover",
+                              height: "100%",
                             }}
                           />
                         </div>
                       );
                     } else {
                       return (
-                        <Button onClick={open} className="components-panel__body__toggle" icon={'images-alt'}>
-                          {'Wybierz obraz'}
+                        <Button onClick={open} className="components-panel__body__toggle" icon={"images-alt"}>
+                          {"Wybierz obraz"}
                         </Button>
                       );
                     }
@@ -330,7 +330,7 @@ export default function Edit({ setAttributes, isSelected, attributes }: PropsI) 
         </InspectorControls>
       </Panel>
 
-      <article {...useBlockProps()}>
+      <article {...useBlockProps()} id={attributes.identifier}>
         <ImageComponent media_id={attributes.pattern.media_id} alt={attributes.pattern.alt} className="inv-pattern-1" />
         <div className="container">
           <section className="left">
@@ -367,52 +367,52 @@ export default function Edit({ setAttributes, isSelected, attributes }: PropsI) 
   );
 }
 const btnStyle: CSSProperties = {
-  background: '#144D29',
-  color: '#fff',
-  paddingBlock: '1rem',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  borderRadius: '.3rem',
+  background: "#144D29",
+  color: "#fff",
+  paddingBlock: "1rem",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  borderRadius: ".3rem",
 };
 const btnPrimary: CSSProperties = {
-  color: 'white',
-  background: '#144D29',
-  paddingBlock: '1rem',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  borderRadius: '30rem',
+  color: "white",
+  background: "#144D29",
+  paddingBlock: "1rem",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  borderRadius: "30rem",
 };
 const btnSecondary: CSSProperties = {
-  color: '#144D29',
-  background: '#E4F5EB',
-  paddingBlock: '1rem',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  borderRadius: '30rem',
+  color: "#144D29",
+  background: "#E4F5EB",
+  paddingBlock: "1rem",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  borderRadius: "30rem",
 };
 const ImagePlaceholder: CSSProperties = {
-  boxShadow: '0px 0px 3px #434343',
-  borderRadius: '.5rem',
-  background: '#ccc',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  width: '100%',
-  cursor: 'pointer',
+  boxShadow: "0px 0px 3px #434343",
+  borderRadius: ".5rem",
+  background: "#ccc",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  width: "100%",
+  cursor: "pointer",
 };
 const deleteBtn: CSSProperties = {
-  background: 'darkred',
-  color: '#fff',
-  paddingBlock: '1rem',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  borderRadius: '.3rem',
-  padding: '.5rem 2rem',
-  cursor: 'pointer',
+  background: "darkred",
+  color: "#fff",
+  paddingBlock: "1rem",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  borderRadius: ".3rem",
+  padding: ".5rem 2rem",
+  cursor: "pointer",
 };
 
 {

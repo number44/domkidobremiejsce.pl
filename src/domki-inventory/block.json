@@ -7,10 +7,27 @@
   "category": "theme",
   "icon": "layout",
   "supports": {
-    "html": false
+    "html": false,
+    "background": {
+      "backgroundImage": true,
+      "backgroundSize": true
+    },
+    "color": {
+      "heading": true,
+      "enableContrastChecker": true,
+      "background": true,
+      "gradients": true,
+      "link": false,
+      "button": false,
+      "text": false
+    }
   },
   "example": {},
   "attributes": {
+    "className": {
+      "type": "string",
+      "default": "section"
+    },
     "align": {
       "type": "string",
       "default": "full"

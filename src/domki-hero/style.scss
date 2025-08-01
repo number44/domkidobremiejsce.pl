@@ -10,8 +10,13 @@
 .wp-block-domki-hero-domki-hero > * {
   box-sizing: border-box;
 }
+@media screen and (min-width: 62rem) {
+  .wp-block-domki-hero-domki-hero {
+    padding-block: 5rem;
+  }
+}
 .wp-block-domki-hero-domki-hero {
-  padding-block: 5rem;
+  padding-block: 2.5rem;
   a {
     color: inherit;
   }
@@ -100,7 +105,7 @@
     }
     .menu-fixed-ul li:after {
       position: absolute;
-      content: '';
+      content: "";
       left: 0px;
       bottom: 0px;
       background: #144d29;
@@ -200,7 +205,7 @@
     object-fit: cover;
   }
   .embla::before {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
     width: 100%;

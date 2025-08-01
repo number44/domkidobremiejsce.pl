@@ -6,7 +6,6 @@
  */
 
 .wp-block-domki-about-domki-about {
-  padding-block: 1.5rem;
   .img-about_one {
     position: sticky !important;
     top: 6rem;
@@ -24,7 +23,7 @@
     position: relative;
     border-radius: 0.2rem;
     margin-inline: auto;
-    max-width: 384px !important;
+    max-width: 24rem !important;
   }
   .img-about_one .sticky {
     position: sticky;
@@ -54,7 +53,6 @@
 
 @media screen and (min-width: 62rem) {
   .wp-block-domki-about-domki-about {
-    padding-block: 5rem;
     .container {
       display: grid;
       grid-template-columns: auto 1fr;
@@ -62,6 +60,7 @@
     .left {
       padding-inline-end: 6rem;
       padding-inline-start: 2rem;
+      padding-block-start: 1.5rem;
     }
   }
 }

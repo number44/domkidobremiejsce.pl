@@ -33,9 +33,9 @@ $pattern = [
 ];
 
 ?>
-<div <?php echo get_block_wrapper_attributes(); ?> data-wp-interactive="domki-navbar"
-    id="<?php echo esc_attr($attributes["identifier"]) ?>" <?php echo wp_interactivity_data_wp_context(array('isOpen' => false)); ?> data-wp-watch="callbacks.logIsOpen" data-wp-class--dark-theme="state.isDark">
-    <?php echo my_lazy_load_image($pattern['media_id'], $pattern['size_prefix'], "inv-pattern-1"); ?>
+<div <?php echo get_block_wrapper_attributes(); ?> data-wp-interactive="domki-inventory"
+    id="<?php echo esc_attr($attributes["identifier"]) ?>" <?php echo wp_interactivity_data_wp_context(array('isOpen' => false)); ?> class="section" data-wp-watch="callbacks.logIsOpen">
+    <?php echo my_lazy_load_image($pattern['media_id'], $pattern['size_prefix'], "inv-pattern-1 hide-on-small"); ?>
     <div class="container">
         <section class="left"><?php echo $content; ?></section>
         <section class="center">

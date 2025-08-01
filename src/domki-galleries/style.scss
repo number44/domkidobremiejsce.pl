@@ -6,7 +6,6 @@
  */
 
 .wp-block-domki-galleries-domki-galleries {
-  padding-block: 1.5rem;
   .button-small:hover {
     background-color: var(--wp--preset--color--primary);
     color: var(--wp--preset--color--base);
@@ -44,13 +43,6 @@
 }
 
 @media screen and (min-width: 62rem) {
-  .wp-block-domki-galleries-domki-galleries {
-    padding-block: 2.5rem;
-    .container {
-      display: grid;
-    }
-  }
-
   .gallery-modal {
     position: fixed;
     inset: 0;
@@ -278,7 +270,6 @@
       background-color 0.2s ease,
       transform 0.2s ease;
   }
-
   .embla__dot--selected {
     background-color: #007bff; /* Highlight color for selected dot */
     transform: scale(1.2); /* Make selected dot slightly larger */

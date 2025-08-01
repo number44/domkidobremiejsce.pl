@@ -16,5 +16,8 @@
       "email": "daniel.lesiewicz.dev@gmail.com"
     }
   ],
-  "require": {}
+  "require": {
+    "symfony/mailer": "^7.3",
+    "symfony/mime": "^7.3"
+  }
 }

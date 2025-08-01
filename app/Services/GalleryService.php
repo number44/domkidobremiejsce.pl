@@ -8,6 +8,6 @@ class GalleryService extends Service
     {
         global $wpdb;
         $this->table_name = $wpdb->prefix . "gallery";
-        parent::__construct($this->table_name);
+        parent::__construct($this->table_name, ["id", "title", "media_ids"]);
     }
 }

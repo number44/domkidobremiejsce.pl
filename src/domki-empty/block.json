@@ -1,31 +1,54 @@
 {
-	"$schema": "https://schemas.wp.org/trunk/block.json",
-	"apiVersion": 2,
-	"name": "domki-empty/domki-empty",
-	"version": "0.1.0",
-	"title": "Empty Block",
-	"category": "theme",
-	"icon": "layout",
-	"supports": {
-		"html": false,
-		"align": true
-	},
-  "example":{},
-	"attributes": {
-		"align": {
-			"type": "string",
-			"default": "wide"
-		},
-		"identifier": {
-			"type": "string"
-		},
-		"title": {
-			"type": "string",
-			"default": "Empty Block"
-		}
-	},
-	"textdomain": "domki-empty",
-	"editorScript": "file:./index.js",
-	"editorStyle": "file:./index.css",
-	"style": "file:./style-index.css"
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "domki-empty/domki-empty",
+  "version": "0.1.0",
+  "title": "Domki - Sekcja .",
+  "category": "theme",
+  "icon": "layout",
+  "description": "domki  pusta sekcja",
+  "example": {},
+  "supports": {
+    "html": false,
+    "layout": true,
+    "background": {
+      "backgroundImage": true,
+      "backgroundSize": true
+    },
+    "dimensions": {
+      "aspectRatio": true,
+      "minHeight": true
+    },
+    "spacing": {
+      "gap": true,
+      "margin": true,
+      "padding": true
+    },
+    "color": {
+      "heading": true
+    }
+  },
+  "attributes": {
+    "className": {
+      "type": "string",
+      "default": "section"
+    },
+    "identifier": {
+      "type": "string",
+      "default": "video"
+    },
+    "title": {
+      "type": "object",
+      "default": {
+        "text": "Video",
+        "show": true
+      }
+    }
+  },
+  "textdomain": "domki-empty",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php",
+  "viewScript": "file:./view.js"
 }

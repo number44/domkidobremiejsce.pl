@@ -1,6 +1,7 @@
-import { store, getContext, getElement } from '@wordpress/interactivity';
-import carousel from '@/scripts/carousel';
-import { EmblaCarouselType } from 'embla-carousel'; // Import EmblaCarouselType
+import { store, getContext, getElement } from "@wordpress/interactivity";
+import carousel from "@/scripts/carousel";
+import { EmblaCarouselType } from "embla-carousel"; // Import EmblaCarouselType
+import { LinkI } from "./types";
 interface EmblaCarouselHTMLElement extends HTMLElement {
   emblaApiInstance?: EmblaCarouselType; // Use '?' because it might not be set initially
 }
@@ -10,6 +11,7 @@ type ServerState = {
     isDark: boolean;
     darkText: string;
     lightText: string;
+    links: LinkI[];
   };
 };
 
@@ -59,9 +61,12 @@ const storeDef = {
       const { isOpen } = getContext<ContextI>();
       // Log the value of `isOpen` each time it changes.
     },
+    init: () => {
+      console.log("state", JSON.parse(JSON.stringify(state)));
+    },
   },
 };
 
 type Store = ServerState & typeof storeDef;
 
-const { state } = store<Store>('domki-hero', storeDef);
+const { state } = store<Store>("domki-hero", storeDef);

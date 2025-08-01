@@ -654,9 +654,9 @@ class Service
     }
 
     public function getPaginatedWith(
+        $columns, // Now the first parameter, and required
         $page = 1,
         $per_page = 10,
-        $columns, // Made mandatory as it's crucial with joins
         $where = [],
         $join_params = [],
         $order_params = ['order_by' => 'id', 'order' => 'ASC']

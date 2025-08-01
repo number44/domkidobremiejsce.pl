@@ -9,23 +9,47 @@
   "description": "Domki. Formularz kontaktowy plus dane kontaktowe.",
   "example": {},
   "supports": {
-    "interactivity": true
+    "interactivity": true,
+    "background": {
+      "backgroundImage": true,
+      "backgroundSize": true
+    },
+    "color": {
+      "heading": true,
+      "enableContrastChecker": true,
+      "background": true,
+      "gradients": true,
+      "link": false,
+      "button": false,
+      "text": false
+    }
   },
   "attributes": {
+    "className": {
+      "type": "string",
+      "default": "section"
+    },
     "identifier": {
       "type": "string",
-      "default": "galeria"
+      "default": "konatkt"
     },
     "title": {
       "type": "object",
       "default": {
-        "text": "Galeria",
+        "text": "Konatkt",
         "show": true
       }
     },
     "privacy": {
       "type": "string",
       "default": ""
+    },
+    "logo": {
+      "type": "object",
+      "default": {
+        "media_id": 0,
+        "alt": 0
+      }
     }
   },
   "textdomain": "domki-form",

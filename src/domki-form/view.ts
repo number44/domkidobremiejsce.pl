@@ -1,8 +1,9 @@
 /**
  * WordPress dependencies
  */
-import { store, getContext } from '@wordpress/interactivity';
-import { FormEvent } from 'react';
+import { getHeaders, getNonceHeaders } from "@/helpers/http";
+import { store, getContext } from "@wordpress/interactivity";
+import { FormEvent } from "react";
 
 type ServerState = {
   state: {
@@ -20,6 +21,7 @@ interface ContextI {
   errorMessage: boolean;
   errorConsent: boolean;
   success: boolean;
+  logo_id: number;
 }
 
 const storeDef = {
@@ -40,25 +42,31 @@ const storeDef = {
       //   data[key] = value;
       // }
 
-      if (!formData.get('firstname')) {
+      if (!formData.get("firstname")) {
         context.errorFirstname = true;
         return;
       } else {
         context.errorFirstname = false;
       }
-      if (!formData.get('email')) {
-        context.errorEmail = true;
-        return;
+      if (!formData.get("email")) {
+        // check if is valid email
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(formData.get("email") as string)) {
+          context.errorEmail = true;
+          return;
+        } else {
+          context.errorEmail = false;
+        }
       } else {
         context.errorEmail = false;
       }
-      if (!formData.get('message')) {
+      if (!formData.get("message")) {
         context.errorMessage = true;
         return;
       } else {
         context.errorMessage = false;
       }
-      if (!formData.get('consent')) {
+      if (!formData.get("consent")) {
         context.errorConsent = true;
         return;
       } else {
@@ -67,29 +75,30 @@ const storeDef = {
       context.loading = true;
 
       const data: FormDataI = {
-        firstname: formData.get('firstname') as string,
-        email: formData.get('email') as string,
-        phone: formData.get('phone') as string,
-        message: formData.get('message') as string,
+        firstname: formData.get("firstname") as string,
+        email: formData.get("email") as string,
+        phone: formData.get("phone") as string,
+        message: formData.get("message") as string,
+        logo_id: context.logo_id,
       };
 
-      console.log('data', data);
-      console.log('data', JSON.parse(JSON.stringify(data)));
-
-      console.log('wpApi', JSON.parse(JSON.stringify(wpApiSettings.root)));
+      let url = wpApiSettings.root + "lesio_theme_api/v1/message";
       try {
-        const response = await fetch(wpApiSettings.root + 'lesio_theme_api/v1/message', {
-          method: 'POST',
+        const response = await fetch(url, {
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "X-WP-Nonce": wpApiSettings.nonce,
+            "Content-Type": "application/json", // Add this
           },
           body: JSON.stringify(data),
         });
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          console.log("response", JSON.parse(JSON.stringify(response)));
+          context.loading = false;
+          throw new Error("Network response was not ok");
         }
         const json = await response.json();
-        console.log('json', JSON.parse(JSON.stringify(json)));
+        console.log("json", json);
         if (json.status >= 200 && json.status < 300) {
           context.success = true;
           setTimeout(() => {
@@ -100,7 +109,9 @@ const storeDef = {
         context.success = true;
         form.reset();
       } catch (error) {
-        console.log('error', error);
+        console.log("error", error);
+      } finally {
+        context.loading = false;
       }
     },
     toggleOpen() {
@@ -122,7 +133,7 @@ const storeDef = {
 
 type Store = ServerState & typeof storeDef;
 
-const { state } = store<Store>('domki-form', storeDef);
+const { state } = store<Store>("domki-form", storeDef);
 
 interface FormDataI {
   firstname: string;
@@ -130,4 +141,5 @@ interface FormDataI {
   phone: string;
   message: string;
   consent?: boolean;
+  logo_id: number;
 }

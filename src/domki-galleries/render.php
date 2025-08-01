@@ -76,12 +76,13 @@ $buttonLink = $attributes["button"]["link"] ?? "#";
 		"showCarousel" => false,
 		"imageSelected" => 1
 	]); ?>
-	data-wp-on-document--keyup="callbacks.detectKeys" id="<?php echo esc_attr($attributes["identifier"]) ?>">
+	data-wp-on-document--keyup="callbacks.detectKeys" id="<?php echo esc_attr($attributes["identifier"]) ?>"
+	class="section">
 	<div class="container">
 		<?php if ($title["show"]): ?>
 			<h2 class="text-center mb-4"><?= $title["text"] ?></h2>
 		<?php endif; ?>
-		<div class="flex justify-center items-center gap-3 my-5 flex-wrap">
+		<div class="flex justify-center items-center gap-3 my-2 flex-wrap">
 			<?php foreach ($galleries as $key => $gallery): ?>
 				<div data-wp-on--click="actions.handleSwitch"
 					data-wp-context='{"switcher" : {"active" : <?= $gallery["order_by"] ?>}}' class="button-small"
@@ -107,8 +108,8 @@ $buttonLink = $attributes["button"]["link"] ?? "#";
 		</div>
 
 		<?php if ($showButton): ?>
-			<div class="flex justify-center items-center  my-5">
-				<a href="<?php echo esc_attr($buttonLink); ?>" class="button"><?= $buttonText ?></a>
+			<div class="flex justify-center items-center">
+				<a href="<?php echo esc_attr($buttonLink); ?>" class="button-md"><span><?= $buttonText ?></span></a>
 			</div>
 		<?php endif; ?>
 	</div>
@@ -136,6 +137,4 @@ $buttonLink = $attributes["button"]["link"] ?? "#";
 			</section>
 		<?php endforeach; ?>
 	</section>
-
-
 </div>

@@ -1,4 +1,4 @@
-import { __ } from '@wordpress/i18n';
+import { __ } from "@wordpress/i18n";
 import {
   InnerBlocks,
   RichText,
@@ -6,12 +6,12 @@ import {
   MediaUpload,
   MediaUploadCheck,
   useBlockProps,
-} from '@wordpress/block-editor';
-import { PanelBody, Panel, PanelRow, TextControl, DatePicker } from '@wordpress/components';
-import './editor.scss';
-import React, { useRef, Fragment, CSSProperties, useState } from 'react';
-import { AttributesI } from './types';
-const ALLOWED_BLOCKS = ['core/heading', 'core/paragraph', 'core/spacer', 'core/list'];
+} from "@wordpress/block-editor";
+import { PanelBody, Panel, PanelRow, TextControl, DatePicker } from "@wordpress/components";
+import "./editor.scss";
+import React, { useRef, Fragment, CSSProperties, useState } from "react";
+import { AttributesI } from "./types";
+const ALLOWED_BLOCKS = ["core/heading", "core/paragraph", "core/spacer", "core/list"];
 interface PropsI {
   attributes: AttributesI;
   setAttributes: (attributes: AttributesI) => void;
@@ -36,6 +36,9 @@ export default function Edit({ setAttributes, isSelected, attributes }: PropsI) 
   // 	})
   // }
   const [date, setDate] = useState(new Date());
+  const sixPeopleIconUrl = ThemeUrl + "/assets/icons/6x_ludzikow.svg";
+  const eightPeopleIconUrl = ThemeUrl + "/assets/icons/8x_ludzikow.svg";
+
   return (
     <Fragment>
       <Panel>
@@ -112,17 +115,17 @@ export default function Edit({ setAttributes, isSelected, attributes }: PropsI) 
                       <div
                         onClick={open}
                         style={{
-                          cursor: 'pointer',
-                          boxShadow: '0px 0px 3px #ddd',
-                          marginInline: 'auto',
-                          aspectRatio: '4/4',
-                          width: 'fit-content',
-                          borderRadius: '50%',
-                          padding: '1rem',
+                          cursor: "pointer",
+                          boxShadow: "0px 0px 3px #ddd",
+                          marginInline: "auto",
+                          aspectRatio: "4/4",
+                          width: "fit-content",
+                          borderRadius: "50%",
+                          padding: "1rem",
                         }}
                       >
                         <img
-                          style={{ width: '4rem', height: '4rem', objectFit: 'cover' }}
+                          style={{ width: "4rem", height: "4rem", objectFit: "cover" }}
                           src={attributes.promo_1.url}
                           alt=""
                         />
@@ -130,21 +133,21 @@ export default function Edit({ setAttributes, isSelected, attributes }: PropsI) 
                     ) : (
                       <div
                         style={{
-                          cursor: 'pointer',
-                          marginBottom: '2rem',
-                          boxShadow: '0px 0px 3px #ddd',
-                          marginInline: 'auto',
-                          aspectRatio: '4/4',
-                          width: 'fit-content',
-                          borderRadius: '50%',
-                          padding: '1rem',
-                          display: 'grid',
-                          placeContent: 'center',
+                          cursor: "pointer",
+                          marginBottom: "2rem",
+                          boxShadow: "0px 0px 3px #ddd",
+                          marginInline: "auto",
+                          aspectRatio: "4/4",
+                          width: "fit-content",
+                          borderRadius: "50%",
+                          padding: "1rem",
+                          display: "grid",
+                          placeContent: "center",
                         }}
                         onClick={open}
                       >
                         <svg
-                          style={{ width: '4rem', height: '4rem', objectFit: 'cover' }}
+                          style={{ width: "4rem", height: "4rem", objectFit: "cover" }}
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
                           viewBox="0 0 24 24"
@@ -284,17 +287,17 @@ export default function Edit({ setAttributes, isSelected, attributes }: PropsI) 
                       <div
                         onClick={open}
                         style={{
-                          cursor: 'pointer',
-                          boxShadow: '0px 0px 3px #ddd',
-                          marginInline: 'auto',
-                          aspectRatio: '4/4',
-                          width: 'fit-content',
-                          borderRadius: '50%',
-                          padding: '1rem',
+                          cursor: "pointer",
+                          boxShadow: "0px 0px 3px #ddd",
+                          marginInline: "auto",
+                          aspectRatio: "4/4",
+                          width: "fit-content",
+                          borderRadius: "50%",
+                          padding: "1rem",
                         }}
                       >
                         <img
-                          style={{ width: '4rem', height: '4rem', objectFit: 'cover' }}
+                          style={{ width: "4rem", height: "4rem", objectFit: "cover" }}
                           src={attributes.promo_2.url}
                           alt=""
                         />
@@ -302,21 +305,21 @@ export default function Edit({ setAttributes, isSelected, attributes }: PropsI) 
                     ) : (
                       <div
                         style={{
-                          cursor: 'pointer',
-                          marginBottom: '2rem',
-                          boxShadow: '0px 0px 3px #ddd',
-                          marginInline: 'auto',
-                          aspectRatio: '4/4',
-                          width: 'fit-content',
-                          borderRadius: '50%',
-                          padding: '1rem',
-                          display: 'grid',
-                          placeContent: 'center',
+                          cursor: "pointer",
+                          marginBottom: "2rem",
+                          boxShadow: "0px 0px 3px #ddd",
+                          marginInline: "auto",
+                          aspectRatio: "4/4",
+                          width: "fit-content",
+                          borderRadius: "50%",
+                          padding: "1rem",
+                          display: "grid",
+                          placeContent: "center",
                         }}
                         onClick={open}
                       >
                         <svg
-                          style={{ width: '4rem', height: '4rem', objectFit: 'cover' }}
+                          style={{ width: "4rem", height: "4rem", objectFit: "cover" }}
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
                           viewBox="0 0 24 24"
@@ -456,17 +459,17 @@ export default function Edit({ setAttributes, isSelected, attributes }: PropsI) 
                       <div
                         onClick={open}
                         style={{
-                          cursor: 'pointer',
-                          boxShadow: '0px 0px 3px #ddd',
-                          marginInline: 'auto',
-                          aspectRatio: '4/4',
-                          width: 'fit-content',
-                          borderRadius: '50%',
-                          padding: '1rem',
+                          cursor: "pointer",
+                          boxShadow: "0px 0px 3px #ddd",
+                          marginInline: "auto",
+                          aspectRatio: "4/4",
+                          width: "fit-content",
+                          borderRadius: "50%",
+                          padding: "1rem",
                         }}
                       >
                         <img
-                          style={{ width: '4rem', height: '4rem', objectFit: 'cover' }}
+                          style={{ width: "4rem", height: "4rem", objectFit: "cover" }}
                           src={attributes.promo_3.url}
                           alt=""
                         />
@@ -474,21 +477,21 @@ export default function Edit({ setAttributes, isSelected, attributes }: PropsI) 
                     ) : (
                       <div
                         style={{
-                          cursor: 'pointer',
-                          marginBottom: '2rem',
-                          boxShadow: '0px 0px 3px #ddd',
-                          marginInline: 'auto',
-                          aspectRatio: '4/4',
-                          width: 'fit-content',
-                          borderRadius: '50%',
-                          padding: '1rem',
-                          display: 'grid',
-                          placeContent: 'center',
+                          cursor: "pointer",
+                          marginBottom: "2rem",
+                          boxShadow: "0px 0px 3px #ddd",
+                          marginInline: "auto",
+                          aspectRatio: "4/4",
+                          width: "fit-content",
+                          borderRadius: "50%",
+                          padding: "1rem",
+                          display: "grid",
+                          placeContent: "center",
                         }}
                         onClick={open}
                       >
                         <svg
-                          style={{ width: '4rem', height: '4rem', objectFit: 'cover' }}
+                          style={{ width: "4rem", height: "4rem", objectFit: "cover" }}
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
                           viewBox="0 0 24 24"
@@ -628,17 +631,17 @@ export default function Edit({ setAttributes, isSelected, attributes }: PropsI) 
                       <div
                         onClick={open}
                         style={{
-                          cursor: 'pointer',
-                          boxShadow: '0px 0px 3px #ddd',
-                          marginInline: 'auto',
-                          aspectRatio: '4/4',
-                          width: 'fit-content',
-                          borderRadius: '50%',
-                          padding: '1rem',
+                          cursor: "pointer",
+                          boxShadow: "0px 0px 3px #ddd",
+                          marginInline: "auto",
+                          aspectRatio: "4/4",
+                          width: "fit-content",
+                          borderRadius: "50%",
+                          padding: "1rem",
                         }}
                       >
                         <img
-                          style={{ width: '4rem', height: '4rem', objectFit: 'cover' }}
+                          style={{ width: "4rem", height: "4rem", objectFit: "cover" }}
                           src={attributes.promo_4.url}
                           alt=""
                         />
@@ -646,21 +649,21 @@ export default function Edit({ setAttributes, isSelected, attributes }: PropsI) 
                     ) : (
                       <div
                         style={{
-                          cursor: 'pointer',
-                          marginBottom: '2rem',
-                          boxShadow: '0px 0px 3px #ddd',
-                          marginInline: 'auto',
-                          aspectRatio: '4/4',
-                          width: 'fit-content',
-                          borderRadius: '50%',
-                          padding: '1rem',
-                          display: 'grid',
-                          placeContent: 'center',
+                          cursor: "pointer",
+                          marginBottom: "2rem",
+                          boxShadow: "0px 0px 3px #ddd",
+                          marginInline: "auto",
+                          aspectRatio: "4/4",
+                          width: "fit-content",
+                          borderRadius: "50%",
+                          padding: "1rem",
+                          display: "grid",
+                          placeContent: "center",
                         }}
                         onClick={open}
                       >
                         <svg
-                          style={{ width: '4rem', height: '4rem', objectFit: 'cover' }}
+                          style={{ width: "4rem", height: "4rem", objectFit: "cover" }}
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
                           viewBox="0 0 24 24"
@@ -785,227 +788,204 @@ export default function Edit({ setAttributes, isSelected, attributes }: PropsI) 
         </InspectorControls>
       </Panel>
 
-      <div {...useBlockProps()}>
-        <h1 style={{ textAlign: 'center', margin: 0, padding: 0 }}>{attributes.title}</h1>
-        <div style={promoStyle}>
-          <RichText
-            style={{ lineHeight: 1 }}
-            tagName="p"
-            value={attributes.promotion_text}
-            onChange={(content) => setAttributes({ ...attributes, promotion_text: content })} // Store updated content as a block attribute
-            allowedFormats={['core/bold', 'core/italic']}
-            placeholder={__('...dodaj treść tutaj')}
-          />
-        </div>
-        <div className="select-btns">
-          <div
-            onClick={() => setPriceType(1)}
-            className={priceType === 1 ? 'btn-select active-select-btn' : 'btn-select'}
-          >
-            <div className="circle" style={{ aspectRatio: 1 }}></div>
-            <span className="no-wrap">Do 6 osób</span>
-            <img src={ThemeUrl + '/assets/icons/6x_ludzikow.svg'} alt="" />
-          </div>
-          <div
-            onClick={() => setPriceType(2)}
-            className={priceType === 2 ? 'btn-select active-select-btn' : 'btn-select'}
-          >
-            <div className="circle" style={{ aspectRatio: 1 }}></div>
-            <span className="no-wrap">Do 8 osób</span>
-            <img src={ThemeUrl + '/assets/icons/8x_ludzikow.svg'} alt="" />
-          </div>
-        </div>
-        <div className="promos" style={{ gap: '1rem', textAlign: 'center' }}>
-          <div className="promo">
-            <div style={{ fontWeight: 900, lineHeight: '2' }}>{attributes.promo_1.line_1}</div>
-            <div>
-              <small>{attributes.promo_1.line_2}</small>
-            </div>
-            <div
-              style={{
-                padding: '1rem',
-                borderRadius: '50%',
-                background: '#fff',
-                width: '4rem',
-                height: '4rem',
-                marginBlock: '1rem',
-                display: 'grid',
-                placeContent: 'center',
-              }}
-            >
-              <img
-                style={{ width: '4rem', height: '4rem' }}
-                src={attributes.promo_1.url}
-                alt={attributes.promo_1.alt}
+      <div {...useBlockProps()} id={attributes.identifier}>
+        <section className="oferta-section" id={attributes.identifier}>
+          <div className="container">
+            <h1 id="oferta-target">{attributes.title}</h1>
+            <div className="of">
+              <RichText
+                tagName="p"
+                value={attributes.promotion_text}
+                onChange={(content) => setAttributes({ ...attributes, promotion_text: content })}
+                allowedFormats={["core/bold", "core/italic"]}
+                placeholder={__("...dodaj treść tutaj")}
+                className="oferta"
               />
             </div>
-            <div style={{ color: '#144D29', fontSize: '2rem', fontWeight: 900 }}>
-              {priceType === 1 ? attributes.promo_1.price_1 : attributes.promo_1.price_2}
+
+            <div className="btns">
+              <div
+                onClick={() => setPriceType(1)}
+                className={
+                  priceType === 1
+                    ? "btn cp btn-left oferta6 btn-oferta btn--active"
+                    : "btn cp btn-left oferta6 btn-oferta"
+                }
+              >
+                <div className="circle"></div>
+                <div>DO 6 OSÓB</div>
+                <img src={sixPeopleIconUrl} alt="oferta 6 osób" />
+              </div>
+              <div
+                onClick={() => setPriceType(2)}
+                className={
+                  priceType === 2
+                    ? "btn cp btn-right oferta8 btn-oferta btn--active"
+                    : "btn cp btn-right oferta8 btn-oferta"
+                }
+              >
+                <div className="circle"></div>
+                <div>DO 8 OSÓB</div>
+                <img loading="lazy" src={eightPeopleIconUrl} alt="oferta 8 osób" />
+              </div>
             </div>
-            <div style={btnPrimary}>Rezerwuj</div>
-          </div>
-          <div className="promo">
-            <div style={{ fontWeight: 900, lineHeight: '2' }}>{attributes.promo_2.line_1}</div>
-            <div>
-              <small>{attributes.promo_2.line_2}</small>
+
+            <div className="oferty">
+              {/* Promo 1 */}
+              <div className="oferta-1 promocja">
+                <h4>{attributes.promo_1.line_1}</h4>
+                <p>{attributes.promo_1.line_2}</p>
+                <div className="icona over-hidden">
+                  <img loading="lazy" src={attributes.promo_1.url} alt="promo 1 icon" />
+                </div>
+                <div className="cena" data-cena-1={attributes.promo_1.price_1} data-cena-2={attributes.promo_1.price_2}>
+                  {priceType === 1 ? attributes.promo_1.price_1 : attributes.promo_1.price_2}
+                </div>
+                <div
+                  data-start={attributes.promo_1.from}
+                  data-finish={attributes.promo_1.to}
+                  className="btn ucase cp btn-g-fix"
+                >
+                  Rezerwuj
+                </div>
+              </div>
+
+              {/* Promo 2 */}
+              <div className="oferta-2 promocja">
+                <h4>{attributes.promo_2.line_1}</h4>
+                <p>{attributes.promo_2.line_2}</p>
+                <div className="icona over-hidden">
+                  <img loading="lazy" src={attributes.promo_2.url} alt="promo 2 icon" />
+                </div>
+                <div className="cena" data-cena-1={attributes.promo_2.price_1} data-cena-2={attributes.promo_2.price_2}>
+                  {priceType === 1 ? attributes.promo_2.price_1 : attributes.promo_2.price_2}
+                </div>
+                <div
+                  data-start={attributes.promo_2.from}
+                  data-finish={attributes.promo_2.to}
+                  className="btn ucase cp btn-g-fix"
+                >
+                  Rezerwuj
+                </div>
+              </div>
+
+              {/* Promo 3 */}
+              <div className="oferta-3 promocja">
+                <h4>{attributes.promo_3.line_1}</h4>
+                <p>{attributes.promo_3.line_2}</p>
+                <div className="icona over-hidden">
+                  <img loading="lazy" src={attributes.promo_3.url} alt="promo 3 icon" />
+                </div>
+                <div className="cena" data-cena-1={attributes.promo_3.price_1} data-cena-2={attributes.promo_3.price_2}>
+                  {priceType === 1 ? attributes.promo_3.price_1 : attributes.promo_3.price_2}
+                </div>
+                <div
+                  data-start={attributes.promo_3.from}
+                  data-finish={attributes.promo_3.to}
+                  className="btn ucase cp btn-g-fix"
+                >
+                  Rezerwuj
+                </div>
+              </div>
+
+              {/* Promo 4 */}
+              <div className="oferta-4 promocja">
+                <h4>{attributes.promo_4.line_1}</h4>
+                <p>{attributes.promo_4.line_2}</p>
+                <div className="icona over-hidden">
+                  <img loading="lazy" src={attributes.promo_4.url} alt="promo 4 icon" />
+                </div>
+                <div className="cena" data-cena-1={attributes.promo_4.price_1} data-cena-2={attributes.promo_4.price_2}>
+                  {priceType === 1 ? attributes.promo_4.price_1 : attributes.promo_4.price_2}
+                </div>
+                <div
+                  data-start={attributes.promo_4.from}
+                  data-finish={attributes.promo_4.to}
+                  className="btn ucase cp btn-g-fix"
+                >
+                  Rezerwuj
+                </div>
+              </div>
             </div>
-            <div
-              style={{
-                padding: '1rem',
-                borderRadius: '50%',
-                background: '#fff',
-                width: '4rem',
-                height: '4rem',
-                marginBlock: '1rem',
-                display: 'grid',
-                placeContent: 'center',
-              }}
-            >
-              <img
-                style={{ width: '4rem', height: '4rem' }}
-                src={attributes.promo_2.url}
-                alt={attributes.promo_2.alt}
+
+            <div className="content text-center">
+              <RichText
+                tagName="div" // Changed to div to match render.php's direct output (though RichText usually uses p)
+                value={attributes.reservation_text}
+                onChange={(content) => setAttributes({ ...attributes, reservation_text: content })}
+                placeholder={__("...dodaj treść tutaj")}
               />
             </div>
-            <div style={{ color: '#144D29', fontSize: '2rem', fontWeight: 900 }}>
-              {priceType === 1 ? attributes.promo_2.price_1 : attributes.promo_2.price_2}
+
+            <div data-href={attributes.button.url} className="btn-text button button-reservation-clear no-wrap">
+              {attributes.button.text}
             </div>
-            <div style={btnPrimary}>Rezerwuj</div>
           </div>
-          <div className="promo">
-            <div style={{ fontWeight: 900, lineHeight: '2' }}>{attributes.promo_3.line_1}</div>
-            <div>
-              <small>{attributes.promo_3.line_2}</small>
-            </div>
-            <div
-              style={{
-                padding: '1rem',
-                borderRadius: '50%',
-                background: '#fff',
-                width: '4rem',
-                height: '4rem',
-                marginBlock: '1rem',
-                display: 'grid',
-                placeContent: 'center',
-              }}
-            >
-              <img
-                style={{ width: '4rem', height: '4rem' }}
-                src={attributes.promo_3.url}
-                alt={attributes.promo_3.alt}
-              />
-            </div>
-            <div style={{ color: '#144D29', fontSize: '2rem', fontWeight: 900 }}>
-              {priceType === 1 ? attributes.promo_3.price_1 : attributes.promo_3.price_2}
-            </div>
-            <div style={btnPrimary}>Rezerwuj</div>
-          </div>
-          <div className="promo">
-            <div style={{ fontWeight: 900, lineHeight: '2' }}>{attributes.promo_4.line_1}</div>
-            <div>
-              <small>{attributes.promo_4.line_2}</small>
-            </div>
-            <div
-              style={{
-                padding: '1rem',
-                borderRadius: '50%',
-                background: '#fff',
-                width: '4rem',
-                height: '4rem',
-                marginBlock: '1rem',
-                display: 'grid',
-                placeContent: 'center',
-              }}
-            >
-              <img
-                style={{ width: '4rem', height: '4rem' }}
-                src={attributes.promo_4.url}
-                alt={attributes.promo_4.alt}
-              />
-            </div>
-            <div style={{ color: '#144D29', fontSize: '2rem', fontWeight: 900 }}>
-              {priceType === 1 ? attributes.promo_4.price_1 : attributes.promo_4.price_2}
-            </div>
-            <div style={btnPrimary}>Rezerwuj</div>
-          </div>
-        </div>
-        <RichText
-          style={{ textAlign: 'center', lineHeight: '1.6' }}
-          tagName="p"
-          value={attributes.reservation_text}
-          onChange={(content) => setAttributes({ ...attributes, reservation_text: content })}
-          // allowedFormats={['core/bold', 'core/italic']}
-          placeholder={__('...dodaj treść tutaj')}
-        />
-        <div>
-          <div style={{ ...btnPrimary, width: 'fit-content', paddingInline: '2rem', marginInline: 'auto' }}>
-            {attributes.button.text}
-          </div>
-        </div>
+        </section>
       </div>
     </Fragment>
   );
 }
 
 const promoStyle: CSSProperties = {
-  background: '#FC7846',
-  padding: '0.0rem 1rem',
-  color: 'white',
-  borderRadius: '50rem',
+  background: "#FC7846",
+  padding: "0.0rem 1rem",
+  color: "white",
+  borderRadius: "50rem",
   fontWeight: 900,
-  width: 'fit-content',
-  marginInline: 'auto',
+  width: "fit-content",
+  marginInline: "auto",
 };
 const btnStyle: CSSProperties = {
-  background: '#144D29',
-  color: '#fff',
-  paddingBlock: '1rem',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  borderRadius: '.3rem',
+  background: "#144D29",
+  color: "#fff",
+  paddingBlock: "1rem",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  borderRadius: ".3rem",
 };
 const btnPrimary: CSSProperties = {
-  color: 'white',
-  background: '#144D29',
-  paddingBlock: '1rem',
-  width: '100%',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  borderRadius: '30rem',
-  marginTop: '2rem',
-  textTransform: 'uppercase',
+  color: "white",
+  background: "#144D29",
+  paddingBlock: "1rem",
+  width: "100%",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  borderRadius: "30rem",
+  marginTop: "2rem",
+  textTransform: "uppercase",
   fontWeight: 900,
 };
 const btnSecondary: CSSProperties = {
-  color: '#144D29',
-  background: '#E4F5EB',
-  paddingBlock: '1rem',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  borderRadius: '30rem',
+  color: "#144D29",
+  background: "#E4F5EB",
+  paddingBlock: "1rem",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  borderRadius: "30rem",
 };
 const ImagePlaceholder: CSSProperties = {
-  boxShadow: '0px 0px 3px #434343',
-  borderRadius: '.5rem',
-  background: '#ccc',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  width: '80%',
-  minWidth: 'fit-content',
-  cursor: 'pointer',
+  boxShadow: "0px 0px 3px #434343",
+  borderRadius: ".5rem",
+  background: "#ccc",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  width: "80%",
+  minWidth: "fit-content",
+  cursor: "pointer",
 };
 const deleteBtn: CSSProperties = {
-  background: 'darkred',
-  color: '#fff',
-  paddingBlock: '1rem',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  borderRadius: '.3rem',
-  padding: '.5rem 2rem',
-  cursor: 'pointer',
+  background: "darkred",
+  color: "#fff",
+  paddingBlock: "1rem",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  borderRadius: ".3rem",
+  padding: ".5rem 2rem",
+  cursor: "pointer",
 };

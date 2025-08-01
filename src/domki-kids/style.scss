@@ -6,7 +6,9 @@
  */
 
 .wp-block-domki-kids-domki-kids {
-  padding-block: 1.5rem;
+  background-image: var(--domki-kids-pattern-url);
+  background-repeat: repeat;
+
   .elements {
     place-content: center;
   }
@@ -31,7 +33,6 @@
 }
 @media screen and (min-width: 62rem) {
   .wp-block-domki-kids-domki-kids {
-    padding-block: 2.5rem;
     .container {
       display: grid;
     }

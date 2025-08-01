@@ -98,7 +98,6 @@ $eight_people_icon_url = $theme_url . "/assets/icons/8x_ludzikow.svg";
             <div class="content text-center" dangerouslySetInnerHTML={{ __html: attributes.reservation_text }}>
                 <?php echo $attributes['reservation_text']; ?>
             </div>
-            <br />
             <div data-href="<?php echo esc_attr($attributes['button']["url"]); ?>"
                 class="btn-text button button-reservation-clear no-wrap">
                 <?= $attributes['button']['text']; ?>

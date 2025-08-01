@@ -1,10 +1,10 @@
-import { MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
-import { Button, Notice, TextControl } from '@wordpress/components';
-import { useEffect, useMemo, useState, useRef } from 'react';
-import { GalleryI } from '../types';
-import ImageComponent from '../components/ImageComponent';
-import { getHeaders } from '../helpers/http';
-import { useAutoAnimate } from '@formkit/auto-animate/react';
+import { MediaUpload, MediaUploadCheck } from "@wordpress/block-editor";
+import { Button, Notice, TextControl } from "@wordpress/components";
+import { useEffect, useMemo, useState, useRef } from "react";
+import { GalleryI } from "../types";
+import ImageComponent from "../components/ImageComponent";
+import { getHeaders } from "../helpers/http";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
 
 interface PropsI {
   gallery: GalleryI;
@@ -15,7 +15,7 @@ interface ImageI {
   media_id: number; // This is the WordPress media library ID (can repeat)
   order_by: number;
 }
-type NoticeT = 'info' | 'warning' | 'success' | 'error' | undefined;
+type NoticeT = "info" | "warning" | "success" | "error" | undefined;
 
 const Gallery = ({ gallery }: PropsI) => {
   const [isPending, setIsPending] = useState(false);
@@ -30,7 +30,7 @@ const Gallery = ({ gallery }: PropsI) => {
     const initialImages: ImageI[] = [];
     if (gallery.media_ids) {
       gallery.media_ids
-        .split(',')
+        .split(",")
         .filter(Boolean) // Filter out any empty strings
         .forEach((media_id_str) => {
           uniqueIdCounter.current += 1;
@@ -103,20 +103,20 @@ const Gallery = ({ gallery }: PropsI) => {
   const saveChanges = async () => {
     setIsPending(true);
     try {
-      const response = await fetch(wpApiSettings.api_url + 'gallery/' + gallery.id, {
-        method: 'PUT',
+      const response = await fetch(wpApiSettings.api_url + "gallery/" + gallery.id, {
+        method: "PUT",
         headers: getHeaders(),
         body: JSON.stringify({
           title: galleryName,
-          media_ids: sortedImages.map((image) => image.media_id).join(','),
+          media_ids: sortedImages.map((image) => image.media_id).join(","),
         }),
       });
       await response.json();
-      setNotice('success');
-      setTimeout(() => setNotice(undefined), 3000);
+      setNotice("success");
+      setTimeout(() => setNotice(undefined), 10000);
     } catch (err) {
-      console.error('Failed to save changes:', err);
-      setNotice('error');
+      console.error("Failed to save changes:", err);
+      setNotice("error");
       setTimeout(() => setNotice(undefined), 3000);
     } finally {
       setIsPending(false);
@@ -160,11 +160,11 @@ const Gallery = ({ gallery }: PropsI) => {
                 }));
               setImages(combinedImages);
             }}
-            allowedTypes={['image']}
+            allowedTypes={["image"]}
             render={({ open }) => {
               return (
-                <Button style={{ height: '100%' }} onClick={open} variant="secondary" icon={'images-alt'}>
-                  {'Dodaj zdjęcia'} {/* Changed text to plural */}
+                <Button style={{ height: "100%" }} onClick={open} variant="secondary" icon={"images-alt"}>
+                  {"Dodaj zdjęcia"} {/* Changed text to plural */}
                 </Button>
               );
             }}
@@ -181,17 +181,17 @@ const Gallery = ({ gallery }: PropsI) => {
                     <Button
                       disabled={image.order_by === 1}
                       onClick={() => moveUp(image.order_by)}
-                      icon={'arrow-left-alt'}
+                      icon={"arrow-left-alt"}
                     />
                     <Button
                       disabled={image.order_by === images.length}
                       onClick={() => moveDown(image.order_by)}
-                      icon={'arrow-right-alt'}
+                      icon={"arrow-right-alt"}
                     />
                   </div>
-                  <Button icon={'trash'} onClick={() => removeImage(image.order_by)} />
+                  <Button icon={"trash"} onClick={() => removeImage(image.order_by)} />
                 </div>
-                <ImageComponent media_id={image.media_id} alt={'Zdjęcie gallerii'} style={{ aspectRatio: '16/9' }} />
+                <ImageComponent media_id={image.media_id} alt={"Zdjęcie gallerii"} style={{ aspectRatio: "16/9" }} />
               </section>
             </div>
           </div>
@@ -200,8 +200,8 @@ const Gallery = ({ gallery }: PropsI) => {
       <section className="flex gap-4 flex-wrap justify-between items-center">
         <div>
           {notice && (
-            <Notice status={notice === 'success' ? 'success' : 'error'} isDismissible={false}>
-              {notice === 'success' ? 'Wczytano zmiany' : 'Błąd zapisu'}
+            <Notice status={notice === "success" ? "success" : "error"} isDismissible={false}>
+              {notice === "success" ? "Wczytano zmiany" : "Błąd zapisu"}
             </Notice>
           )}
         </div>
@@ -211,7 +211,7 @@ const Gallery = ({ gallery }: PropsI) => {
           disabled={isPending}
           className="flex justify-center items-center"
         >
-          Zapisz Zmiany
+          Zmień
         </Button>
       </section>
     </div>

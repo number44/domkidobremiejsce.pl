@@ -12,6 +12,13 @@ class GalleryController
     {
         $this->galleryService = new GalleryService();
     }
+
+    public function testing($request = null)
+    {
+        return rest_ensure_response([
+            "test" => "value"
+        ]);
+    }
     public function index($request = null)
     {
         global $wpdb;

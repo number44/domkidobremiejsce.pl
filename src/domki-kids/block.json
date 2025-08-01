@@ -9,7 +9,21 @@
   "description": "Domki. Atrakcje dla dzieci z galerią.",
   "example": {},
   "supports": {
-    "interactivity": true
+    "interactivity": true,
+    "background": {
+      "backgroundImage": true,
+      "backgroundSize": true
+    },
+    "color": {
+      "heading": true,
+      "enableContrastChecker": true,
+      "background": true,
+      "gradients": true,
+      "link": false,
+      "button": false,
+
+      "text": false
+    }
   },
   "attributes": {
     "identifier": {
@@ -51,6 +65,17 @@
         "gallery_id": 0,
         "images": []
       }
+    },
+    "pattern": {
+      "type": "object",
+      "default": {
+        "media_id": 0,
+        "alt": 0
+      }
+    },
+    "className": {
+      "type": "string",
+      "default": "section"
     }
   },
   "textdomain": "domki-kids",

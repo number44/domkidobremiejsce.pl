@@ -46,3 +46,17 @@ To learn more about Rsbuild, check out the following resources:
 - [Rsbuild GitHub repository](https://github.com/web-infra-dev/rsbuild) - your feedback and contributions are welcome!
 
 GG mati : 7 222 44 0;
+
+## W wiadomościach ukazuje się materiał o Sztucznej Inteligencji
+
+## Okazuje się że Sztuczna inteligencja przez to że pochodzi z danych subiektywnych (?)
+
+## lepiej działa gdy komunikacja z nią była nacechowana uczuciowo
+
+## Kampania Procesu Uczłowieczania
+
+## Młody człowiek . eMce (?)
+
+## Werbunek
+
+## dasdas

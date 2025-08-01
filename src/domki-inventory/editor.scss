@@ -8,12 +8,11 @@
   filter: drop-shadow(0px 0px 1px hsl(142, 59%, 19%));
   min-height: 10rem;
   border-radius: 0.2rem;
-  width: calc(100% - 2rem);
-  max-width: calc(100% - 2rem);
+  width: min(100% - 2rem, 90rem) !important;
+  max-width: 90rem;
   background-color: #fff;
   margin-inline: auto !important;
   margin-left: auto !important;
-  background-color: var(--wp--preset--color--pale);
   margin-right: auto !important;
 }
 .wp-block-domki-inventory-domki-inventory > * {

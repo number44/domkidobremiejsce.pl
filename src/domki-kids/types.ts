@@ -5,6 +5,12 @@ export interface AttributesI {
   apiGallery: ApiGalleryI;
   gallery: GalleryI;
   button: ButtonI;
+  pattern: PatternI;
+}
+
+interface PatternI {
+  alt: string;
+  media_id: number;
 }
 interface ElementI {
   media_id: string;

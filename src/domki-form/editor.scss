@@ -5,11 +5,14 @@
  */
 
 .wp-block-domki-form-domki-form {
-  .form {
-    width: 100%;
-    aspect-ratio: 16/9;
-    display: grid;
-    place-content: center;
-    background-color: var(--wp--preset--color--pale);
-  }
+  filter: drop-shadow(0px 0px 1px hsl(142, 59%, 19%));
+  min-height: 10rem;
+  border-radius: 0.2rem;
+  width: min(100% - 2rem, 90rem) !important;
+  max-width: 90rem;
+  background-color: #fff;
+  margin-inline: auto !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-block-end: 1.5rem;
 }

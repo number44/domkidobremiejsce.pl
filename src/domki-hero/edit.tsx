@@ -1,12 +1,12 @@
-import { __ } from '@wordpress/i18n';
-import { InspectorControls, MediaUpload, MediaUploadCheck, useBlockProps } from '@wordpress/block-editor';
-import { AttributesI, LinkI, SortableImageI } from './types';
-import { PanelBody, Panel, PanelRow, TextControl, Button, Icon, CheckboxControl } from '@wordpress/components';
-import ImageComponent from '@components/ImageComponent';
-import LinkComponent from './components/LinkComponent';
-import { CSSProperties, useCallback, useEffect, useMemo, useState } from 'react';
-import SortableImagesWithText from '@components/SortableImagesWithText';
-import SortableLinks from '@components/SortablieLinks';
+import { __ } from "@wordpress/i18n";
+import { InspectorControls, MediaUpload, MediaUploadCheck, useBlockProps } from "@wordpress/block-editor";
+import { AttributesI, LinkI, SortableImageI } from "./types";
+import { PanelBody, Panel, PanelRow, TextControl, Button, Icon, CheckboxControl } from "@wordpress/components";
+import ImageComponent from "@components/ImageComponent";
+import LinkComponent from "./components/LinkComponent";
+import { CSSProperties, useCallback, useEffect, useMemo, useState } from "react";
+import SortableImagesWithText from "@components/SortableImagesWithText";
+import SortableLinks from "@components/SortablieLinks";
 
 interface PropsI {
   attributes: AttributesI;
@@ -60,7 +60,7 @@ export default function Edit({ attributes, isSelected, setAttributes }: PropsI) 
                       },
                     });
                   }}
-                  allowedTypes={['image']}
+                  allowedTypes={["image"]}
                   render={({ open }) => {
                     if (attributes.logo.media_id) {
                       return (
@@ -74,8 +74,8 @@ export default function Edit({ attributes, isSelected, setAttributes }: PropsI) 
                       );
                     } else {
                       return (
-                        <Button onClick={open} className="components-panel__body__toggle" icon={'images-alt'}>
-                          {'Wybierz obraz'}
+                        <Button onClick={open} className="components-panel__body__toggle" icon={"images-alt"}>
+                          {"Wybierz obraz"}
                         </Button>
                       );
                     }
@@ -222,7 +222,7 @@ export default function Edit({ attributes, isSelected, setAttributes }: PropsI) 
               <ul className="menu-fixed-ul">
                 {attributes.links.map((link, index) => (
                   <li key={index}>
-                    <a href="#">{link.text}</a>
+                    <a href={link.url}>{link.text}</a>
                   </li>
                 ))}
               </ul>
@@ -246,10 +246,10 @@ export default function Edit({ attributes, isSelected, setAttributes }: PropsI) 
               </section>
               <section className="hero-socials flex align-center gap-2 px-2">
                 <a title="facebook link" href="#" className="c">
-                  <img src={wpApiSettings.theme_url + '/assets/icons/facebook.svg'} alt="facebook-icon" />
+                  <img src={wpApiSettings.theme_url + "/assets/icons/facebook.svg"} alt="facebook-icon" />
                 </a>
                 <a title="instagram link" href="#" className="c">
-                  <img src={wpApiSettings.theme_url + '/assets/icons/instagram.svg'} alt="instagram-icon" />
+                  <img src={wpApiSettings.theme_url + "/assets/icons/instagram.svg"} alt="instagram-icon" />
                 </a>
               </section>
             </div>
@@ -270,10 +270,12 @@ export default function Edit({ attributes, isSelected, setAttributes }: PropsI) 
 										</h1>
 									</div>
 								<?php endforeach; ?> */}
-                      <ImageComponent
-                        media_id={attributes.images[carouselImg].media_id}
-                        alt={attributes.images[carouselImg].alt}
-                      />
+                      <div className="embla__slide">
+                        <ImageComponent
+                          media_id={attributes.images[carouselImg].media_id}
+                          alt={attributes.images[carouselImg].alt}
+                        />
+                      </div>
                       {/* {attributes.images.map((image, index) => (
                         <div key={index} className="embla__slide">
                           <ImageComponent media_id={image.media_id} alt={image.alt} />
@@ -283,10 +285,10 @@ export default function Edit({ attributes, isSelected, setAttributes }: PropsI) 
                   </div>
                   <div className="embla__buttons">
                     <div title="prev-button" onClick={prevImage} className="embla__button embla__button--prev">
-                      <img src={wpApiSettings.theme_url + '/assets/icons/arrow-icon.svg'} alt="" />
+                      <img src={wpApiSettings.theme_url + "/assets/icons/arrow-icon.svg"} alt="" />
                     </div>
                     <div title="next-button" onClick={nextImage} className="embla__button embla__button--next">
-                      <img src={wpApiSettings.theme_url + '/assets/icons/arrow-icon.svg'} alt="" />
+                      <img src={wpApiSettings.theme_url + "/assets/icons/arrow-icon.svg"} alt="" />
                     </div>
                   </div>
                   <div className="embla__dots"></div>
@@ -312,10 +314,10 @@ export default function Edit({ attributes, isSelected, setAttributes }: PropsI) 
               </div>
               <div className="embla__buttons">
                 <div title="prev-button" onClick={prevImage} className="embla__button embla__button--prev">
-                  <img src={wpApiSettings.theme_url + '/assets/icons/arrow-icon.svg'} alt="" />
+                  <img src={wpApiSettings.theme_url + "/assets/icons/arrow-icon.svg"} alt="" />
                 </div>
                 <div title="next-button" onClick={nextImage} className="embla__button embla__button--next">
-                  <img src={wpApiSettings.theme_url + '/assets/icons/arrow-icon.svg'} alt="" />
+                  <img src={wpApiSettings.theme_url + "/assets/icons/arrow-icon.svg"} alt="" />
                 </div>
               </div>
               <div className="embla__dots"></div>
@@ -328,23 +330,23 @@ export default function Edit({ attributes, isSelected, setAttributes }: PropsI) 
 }
 
 const imageWrapperStyles: CSSProperties = {
-  width: '100%',
-  backgroundColor: '#434343',
-  aspectRatio: '4/3',
-  position: 'relative',
-  display: 'grid',
-  placeContent: 'center',
+  width: "100%",
+  backgroundColor: "#434343",
+  aspectRatio: "4/3",
+  position: "relative",
+  display: "grid",
+  placeContent: "center",
 };
 
 const imageStyles: CSSProperties = {
-  width: '100',
-  aspectRatio: '4/3',
-  position: 'absolute',
+  width: "100",
+  aspectRatio: "4/3",
+  position: "absolute",
   inset: 0,
-  objectFit: 'cover',
-  height: '100%',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  backgroundColor: 'red',
+  objectFit: "cover",
+  height: "100%",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  backgroundColor: "red",
 };

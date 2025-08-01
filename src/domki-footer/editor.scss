@@ -1,59 +1,9 @@
 * {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 .wp-block-domki-footer-domki-footer {
-	margin-top: 2rem;
-	min-height: 23rem;
-	margin-left: auto !important;
-	margin-right: auto !important;
-	width: 90rem !important;
-	max-width: 100% !important;
-	box-shadow: 0px 0px 3px #144d29;
-	background: #144d29;
-	color: white;
-	padding: 2rem 3rem;
-	display: grid;
-	gap: 1rem;
-	position: relative;
-	@media screen and (min-width: 60rem) {
-		grid-template-columns: auto 1fr 1fr 1fr;
-		place-content: end;
-	}
-	.sector-active {
-		box-shadow: 0px 0px 3px #fff !important;
-	}
-	.sector {
-		box-shadow: 0px 0px 0px #fff;
-		padding: 1rem;
-		border-radius: 0.2rem;
-		min-width: 40ch;
-		width: fit-content;
-		text-align: left;
-		transition: box-shadow ease-in-out 0.3s, opacity ease-in-out 0.3s, clip-path ease-in-out 0.3s;
-		a {
-			color: white;
-		}
-	}
-	.privacy {
-		position: absolute;
-		width: 50ch;
-		max-width: 100%;
-		line-height: 1.5;
-		box-shadow: 0px 0px 3px #fff;
-		padding: 1rem;
-		border-radius: 0.2rem;
-		transform: translate(-50%, -50%);
-		left: 50%;
-		top: 50%;
-	}
-	.privacy-btn {
-		cursor: pointer;
-		width: 1rem;
-		height: 1rem;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		border-radius: 0.2rem;
-		box-shadow: 0px 0px 3px #fff;
-	}
+  margin-top: 7rem;
+  .footer {
+    padding-top: 6rem;
+  }
 }

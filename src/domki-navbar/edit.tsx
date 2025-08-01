@@ -1,36 +1,43 @@
-import { __ } from '@wordpress/i18n';
+import { __ } from "@wordpress/i18n";
 import {
   InspectorControls,
   MediaUpload,
   MediaUploadCheck,
   PanelColorSettings,
   useBlockProps,
-} from '@wordpress/block-editor';
-import { PanelBody, Panel, PanelRow, TextControl, Button } from '@wordpress/components';
+} from "@wordpress/block-editor";
+import { PanelBody, Panel, PanelRow, TextControl, Button, CheckboxControl } from "@wordpress/components";
 // import SearchControl from '@wordpress/components/src/search-control';
 // import { useSelect } from '@wordpress/data';
-import './editor.scss';
-import React, { Fragment, CSSProperties, useState, useEffect } from 'react';
-import LinkComponent from './components/LinkComponent';
-import { AttributesI } from './types';
-import ImageComponent from '@/components/ImageComponent';
+import "./editor.scss";
+import React, { Fragment, CSSProperties, useState, useEffect } from "react";
+import LinkComponent from "./components/LinkComponent";
+import { AttributesI } from "./types";
+import ImageComponent from "@/components/ImageComponent";
+import SortableLinks from "@components/SortablieLinks";
 interface PropsI {
   attributes: AttributesI;
   setAttributes: (attributes: AttributesI) => void;
   isSelected: boolean;
 }
 export default function Edit({ setAttributes, isSelected, attributes }: PropsI) {
-  const addLink = () => {
-    setAttributes({
-      ...attributes,
-      links: [...attributes.links, { text: 'Nowy Link', url: '#' }],
-    });
-  };
   return (
     <Fragment>
       <InspectorControls>
         <Panel>
-          <PanelBody title="Logo">
+          <PanelBody title="Fixed" initialOpen={false}>
+            <CheckboxControl
+              label="Fixed"
+              checked={attributes.fixed}
+              onChange={(value) => {
+                setAttributes({
+                  ...attributes,
+                  fixed: value,
+                });
+              }}
+            />
+          </PanelBody>
+          <PanelBody title="Logo" initialOpen={false}>
             <PanelRow>
               <MediaUploadCheck>
                 <MediaUpload
@@ -45,18 +52,18 @@ export default function Edit({ setAttributes, isSelected, attributes }: PropsI) 
                       },
                     });
                   }}
-                  allowedTypes={['image']}
+                  allowedTypes={["image"]}
                   render={({ open }) => {
                     if (attributes.logo.media_id) {
                       return (
                         <div
                           style={{
-                            width: '100%',
-                            backgroundColor: '#434343',
-                            aspectRatio: '4/3',
-                            position: 'relative',
-                            display: 'grid',
-                            placeContent: 'center',
+                            width: "100%",
+                            backgroundColor: "#434343",
+                            aspectRatio: "4/3",
+                            position: "relative",
+                            display: "grid",
+                            placeContent: "center",
                           }}
                           onClick={open}
                         >
@@ -64,20 +71,20 @@ export default function Edit({ setAttributes, isSelected, attributes }: PropsI) 
                             media_id={attributes.logo.media_id}
                             alt={attributes.logo.alt}
                             style={{
-                              width: '100',
-                              aspectRatio: '4/3',
-                              position: 'absolute',
+                              width: "100",
+                              aspectRatio: "4/3",
+                              position: "absolute",
                               inset: 0,
-                              objectFit: 'cover',
-                              height: '100%',
+                              objectFit: "cover",
+                              height: "100%",
                             }}
                           />
                         </div>
                       );
                     } else {
                       return (
-                        <Button onClick={open} className="components-panel__body__toggle" icon={'images-alt'}>
-                          {'Wybierz obraz'}
+                        <Button onClick={open} className="components-panel__body__toggle" icon={"images-alt"}>
+                          {"Wybierz obraz"}
                         </Button>
                       );
                     }
@@ -86,7 +93,7 @@ export default function Edit({ setAttributes, isSelected, attributes }: PropsI) 
               </MediaUploadCheck>
             </PanelRow>
           </PanelBody>
-          <PanelBody title="Pattern">
+          <PanelBody title="Pattern" initialOpen={false}>
             <PanelRow>
               <MediaUploadCheck>
                 <MediaUpload
@@ -101,18 +108,18 @@ export default function Edit({ setAttributes, isSelected, attributes }: PropsI) 
                       },
                     });
                   }}
-                  allowedTypes={['image']}
+                  allowedTypes={["image"]}
                   render={({ open }) => {
                     if (attributes.pattern.media_id) {
                       return (
                         <div
                           style={{
-                            width: '100%',
-                            backgroundColor: '#434343',
-                            aspectRatio: '4/3',
-                            position: 'relative',
-                            display: 'grid',
-                            placeContent: 'center',
+                            width: "100%",
+                            backgroundColor: "#434343",
+                            aspectRatio: "4/3",
+                            position: "relative",
+                            display: "grid",
+                            placeContent: "center",
                           }}
                           onClick={open}
                         >
@@ -120,20 +127,20 @@ export default function Edit({ setAttributes, isSelected, attributes }: PropsI) 
                             media_id={attributes.pattern.media_id}
                             alt={attributes.pattern.alt}
                             style={{
-                              width: '100',
-                              aspectRatio: '4/3',
-                              position: 'absolute',
+                              width: "100",
+                              aspectRatio: "4/3",
+                              position: "absolute",
                               inset: 0,
-                              objectFit: 'cover',
-                              height: '100%',
+                              objectFit: "cover",
+                              height: "100%",
                             }}
                           />
                         </div>
                       );
                     } else {
                       return (
-                        <Button onClick={open} className="components-panel__body__toggle" icon={'images-alt'}>
-                          {'Wybierz obraz'}
+                        <Button onClick={open} className="components-panel__body__toggle" icon={"images-alt"}>
+                          {"Wybierz obraz"}
                         </Button>
                       );
                     }
@@ -203,7 +210,7 @@ export default function Edit({ setAttributes, isSelected, attributes }: PropsI) 
           <PanelBody title="Rezerwacja" initialOpen={false}>
             <PanelRow>
               <TextControl
-                label={'Text'}
+                label={"Text"}
                 value={attributes.reservation.text}
                 onChange={(value) =>
                   setAttributes({
@@ -219,7 +226,7 @@ export default function Edit({ setAttributes, isSelected, attributes }: PropsI) 
 
             <PanelRow>
               <TextControl
-                label={'Link'}
+                label={"Link"}
                 value={attributes.reservation.url}
                 onChange={(value) =>
                   setAttributes({
@@ -280,20 +287,13 @@ export default function Edit({ setAttributes, isSelected, attributes }: PropsI) 
               />
             </PanelRow>
           </PanelBody>
-          <PanelBody title="Menu" initialOpen={false}>
-            {attributes.links.map((link, index) => (
-              <LinkComponent key={index} link={link} attributes={attributes} setAttributes={setAttributes} />
-            ))}
-            <PanelRow>
-              <Button onClick={addLink} variant="secondary" style={btnStyle}>
-                Dodaj Do menu
-              </Button>
-            </PanelRow>
+          <PanelBody title="Menu - linki" initialOpen={false}>
+            <SortableLinks attributes={attributes} setAttributes={setAttributes} />
           </PanelBody>
         </Panel>
       </InspectorControls>
       <div {...useBlockProps()}>
-        <div className="scroll-indicator" style={{ background: '#144D29' }}></div>
+        <div className="scroll-indicator" style={{ background: "#144D29" }}></div>
         <header className="header">
           <div className="menu-btn">
             <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
@@ -346,16 +346,16 @@ export default function Edit({ setAttributes, isSelected, attributes }: PropsI) 
   );
 }
 const btnStyle: CSSProperties = {
-  background: '#144D29',
-  color: '#fff',
-  paddingBlock: '1rem',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  borderRadius: '.3rem',
+  background: "#144D29",
+  color: "#fff",
+  paddingBlock: "1rem",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  borderRadius: ".3rem",
 };
 const blockStyle = {
   backgroundImage: `url($./domki-navbar.png)`,
-  backgroundSize: 'cover',
-  backgroundPosition: 'center',
+  backgroundSize: "cover",
+  backgroundPosition: "center",
 };

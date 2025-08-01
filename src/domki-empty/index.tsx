@@ -1,13 +1,14 @@
-import { registerBlockType } from '@wordpress/blocks'
+import { registerBlockType } from '@wordpress/blocks';
 
-import './style.scss'
+import './style.scss';
+import './editor.scss';
 
-import Edit from './edit'
-import save from './save'
-import metadata from './block.json'
+import Edit from './edit';
+import metadata from './block.json';
+import save from './save';
 
-const data: any = metadata.name
-registerBlockType(data, {
-	edit: Edit,
-	save,
-})
+const data: any = metadata;
+registerBlockType(data.name, {
+  edit: Edit,
+  save: save,
+});

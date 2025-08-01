@@ -1,10 +1,27 @@
-import { __ } from '@wordpress/i18n';
+import { __ } from "@wordpress/i18n";
 
-import { InnerBlocks, InspectorControls, MediaUpload, MediaUploadCheck, useBlockProps } from '@wordpress/block-editor';
-import { AttributesI } from './types';
-import { Button, Panel, PanelBody, PanelRow, TextControl } from '@wordpress/components';
-import ImageComponent from '@components/ImageComponent';
-const ALLOWED_BLOCKS = ['core/heading', 'core/paragraph', 'core/spacer', 'core/list'];
+import {
+  InnerBlocks,
+  InspectorControls,
+  MediaUpload,
+  MediaUploadCheck,
+  useBlockProps,
+} from "@wordpress/block-editor";
+import { AttributesI } from "./types";
+import {
+  Button,
+  Panel,
+  PanelBody,
+  PanelRow,
+  TextControl,
+} from "@wordpress/components";
+import ImageComponent from "@components/ImageComponent";
+const ALLOWED_BLOCKS = [
+  "core/heading",
+  "core/paragraph",
+  "core/spacer",
+  "core/list",
+];
 
 interface PropsI {
   attributes: AttributesI;
@@ -43,18 +60,18 @@ export default function Edit({ attributes, setAttributes }: PropsI) {
                       },
                     });
                   }}
-                  allowedTypes={['image']}
+                  allowedTypes={["image"]}
                   render={({ open }) => {
                     if (attributes.image_one.media_id) {
                       return (
                         <div
                           style={{
-                            width: '100%',
-                            backgroundColor: '#434343',
-                            aspectRatio: '384/560',
-                            position: 'relative',
-                            display: 'grid',
-                            placeContent: 'center',
+                            width: "100%",
+                            backgroundColor: "#434343",
+                            aspectRatio: "384/560",
+                            position: "relative",
+                            display: "grid",
+                            placeContent: "center",
                           }}
                           onClick={open}
                         >
@@ -62,20 +79,24 @@ export default function Edit({ attributes, setAttributes }: PropsI) {
                             media_id={attributes.image_one.media_id}
                             alt={attributes.image_one.alt}
                             style={{
-                              width: '100',
-                              aspectRatio: '4/3',
-                              position: 'absolute',
+                              width: "100",
+                              aspectRatio: "4/3",
+                              position: "absolute",
                               inset: 0,
-                              objectFit: 'cover',
-                              height: '100%',
+                              objectFit: "cover",
+                              height: "100%",
                             }}
                           />
                         </div>
                       );
                     } else {
                       return (
-                        <Button onClick={open} className="components-panel__body__toggle" icon={'images-alt'}>
-                          {'Wybierz obraz'}
+                        <Button
+                          onClick={open}
+                          className="components-panel__body__toggle"
+                          icon={"images-alt"}
+                        >
+                          {"Wybierz obraz"}
                         </Button>
                       );
                     }
@@ -99,18 +120,18 @@ export default function Edit({ attributes, setAttributes }: PropsI) {
                       },
                     });
                   }}
-                  allowedTypes={['image']}
+                  allowedTypes={["image"]}
                   render={({ open }) => {
                     if (attributes.image_two.media_id) {
                       return (
                         <div
                           style={{
-                            width: '100%',
-                            backgroundColor: '#434343',
-                            aspectRatio: '4/3',
-                            position: 'relative',
-                            display: 'grid',
-                            placeContent: 'center',
+                            width: "100%",
+                            backgroundColor: "#434343",
+                            aspectRatio: "4/3",
+                            position: "relative",
+                            display: "grid",
+                            placeContent: "center",
                           }}
                           onClick={open}
                         >
@@ -118,20 +139,24 @@ export default function Edit({ attributes, setAttributes }: PropsI) {
                             media_id={attributes.image_two.media_id}
                             alt={attributes.image_two.alt}
                             style={{
-                              width: '100',
-                              aspectRatio: '4/3',
-                              position: 'absolute',
+                              width: "100",
+                              aspectRatio: "4/3",
+                              position: "absolute",
                               inset: 0,
-                              objectFit: 'cover',
-                              height: '100%',
+                              objectFit: "cover",
+                              height: "100%",
                             }}
                           />
                         </div>
                       );
                     } else {
                       return (
-                        <Button onClick={open} className="components-panel__body__toggle" icon={'images-alt'}>
-                          {'Wybierz obraz'}
+                        <Button
+                          onClick={open}
+                          className="components-panel__body__toggle"
+                          icon={"images-alt"}
+                        >
+                          {"Wybierz obraz"}
                         </Button>
                       );
                     }
@@ -155,18 +180,18 @@ export default function Edit({ attributes, setAttributes }: PropsI) {
                       },
                     });
                   }}
-                  allowedTypes={['image']}
+                  allowedTypes={["image"]}
                   render={({ open }) => {
                     if (attributes.pattern.media_id) {
                       return (
                         <div
                           style={{
-                            width: '100%',
-                            backgroundColor: '#434343',
-                            aspectRatio: '4/3',
-                            position: 'relative',
-                            display: 'grid',
-                            placeContent: 'center',
+                            width: "100%",
+                            backgroundColor: "#434343",
+                            aspectRatio: "4/3",
+                            position: "relative",
+                            display: "grid",
+                            placeContent: "center",
                           }}
                           onClick={open}
                         >
@@ -174,20 +199,24 @@ export default function Edit({ attributes, setAttributes }: PropsI) {
                             media_id={attributes.pattern.media_id}
                             alt={attributes.pattern.alt}
                             style={{
-                              width: '100',
-                              aspectRatio: '4/3',
-                              position: 'absolute',
+                              width: "100",
+                              aspectRatio: "4/3",
+                              position: "absolute",
                               inset: 0,
-                              objectFit: 'cover',
-                              height: '100%',
+                              objectFit: "cover",
+                              height: "100%",
                             }}
                           />
                         </div>
                       );
                     } else {
                       return (
-                        <Button onClick={open} className="components-panel__body__toggle" icon={'images-alt'}>
-                          {'Wybierz obraz'}
+                        <Button
+                          onClick={open}
+                          className="components-panel__body__toggle"
+                          icon={"images-alt"}
+                        >
+                          {"Wybierz obraz"}
                         </Button>
                       );
                     }
@@ -198,15 +227,19 @@ export default function Edit({ attributes, setAttributes }: PropsI) {
           </PanelBody>
         </Panel>
       </InspectorControls>
-      <section {...blockProps}>
+      <section {...blockProps} id={attributes.identifier}>
         <div className="container">
           <div className="left">
             <div className="img-about_one">
-              <ImageComponent media_id={attributes.pattern.media_id} alt={attributes.pattern.alt} className="pattern" />
+              <ImageComponent
+                media_id={attributes.pattern.media_id}
+                alt={attributes.pattern.alt}
+                className="pattern"
+              />
               <ImageComponent
                 media_id={attributes.image_one.media_id}
                 alt={attributes.image_one.alt}
-                style={{ aspectRatio: '384/560' }}
+                style={{ aspectRatio: "384/560" }}
               />
             </div>
           </div>
@@ -217,7 +250,7 @@ export default function Edit({ attributes, setAttributes }: PropsI) {
             <ImageComponent
               media_id={attributes.image_two.media_id}
               alt={attributes.image_two.alt}
-              style={{ aspectRatio: '4/3' }}
+              style={{ aspectRatio: "4/3" }}
             />
           </div>
         </div>

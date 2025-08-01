@@ -1,9 +1,10 @@
-import { store, getContext, getElement } from '@wordpress/interactivity';
+import { store, getContext, getElement } from "@wordpress/interactivity";
 
 type ServerState = {
   state: {
     progress: number;
     isMenuOpen: boolean;
+    links: any[];
   };
 };
 
@@ -13,6 +14,7 @@ interface ContextI {
   facebook: string;
   instagram: string;
   isMobileMenuOpen: boolean;
+  isMenuFixed: boolean;
 }
 const storeDef = {
   state: {
@@ -36,12 +38,12 @@ const storeDef = {
       const context = getContext<ContextI>();
       const { ref } = getElement();
       if (!ref) {
-        console.warn('Ref is null or undefined.');
+        console.warn("Ref is null or undefined.");
         return;
       }
       const elem: HTMLElement | null = ref;
       if (!elem) {
-        console.warn('Element is null after ref check.');
+        console.warn("Element is null after ref check.");
         return;
       }
       // Set menu to open
@@ -54,12 +56,12 @@ const storeDef = {
         if (context.isOpen) {
           // Only close if it's currently open
           context.isOpen = false;
-          document.removeEventListener('click', handleClickOutside);
-          document.removeEventListener('scroll', handleScroll);
-          document.removeEventListener('keydown', handleEscapeKey);
-          const menuFixedIcon: HTMLElement | null = elem.querySelector('.menu-fixed-icon');
+          document.removeEventListener("click", handleClickOutside);
+          document.removeEventListener("scroll", handleScroll);
+          document.removeEventListener("keydown", handleEscapeKey);
+          const menuFixedIcon: HTMLElement | null = elem.querySelector(".menu-fixed-icon");
           if (menuFixedIcon) {
-            menuFixedIcon.removeEventListener('click', handleMenuFixedIconClick);
+            menuFixedIcon.removeEventListener("click", handleMenuFixedIconClick);
           }
         }
       };
@@ -79,7 +81,7 @@ const storeDef = {
 
       // Escape key handler
       const handleEscapeKey = (e: KeyboardEvent) => {
-        if (e.key === 'Escape' || e.key === 'Esc') {
+        if (e.key === "Escape" || e.key === "Esc") {
           // 'Esc' for older browsers
           closeMenuAndCleanup();
         }
@@ -94,12 +96,12 @@ const storeDef = {
       // Use setTimeout to allow the current click event (that opened the menu) to propagate
       // before listening for outside clicks. This prevents immediate closing.
       setTimeout(() => {
-        document.addEventListener('click', handleClickOutside);
-        document.addEventListener('scroll', handleScroll, { passive: true }); // Use passive for scroll for performance
-        document.addEventListener('keydown', handleEscapeKey);
-        const menuFixedIcon: HTMLElement | null = elem.querySelector('.menu-fixed-icon');
+        document.addEventListener("click", handleClickOutside);
+        document.addEventListener("scroll", handleScroll, { passive: true }); // Use passive for scroll for performance
+        document.addEventListener("keydown", handleEscapeKey);
+        const menuFixedIcon: HTMLElement | null = elem.querySelector(".menu-fixed-icon");
         if (menuFixedIcon) {
-          menuFixedIcon.addEventListener('click', handleMenuFixedIconClick);
+          menuFixedIcon.addEventListener("click", handleMenuFixedIconClick);
         }
       }, 0);
     },
@@ -111,20 +113,20 @@ const storeDef = {
       const link: HTMLElement | null = ref;
       if (!link) return;
       const socialType = context.socialType;
-      if (socialType != 'instagram' && socialType != 'facebook') return;
+      if (socialType != "instagram" && socialType != "facebook") return;
 
       let facebookAppUrl = `fb://page/${context.facebook}`;
       let facebookWebUrl = `https://www.facebook.com/${context.facebook}`;
       let instagramAppUrl = `instagram://user?username=${context.instagram}`;
       let instagramWebUrl = `https://www.instagram.com/${context.instagram}`;
 
-      let webUrl = '';
-      let appUrl = '';
+      let webUrl = "";
+      let appUrl = "";
 
-      if (socialType === 'facebook') {
+      if (socialType === "facebook") {
         webUrl = facebookWebUrl;
         appUrl = facebookAppUrl;
-      } else if (socialType === 'instagram') {
+      } else if (socialType === "instagram") {
         webUrl = instagramWebUrl;
         appUrl = instagramAppUrl;
       }
@@ -140,7 +142,7 @@ const storeDef = {
       // Optional: Try to clear the timeout if the app is launched
       // This is still heuristic but slightly better than nothing.
       window.addEventListener(
-        'blur',
+        "blur",
         () => {
           clearTimeout(appFallbackTimeout);
         },
@@ -149,6 +151,9 @@ const storeDef = {
     },
   },
   callbacks: {
+    init() {
+      callbacks.handleScroll();
+    },
     scrollFoo() {
       const context: ContextI = getContext();
       const { ref } = getElement();
@@ -156,30 +161,34 @@ const storeDef = {
     watchMobileMenu: () => {
       const context: ContextI = getContext();
       if (!context) return;
-      document.body.style.overflowY = 'hidden!important';
+      document.body.style.overflowY = "hidden!important";
       if (context.isMobileMenuOpen) {
       } else {
-        document.body.style.overflow = 'auto';
+        document.body.style.overflow = "auto";
       }
     },
-    handleScroll: (e: Event) => {
+    handleScroll: () => {
+      const context: ContextI = getContext();
+      if (!context) return;
+
       const { ref } = getElement();
       if (!ref) return;
+
       const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
       const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
       const scrolled = (winScroll / height) * 100;
       const block = ref;
-      const header: HTMLElement | null = block.querySelector('.menu-fixed');
+      const header: HTMLElement | null = block.querySelector(".menu-fixed");
       if (!header) return;
-      const indicator: HTMLElement | null = block.querySelector('.indicator-container');
+      const indicator: HTMLElement | null = block.querySelector(".indicator-container");
       if (!indicator) return;
-      const progress: HTMLElement | null = indicator.querySelector('.indicator');
+      const progress: HTMLElement | null = indicator.querySelector(".indicator");
       if (!progress) return;
       progress.style.width = `${scrolled}%`;
       if (scrolled > 5) {
-        header.classList.add('show-menu-fixed');
+        header.classList.add("show-menu-fixed");
       } else {
-        header.classList.remove('show-menu-fixed');
+        header.classList.remove("show-menu-fixed");
       }
     },
   },
@@ -187,4 +196,4 @@ const storeDef = {
 
 type Store = ServerState & typeof storeDef;
 
-const { state } = store<Store>('domki-navbar', storeDef);
+const { state, callbacks } = store<Store>("domki-navbar", storeDef);

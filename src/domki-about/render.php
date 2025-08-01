@@ -16,7 +16,8 @@ $pattern = [
 	'size_prefix' => "pattern",
 ];
 ?>
-<div <?php echo get_block_wrapper_attributes(); ?> id="<?php echo esc_attr($attributes["identifier"]) ?>">
+<div <?php echo get_block_wrapper_attributes(); ?> id="<?php echo esc_attr($attributes["identifier"]) ?>"
+	class="sections">
 	<div class="container">
 		<div class="left">
 			<div class="img-about_one">

@@ -10,6 +10,8 @@ declare namespace wp {
     api_url: string;
     home_url: string;
     theme_url: string;
+    post_id: number;
+    post: PostI;
   }
 }
 
@@ -19,3 +21,11 @@ interface TestingI {
   age: number;
 }
 declare const wpApiSettings: wp.ApiSettings;
+
+interface PostI {
+  ID: number;
+  post_title: string;
+  guid: string;
+  post_name: string;
+  post_excerpt: string;
+}

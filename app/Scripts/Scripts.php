@@ -6,7 +6,6 @@ class Scripts
 {
     public function __construct()
     {
-
         add_action('admin_enqueue_scripts', function ($hook) {
             $this->ds_admin_scripts($hook);
         });
@@ -78,7 +77,6 @@ class Scripts
         $tags = get_tags(array(
             'hide_empty' => false, // Set to true if you want only tags that have posts
         ));
-
         // http://localhost/wp-json/lesio_theme_api/v1/
         wp_enqueue_script('frontjs', get_template_directory_uri() . '/dist/front/main.js', array(), '1.0.0', true);
         wp_localize_script('frontjs', 'wpApiSettings', array(
@@ -87,6 +85,8 @@ class Scripts
             'nonce' => wp_create_nonce('wp_rest'),
             "api_url" => get_home_url() . "/wp-json/lesio_theme_api/v1/",
             "media_api_url" => get_home_url() . "/wp-json/wp/v2/media/",
+            "post_id" => $post_id,
+            "post" => $getPost,
         ));
         wp_enqueue_style('frontcss', get_template_directory_uri() . '/dist/front/main.css', array(), '1.0.0');
     }

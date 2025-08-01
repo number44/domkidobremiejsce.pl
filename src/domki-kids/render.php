@@ -24,7 +24,6 @@ if (!empty($galleryApi->media_ids)) {
 $api_diff = array_diff($apiMediaIdsArray, $galleryIdsArray);
 
 
-
 $apiGalleryUniqueIds = array_unique($api_diff);
 
 $apiGalleryUniqueIds = array_unique($api_diff);
@@ -43,27 +42,35 @@ $slidingGallery = [
 $showButton = $attributes["button"]["show"] ?? true;
 $buttonText = $attributes["button"]["text"] ?? "Zobacz Więcej";
 $buttonLink = $attributes["button"]["link"] ?? "#";
+$pattern = $attributes["pattern"]["media_id"] ? $attributes["pattern"]["media_id"] : 0;
+$pattern_url = wp_get_attachment_url(attachment_id: $pattern);
+$inline_style = '';
+if ($pattern_url) {
+	$inline_style = "--domki-kids-pattern-url: url('" . esc_url($pattern_url) . "');";
+}
 ?>
+
 
 <div <?php echo get_block_wrapper_attributes(); ?> data-wp-interactive="domki-kids" <?php echo wp_interactivity_data_wp_context(array(
 		"imageSelected" => 1,
 		"showCarousel" => false,
 	)); ?>
-	data-wp-on-document--keyup="callbacks.detectKeys" id="<?php echo esc_attr($attributes["identifier"]) ?>">
+	data-wp-on-document--keyup="callbacks.detectKeys" id="<?php echo esc_attr($attributes["identifier"]) ?>"
+	style="<?php echo $inline_style; ?>">
 	<div class="container">
 		<?php if ($title["show"]): ?>
-			<h2 class="text-center mb-4"><?= $title["text"] ?></h2>
+			<h2 class="text-center"><?= $title["text"] ?></h2>
 		<?php endif; ?>
 
-		<div class="grid-3 gap-4 py-4 elements">
+		<div class="grid grid-3-2 gap-2 mt-2  elements">
 			<?php foreach ($attributes["images"] as $key => $element): ?>
 				<div class="flex gap-3 items-center">
 					<?php echo my_lazy_load_image($element["media_id"], "element_icon"); ?>
-					<h4 class="no-wrap"><?= $element["text"]; ?></h4>
+					<h4 class="contrast no-wrap"><?= $element["text"]; ?></h4>
 				</div>
 			<?php endforeach; ?>
 		</div>
-		<div class=" grid-3 gap-3 my-4">
+		<div class="grid-3 gap-3 my-2">
 			<?php foreach ($gallery["images"] as $key => $image): ?>
 				<div data-wp-context='{"image" : { "selected" : <?php echo $key + 1; ?> } }' class="show-image"
 					data-wp-on--click="actions.openCarousel" data-media_id="<?= $image["media_id"] ?>">
@@ -72,8 +79,8 @@ $buttonLink = $attributes["button"]["link"] ?? "#";
 			<?php endforeach; ?>
 		</div>
 		<?php if ($showButton): ?>
-			<div class="flex justify-center items-center  my-5">
-				<a href="<?php echo esc_attr($buttonLink); ?>" class="button"><?= $buttonText ?></a>
+			<div class="flex justify-center items-center">
+				<a href="<?php echo esc_attr($buttonLink); ?>" class="button-md"><?= $buttonText ?></a>
 			</div>
 		<?php endif; ?>
 	</div>

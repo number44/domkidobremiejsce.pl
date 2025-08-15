@@ -1,4 +1,11 @@
-todo :
+1. Przyciski jeden pod drugim .
+2. Km Normalnie .
+3. więcej o 1/2rem.
+4. Galeria przycisk . Poprawić
+5. Linki wysłać.
+6. Mail domkowy.
+7. Mail Skasować.
+   todo :
 
 [x] : Galeria
 [x] : Footer

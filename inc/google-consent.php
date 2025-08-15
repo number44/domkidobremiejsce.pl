@@ -1,10 +1,8 @@
 <?php
 
-
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly.
 }
-
 function add_gtm_and_consent_mode_to_header()
 {
     ?>
@@ -44,7 +42,6 @@ function add_gtm_and_consent_mode_to_header()
     <?php
 }
 add_action('wp_head', 'add_gtm_and_consent_mode_to_header');
-
 // Add consent banner HTML and JavaScript
 function add_consent_banner()
 {

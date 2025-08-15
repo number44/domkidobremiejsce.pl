@@ -14,7 +14,14 @@ Text Domain: domki-dobre-miejsce
 Tags: one-column, custom-colors, custom-menu, custom-logo, editor-style, featured-images, full-site-editing, block-patterns, rtl-language-support, sticky-post, threaded-comments, translation-ready, wide-blocks, block-styles, style-variations, accessibility-ready, blog, portfolio, news
 */
 
+* {
+  box-sizing: border-box;
+}
 body {
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", "Montserrat Fallback", sans-serif;
+
   overflow-x: hidden !important;
   height: fit-content !important;
 }
@@ -28,4 +35,12 @@ small {
 }
 .gap-0 {
   gap: 0;
+}
+
+.section {
+  overflow-x: hidden;
+  max-width: 100dvw;
+}
+.over-x {
+  overflow-x: hidden;
 }

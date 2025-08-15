@@ -13,7 +13,9 @@
 
 .wp-block-domki-navbar-domki-navbar {
   z-index: 33;
-
+  overflow-x: hidden;
+  max-width: 100%;
+  position: relative;
   a {
     text-decoration: none;
   }
@@ -132,22 +134,20 @@
     width: 2rem;
     height: 2rem;
   }
-  .test {
-    // background-color: violet;
-  }
+
   .h-full {
     height: 100vh;
   }
   .patt1 {
     transform: translateX(50%);
-    position: fixed;
+    position: absolute;
     right: 0;
     top: 0;
     z-index: -1;
   }
   .patt2 {
     transform: translateX(-50%);
-    position: fixed;
+    position: absolute;
     left: 0;
     top: 0;
     z-index: -1;
@@ -293,7 +293,6 @@
     z-index: -1;
   }
 }
-
 .wp-block-domki-navbar-domki-navbar .dropdown-menu-container:hover {
   .dropdown-menu {
     transform: translateY(5rem);

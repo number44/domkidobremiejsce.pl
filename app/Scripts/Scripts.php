@@ -63,6 +63,7 @@ class Scripts
         ));
         wp_enqueue_script('frontjs', get_template_directory_uri() . '/dist/front/main.js', array(), '1.0.0', true);
         wp_enqueue_style('frontcss', get_template_directory_uri() . '/dist/front/main.css', array(), '1.0.0');
+        wp_enqueue_style('fontscss', get_template_directory_uri() . '/assets/css/fonts.css', array(), '1.0.0');
     }
     public function lazy_script()
     {

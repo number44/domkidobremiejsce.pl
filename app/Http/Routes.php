@@ -18,32 +18,32 @@ class Routes
                 'methods' => 'POST',
                 'route' => '/' . $slug,
                 'callback' => 'store',
-                'permission_callback' => [Guards::class, 'postFromPage'], // Updated
-                // 'permission_callback' => [Guards::class, 'getFromPage'], // Updated
+                'permission_callback' => [Guards::class, 'postFromPage'],
+                // 'permission_callback' => [Guards::class, 'getFromPage'], 
             ],
             [
                 'methods' => 'GET',
                 'route' => '/' . $slug,
                 'callback' => 'index',
-                'permission_callback' => [Guards::class, 'adminOnly'], // Updated
+                'permission_callback' => [Guards::class, 'adminOnly'],
             ],
             [
                 'methods' => 'GET',
                 'route' => '/' . $slug . '/(?P<id>\d+)',
                 'callback' => 'show',
-                'permission_callback' => [Guards::class, 'adminOnly'], // Updated
+                'permission_callback' => [Guards::class, 'adminOnly'],
             ],
             [
                 'methods' => 'PUT',
                 'route' => '/' . $slug . '/(?P<id>\d+)',
                 'callback' => 'update',
-                'permission_callback' => [Guards::class, 'adminOnly'], // Updated
+                'permission_callback' => [Guards::class, 'adminOnly'],
             ],
             [
                 'methods' => 'DELETE',
                 'route' => '/' . $slug . '/(?P<id>\d+)',
                 'callback' => 'destroy',
-                'permission_callback' => [Guards::class, 'adminOnly'], // Updated
+                'permission_callback' => [Guards::class, 'adminOnly'],
             ],
         ];
 

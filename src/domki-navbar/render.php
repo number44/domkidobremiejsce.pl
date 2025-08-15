@@ -61,10 +61,10 @@ $menu_fixed_classes = $menu_fixed ? "menu-fixed hide-on-small" : "menu-fixed hid
 		<div class="indicator" data-wp-on-document--keydown="callbacks.logKeydown"></div>
 	</div>
 	<?php if ($pattern['media_id'] != '' || $pattern['media_id'] != null): ?>
-		<div class="patt1">
+		<div class="patt1 hide-on-small">
 			<?php echo my_lazy_load_image($pattern['media_id'], $pattern['size_prefix']); ?>
 		</div>
-		<div class="patt2">
+		<div class="patt2 hide-on-small">
 			<?php echo my_lazy_load_image($pattern['media_id'], $pattern['size_prefix']); ?>
 		</div>
 	<?php endif; ?>
@@ -229,5 +229,4 @@ $menu_fixed_classes = $menu_fixed ? "menu-fixed hide-on-small" : "menu-fixed hid
 			<div class="btn btn-secondary"><?php echo $phone['text']; ?></div>
 		</a>
 	</div>
-
 </div>

@@ -51,38 +51,28 @@ $title = [
 $gallery_active = isset($_COOKIE['gallery_active']) ? intval($_COOKIE['gallery_active']) : 1;
 
 
-
-
-
-
-
-
-
-
-
-
 $showButton = $attributes["button"]["show"] ?? true;
 $buttonText = $attributes["button"]["text"] ?? "Zobacz Więcej";
 $buttonLink = $attributes["button"]["link"] ?? "#";
 
 
-
-
 // Adds the global state.
+
+
 
 ?>
 <div <?php echo get_block_wrapper_attributes(); ?> data-wp-interactive="domki-galleries" <?php echo wp_interactivity_data_wp_context([
 		"active" => $gallery_active,
 		"showCarousel" => false,
-		"imageSelected" => 1
-	]); ?>
-	data-wp-on-document--keyup="callbacks.detectKeys" id="<?php echo esc_attr($attributes["identifier"]) ?>"
-	class="section">
+		"imageSelected" => 1,
+		"slidingGalleries" => $slidingGalleries,
+	]); ?> data-wp-on-document--keyup="callbacks.detectKeys"
+	id="<?php echo esc_attr($attributes["identifier"]) ?>" class="section">
 	<div class="container">
 		<?php if ($title["show"]): ?>
 			<h2 class="text-center mb-4"><?= $title["text"] ?></h2>
 		<?php endif; ?>
-		<div class="flex justify-center items-center gap-3 my-2 flex-wrap">
+		<div class="flex justify-center items-center gap-3 my-2 flex-wrap gallery-buttons">
 			<?php foreach ($galleries as $key => $gallery): ?>
 				<div data-wp-on--click="actions.handleSwitch"
 					data-wp-context='{"switcher" : {"active" : <?= $gallery["order_by"] ?>}}' class="button-small"
@@ -97,7 +87,8 @@ $buttonLink = $attributes["button"]["link"] ?? "#";
 					data-wp-context='{"gallery" : { "order_by" : <?php echo $gallery["order_by"]; ?> } }'
 					data-wp-class--hide="!callbacks.showGallery" class="show-image">
 					<?php foreach ($gallery["images"] as $key => $image): ?>
-						<div data-wp-context='{"image" : { "selected" : <?php echo $key + 1; ?> } }'
+						<div title="<?= $image["media_id"] ?>"
+							data-wp-context='{"image" : { "selected" : <?php echo $key + 1; ?> } }'
 							data-wp-class--hide="!callbacks.showGallery" class="show-image"
 							data-wp-on--click="actions.openCarousel" data-media_id="<?= $image["media_id"] ?>">
 							<?php echo my_lazy_load_image($image["media_id"], "inventory-16/9") ?>
@@ -106,10 +97,17 @@ $buttonLink = $attributes["button"]["link"] ?? "#";
 				</section>
 			<?php endforeach; ?>
 		</div>
-
+		<?php prettyPrint($slidingGalleries) ?>
 		<?php if ($showButton): ?>
 			<div class="flex justify-center items-center">
-				<a href="<?php echo esc_attr($buttonLink); ?>" class="button-md"><span><?= $buttonText ?></span></a>
+				<a href="<?php echo esc_attr($buttonLink); ?>" class="button-md"><span>xx<?= $buttonText ?></span></a>
+			</div>
+		<?php endif; ?>
+
+
+		<?php if (3 < 2): ?>
+			<div class="flex justify-center items-center">
+				<a href="<?php echo esc_attr($buttonLink); ?>" class="button-md"><span>xx<?= $buttonText ?></span></a>
 			</div>
 		<?php endif; ?>
 	</div>

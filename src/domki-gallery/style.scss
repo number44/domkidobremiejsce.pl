@@ -1,0 +1,314 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-domki-galleries-domki-galleries {
+  .button-small:hover {
+    background-color: var(--wp--preset--color--primary);
+    color: var(--wp--preset--color--base);
+  }
+  .button-small_active {
+    background-color: var(--wp--preset--color--primary) !important;
+    color: var(--wp--preset--color--base) !important;
+  }
+  .button-small {
+    border: 1px solid var(--wp--preset--color--pale);
+    border-radius: 50rem;
+    cursor: pointer;
+    font-size: 0.8rem;
+    line-height: 2.5;
+    padding-inline: 1.5rem;
+    text-transform: uppercase;
+    font-weight: 900;
+    background: #e4f5eb;
+    color: #144d29;
+  }
+  .hide {
+    display: none !important;
+  }
+  .hide-image {
+    display: none !important;
+    animation: vanish 1s;
+  }
+  .show-image {
+    border-radius: 0.2rem;
+    overflow: hidden;
+    cursor: pointer;
+    display: block;
+    animation: appear 1s;
+  }
+}
+
+@media (max-width: 62rem) {
+  .gallery-buttons {
+    flex-direction: column;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+@media screen and (min-width: 62rem) {
+  .gallery-modal {
+    position: fixed;
+    inset: 0;
+    background-color: #fff;
+    z-index: 999999;
+  }
+}
+
+@keyframes appear {
+  from {
+    scale: 0.9;
+    opacity: 0;
+    display: none;
+  }
+  to {
+    display: block;
+    scale: 1;
+    opacity: 1;
+  }
+}
+@keyframes vanish {
+  from {
+    display: block;
+    opacity: 1;
+    scale: 1;
+  }
+  to {
+    display: none;
+    scale: 0.9;
+    opacity: 0;
+  }
+}
+
+.wp-block-domki-galleries-domki-galleries {
+  /* Base styles for the full-page modal/carousel container */
+  .gallery-modal {
+    position: fixed; /* Fixes it to the viewport */
+    top: 0;
+    left: 0;
+    width: 100vw; /* Takes full viewport width */
+    height: 100vh; /* Takes full viewport height */
+    background-color: white; /* White background */
+    z-index: 9999000000000000000; /* High z-index to appear on top of other content */
+    display: flex; /* Use flexbox to easily center the carousel */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    overflow: hidden; /* Hide any overflow, especially from images trying to break out */
+    /* Optional: Add a smooth transition when it appears/disappears */
+    opacity: 0; /* Start hidden */
+    visibility: hidden; /* Start not visible */
+    transition:
+      opacity 0.3s ease,
+      visibility 0.3s ease;
+  }
+
+  /* Class to show the modal (add this with JavaScript) */
+  .gallery-modal.is-active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Close button styling */
+  .close-gallery {
+    position: fixed; /* Position relative to .gallery-modal */
+    top: 2.5rem; /* Distance from top */
+    right: 3.5rem; /* Distance from right */
+    background-color: var(--wp--preset--color--primary); /* Dark background for visibility */
+    color: white; /* White text */
+    font-size: 1.5em; /* Larger font size for prominence */
+    font-weight: bold;
+    width: 3rem; /* Fixed width */
+    height: 3rem; /* Fixed height */
+    border-radius: 50%; /* Make it circular */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer; /* Indicate it's clickable */
+    z-index: 10000; /* Ensure it's above the carousel content */
+    -webkit-user-select: none;
+    user-select: none; /* Prevent text selection on click */
+    transition: background-color 0.2s ease;
+    border: solid 0.2rem var(--wp--preset--color--primary);
+    span {
+      position: absolute;
+      width: 2rem;
+      display: inline;
+      border-radius: 0.2rem;
+      height: 0.2rem;
+      background-color: #fff;
+      transition: transform 0.3s ease;
+    }
+    span:nth-child(1) {
+      transform: rotate(225deg);
+    }
+    span:nth-child(2) {
+      transform: rotate(-45deg);
+    }
+  }
+
+  .close-gallery:hover {
+    background-color: var(--wp--preset--color--pale); /* Slightly lighter on hover */
+    span {
+      background-color: var(--wp--preset--color--primary);
+      transform: rotate(0deg);
+    }
+  }
+
+  /* Embla Carousel specific styles (adjust as needed for your project) */
+  .gallery_slider {
+    /* This section wraps the embla carousel.
+       It can be used to control the carousel's max size within the modal.
+       If you want the carousel to always take max 80% of screen, you can set max-width/height here.
+    */
+    width: 100%; /* Take full width of its flex container */
+    max-width: 90%; /* Limit the overall carousel width within the modal */
+    max-height: 90%; /* Limit the overall carousel height within the modal */
+    display: flex; /* Use flexbox for internal alignment */
+    justify-content: center; /* Center the embla container */
+    align-items: center; /* Center vertically if space allows */
+  }
+
+  .embla {
+    position: relative; /* Needed for prev/next buttons if positioned absolutely within */
+    width: 100%;
+    /* No explicit height here, let the images define it */
+  }
+
+  .embla__viewport {
+    overflow: hidden; /* Crucial for Embla to work */
+    width: 100%;
+  }
+
+  .embla__container {
+    display: flex;
+    /* This will vary based on Embla's internal calculations */
+  }
+
+  .embla__slide {
+    flex: 0 0 100%; /* Each slide takes up 100% of the viewport width */
+    min-width: 0; /* Prevents flex items from overflowing */
+    display: flex; /* Use flexbox to center image within slide */
+    justify-content: center; /* Center image horizontally */
+    align-items: center; /* Center image vertically */
+    /* Optional: Add some padding if images go edge-to-edge */
+    padding: 0 10px; /* Example: 10px horizontal padding between slides */
+    box-sizing: border-box; /* Include padding in element's total width */
+  }
+
+  .embla__slide img {
+    display: block; /* Remove extra space below images */
+    max-width: 100%; /* Ensure image doesn't overflow its slide */
+    // width: auto; /* Allow image to scale down if needed */
+    width: min(100%, 800px);
+    height: auto; /* Maintain aspect ratio */
+    max-height: 90vh; /* Max height relative to viewport height */
+    object-fit: contain; /* Ensure the whole image is visible within its bounds */
+    /* Limit the image width, as requested */
+    max-width: 800px;
+    /* Optional: Add a background or border to images for better visibility if they are small */
+    // background-color: #f0f0f0;
+  }
+
+  /* Navigation Buttons (assuming your JS adds these and their classes) */
+  .embla__button--prev,
+  .embla__button--next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.8em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10; /* Ensure buttons are above slides */
+    transition: background-color 0.2s ease;
+  }
+
+  .embla__button--prev:hover,
+  .embla__button--next:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+
+  .embla__button--prev {
+    left: 10px;
+  }
+
+  .embla__button--next {
+    right: 10px;
+  }
+
+  .embla__button--prev:disabled,
+  .embla__button--next:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  /* Dots Navigation (assuming your JS adds these and their classes) */
+  .embla__dots {
+    position: absolute;
+    bottom: 20px; /* Position below the carousel */
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 8px; /* Space between dots */
+    margin-top: 15px; /* Space above dots if they are not absolutely positioned */
+    z-index: 10;
+  }
+
+  .embla__dot {
+    width: 12px;
+    height: 12px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition:
+      background-color 0.2s ease,
+      transform 0.2s ease;
+  }
+  .embla__dot--selected {
+    background-color: #007bff; /* Highlight color for selected dot */
+    transform: scale(1.2); /* Make selected dot slightly larger */
+  }
+
+  .embla__dot:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  /* Optional: Media queries for smaller screens */
+  @media (max-width: 768px) {
+    .close-gallery {
+      top: 10px;
+      right: 10px;
+      width: 2rem;
+      height: 2rem;
+      font-size: 1.2em;
+      span {
+        width: 1.5rem;
+      }
+    }
+
+    .embla__button--prev,
+    .embla__button--next {
+      width: 40px;
+      height: 40px;
+      font-size: 1.5em;
+    }
+
+    .embla__dots {
+      bottom: 10px;
+    }
+  }
+}

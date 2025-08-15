@@ -42,6 +42,14 @@
   }
 }
 
+@media (max-width: 62rem) {
+  .gallery-buttons {
+    flex-direction: column;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
 @media screen and (min-width: 62rem) {
   .gallery-modal {
     position: fixed;

@@ -38,6 +38,7 @@ if (!function_exists('bc_register_blocks')) {
         register_block_type_from_metadata(__DIR__ . '/build/domki-video');
 
         register_block_type_from_metadata(__DIR__ . '/build/domki-galleries');
+        register_block_type_from_metadata(__DIR__ . '/build/domki-gallery');
 
         register_block_type_from_metadata(__DIR__ . '/build/domki-footer');
     }
@@ -391,7 +392,7 @@ function add_local_business_schema()
         echo '<script type="application/ld+json">' . json_encode($schema_data) . '</script>';
     }
 }
-add_action('wp_head', 'add_local_business_schema');
+// add_action('wp_head', 'add_local_business_schema');
 
 
 /**
@@ -439,3 +440,20 @@ function add_dynamic_meta_tags()
     }
 }
 add_action('wp_head', 'add_dynamic_meta_tags');
+
+function sanitize_file_name_on_upload($filename)
+{
+    // Convert special characters to ASCII equivalents where possible
+    $filename = iconv('UTF-8', 'ASCII//TRANSLIT//IGNORE', $filename);
+
+    // Remove all characters except letters, numbers, dashes, underscores, and periods
+    $filename = preg_replace('/[^A-Za-z0-9\-_\.]/', '-', $filename);
+
+    // Replace multiple dashes with a single one
+    $filename = preg_replace('/-+/', '-', $filename);
+
+    // Lowercase the filename
+    $filename = strtolower($filename);
+    return $filename;
+}
+add_filter('sanitize_file_name', 'sanitize_file_name_on_upload', 10);

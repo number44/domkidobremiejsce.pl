@@ -107,6 +107,7 @@ class EmailService
                     display: block;
                     /* Remove extra space below image */
                     margin: 0 auto;
+                    border-radius: 50%;
                     /* Center the logo */
                 }
 

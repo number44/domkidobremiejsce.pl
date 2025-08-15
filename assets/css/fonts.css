@@ -1,0 +1,43 @@
+@font-face {
+  font-family: "Montserrat Fallback";
+  src: local("Arial"); /* Or another suitable sans-serif font */
+  size-adjust: 104.97%; /* Replace with your calculated value */
+  ascent-override: 86.83%; /* Replace with your calculated value */
+  descent-override: 20.3%; /* Replace with your calculated value */
+}
+
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 200;
+  src: url("../fonts/montserrat/montserrat-200-normal.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/montserrat/montserrat-400-normal.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  src: url("../fonts/montserrat/montserrat-600-normal.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/montserrat/montserrat-700-normal.woff2") format("woff2");
+  font-display: swap;
+}
+
+body {
+  font-family: "Montserrat", "Montserrat Fallback", sans-serif;
+}

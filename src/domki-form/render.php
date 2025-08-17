@@ -75,8 +75,8 @@ echo get_block_wrapper_attributes(); ?> data-wp-interactive="domki-form" <?php e
 					<div class="grid place-center">
 						<button data-wp-bind--disabled="context.loading" type="submit"
 							class="button-md flex justify-center items-center">
-							<span data-wp-class--hide="context.loading">Wyślij</span><span
-								data-wp-class--hide="!context.loading" class="loader"></span>
+							<span data-wp-class--hide="context.loading">Wyślij</span>
+							<span data-wp-class--hide="!context.loading" class="loader"></span>
 						</button>
 					</div>
 				</form>

@@ -71,6 +71,10 @@
         }
       ]
     },
+    "per_page": {
+      "type": "number",
+      "default": 3
+    },
     "button": {
       "type": "object",
       "default": {

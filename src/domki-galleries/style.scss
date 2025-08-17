@@ -33,11 +33,34 @@
     display: none !important;
     animation: vanish 1s;
   }
+  .image-more {
+    border-radius: 0.2rem;
+    background-color: var(--wp--preset--color--secondary);
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    cursor: pointer;
+    cursor: pointer;
+    position: relative;
+  }
+  .image-more img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
   .show-image {
     border-radius: 0.2rem;
     overflow: hidden;
+    background-color: var(--wp--preset--color--secondary);
+    aspect-ratio: 16/9;
+
     cursor: pointer;
-    display: block;
+    position: relative;
     animation: appear 1s;
   }
 }

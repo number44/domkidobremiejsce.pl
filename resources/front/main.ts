@@ -19,7 +19,6 @@ window.addEventListener("load", () => {
     const id = window.location.hash.substring(1); // Remove the #
     const targetElement = document.getElementById(id);
     if (targetElement) {
-      console.log("targetElement", targetElement);
       // const headerOffset = 80; // Replace with your header height
       const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
       const menuFixedElem: HTMLElement | null = document.querySelector(".menu-fixed");

@@ -1,12 +1,11 @@
 import "./styles.scss";
 import { registerPlugin, PluginArea } from "@wordpress/plugins";
 
-import GalleryPanel from "./Gallery/Galleries";
 import Panel from "./Meta/Panel";
-registerPlugin("my-custom-fields-plugin", {
-  render: GalleryPanel,
-  icon: "images-alt",
-});
+// registerPlugin("my-custom-fields-plugin", {
+//   render: GalleryPanel,
+//   icon: "admin-settings",
+// });
 
 // create react app
 

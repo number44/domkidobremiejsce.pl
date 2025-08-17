@@ -47,14 +47,12 @@ const MetaForm = ({}: PropsI) => {
         throw new Error("Network response was not ok");
       }
       const respJson = await response.json();
-      console.log("respJson single", respJson);
       if (respJson.data && respJson.data.isRecord) {
         setIsRecord(true);
         // Populate form fields if a record exists
       } else {
         setIsRecord(false);
       }
-      console.log("respJsonxxx", respJson);
 
       const metadata: ResponseMetaI | null = respJson.data.metadata;
       setMetaData(metadata);
@@ -71,7 +69,6 @@ const MetaForm = ({}: PropsI) => {
         setCustomDescription(metadata.custom_description);
         setPostId(+metadata.post_id);
       }
-      console.log("metadata", metadata);
     } catch (error) {
       console.error("Error fetching single metadata:", error);
       setIsRecord(false); // Assume no record if there's an error
@@ -112,7 +109,6 @@ const MetaForm = ({}: PropsI) => {
       }
 
       const respJson = await response.json();
-      console.log("Metadata created/updated:", respJson);
       alert(respJson.message || "Metadata saved successfully!");
       setIsRecord(true); // Assuming successful creation/update means a record now exists
       // Optionally re-fetch data to confirm
@@ -141,7 +137,6 @@ const MetaForm = ({}: PropsI) => {
       custom_description: customDescription,
     };
     const url = wpApiSettings.api_url + "metadata/" + postId + "/";
-    console.log("url", url);
     try {
       const response = await fetch(wpApiSettings.api_url + "metadata/" + postId + "/", {
         headers: {
@@ -157,7 +152,6 @@ const MetaForm = ({}: PropsI) => {
       }
 
       const respJson = await response.json();
-      console.log("Metadata created/updated:", respJson);
       alert(respJson.message || "Metadata saved successfully!");
       setIsRecord(true); // Assuming successful creation/update means a record now exists
       // Optionally re-fetch data to confirm
@@ -180,7 +174,6 @@ const MetaForm = ({}: PropsI) => {
     // Example: const currentPostId = wp.data.select('core/editor').getCurrentPostId();
     const currentPostId = 1; // Placeholder: Replace with actual post ID
     setPostId(currentPostId);
-    console.log("wpApiSettings", JSON.parse(JSON.stringify(wpApiSettings)));
     if (currentPostId) {
       fetchSingleData(currentPostId);
     } else {

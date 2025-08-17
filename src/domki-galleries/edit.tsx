@@ -2,7 +2,7 @@ import { __ } from "@wordpress/i18n";
 
 import { InspectorControls, PanelColorSettings, useBlockProps } from "@wordpress/block-editor";
 import { ApiGalleryI, AttributesI } from "./types";
-import { CheckboxControl, Panel, PanelBody, TextControl } from "@wordpress/components";
+import { CheckboxControl, Panel, PanelBody, RangeControl, TextControl } from "@wordpress/components";
 import { useEffect, useMemo, useState } from "react";
 import Categories from "./components/Categories";
 import Gallery from "./components/Gallery";
@@ -145,6 +145,17 @@ export default function Edit({ attributes, setAttributes }: PropsI) {
               }}
             />
           </PanelBody>
+          <PanelBody title="Liczba dodatkowych zdjęć" initialOpen={false}>
+            <RangeControl
+              value={attributes.per_page}
+              onChange={(value) => {
+                setAttributes({
+                  ...attributes,
+                  per_page: value ? value : 2,
+                });
+              }}
+            />
+          </PanelBody>
         </Panel>
       </InspectorControls>
       <section {...blockProps} id={attributes.identifier}>
@@ -174,7 +185,7 @@ export default function Edit({ attributes, setAttributes }: PropsI) {
           </div>
           {attributes.button.show && (
             <div className="flex justify-center items-center">
-              <a href={attributes.button.link} className="button-md">
+              <a href={attributes.button.link} onClick={(e) => e.preventDefault()} className="button-md">
                 <span>{attributes.button.text}</span>
               </a>
             </div>

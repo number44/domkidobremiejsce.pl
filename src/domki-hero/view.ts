@@ -61,9 +61,7 @@ const storeDef = {
       const { isOpen } = getContext<ContextI>();
       // Log the value of `isOpen` each time it changes.
     },
-    init: () => {
-      console.log("state", JSON.parse(JSON.stringify(state)));
-    },
+    init: () => {},
   },
 };
 

@@ -24,10 +24,6 @@ export default function Edit({ setAttributes, isSelected, attributes }: PropsI) 
   const [isOpen, setIsOpen] = useState(false);
   const blockProps = useBlockProps();
   const iconUrl = wpApiSettings.theme_url + "/assets/icons/up-icon.svg";
-  useEffect(() => {
-    console.log("wpApi", wpApiSettings);
-    console.log("wpApiSettings", JSON.parse(JSON.stringify(wpApiSettings.theme_url)));
-  }, []);
   return (
     <Fragment>
       <Panel>

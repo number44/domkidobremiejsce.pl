@@ -3,6 +3,7 @@ export interface AttributesI {
   title: TitleI;
   galleries: GalleryI[];
   button: ButtonI;
+  per_page: number;
 }
 
 export interface GalleryI {

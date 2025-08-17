@@ -1,11 +1,12 @@
 /**
  * WordPress dependencies
  */
-import { store, getContext, getElement } from '@wordpress/interactivity';
-import carousel from '@/scripts/carousel';
-import { EmblaCarouselType } from 'embla-carousel'; // Import EmblaCarouselType
+import { store, getContext, getElement } from "@wordpress/interactivity";
+import carousel from "@/scripts/carousel";
+import { EmblaCarouselType } from "embla-carousel";
+
 interface EmblaCarouselHTMLElement extends HTMLElement {
-  emblaApiInstance?: EmblaCarouselType; // Use '?' because it might not be set initially
+  emblaApiInstance?: EmblaCarouselType;
 }
 
 type ServerState = {
@@ -15,66 +16,150 @@ type ServerState = {
 type ContextI = {
   imageSelected: number;
   showCarousel: boolean;
+  slidingGallery: GalleryI;
+  moreList: any[];
+  moreimg: number;
+  per_page: number;
+  page: number;
   image: {
     selected: number;
   };
 };
 
+interface GalleryI {
+  title: string;
+  order_by: number;
+  images: string;
+  api: string;
+  media_ids: number[];
+}
+
 const storeDef = {
   state: {},
   actions: {
+    handleMore() {
+      const context = getContext<ContextI>();
+      if (!context) return;
+      context.page++;
+    },
+
     openCarousel() {
       const context = getContext<ContextI>();
       if (!context) return;
-      context.imageSelected = context.image.selected;
-      context.showCarousel = !context.showCarousel;
+
+      const element = getElement();
+      if (!element || !element.ref) return;
+
+      const elem: HTMLElement | null = element.ref;
+      if (!elem) return;
+
+      const mediaId = elem.dataset.media_id;
+      if (!mediaId) return;
+
+      const indexOfMedia = context.slidingGallery.media_ids.indexOf(Number(mediaId));
+      if (indexOfMedia === -1) return;
+
+      // Set to 1-based index for consistency with carousel
+      context.imageSelected = indexOfMedia + 1;
+      context.showCarousel = true;
     },
-    closeCarousel() {
-      const context = getContext<ContextI>();
-      if (!context) return;
-      context.showCarousel = !context.showCarousel;
-    },
-  },
-  callbacks: {
+
     closeCarousel() {
       const context = getContext<ContextI>();
       if (!context) return;
       context.showCarousel = false;
     },
-    initCarousel() {
-      const { ref } = getElement();
-      if (!ref) return;
+  },
+
+  callbacks: {
+    handleMore() {
       const context = getContext<ContextI>();
       if (!context) return;
-      const element: EmblaCarouselHTMLElement | null = ref;
-      if (!element) return;
-      if (!element.emblaApiInstance) {
-        // Pass the root Embla node
-        element.emblaApiInstance = carousel(element);
-        // Optional: Listen for Embla's slide changes and update the context
-        element.emblaApiInstance?.on('select', callbacks.updateImageSelectedFromEmbla);
+      if (context.page === 0) return;
+
+      const difference = context.slidingGallery.media_ids.slice(context.slidingGallery.images.split(",").length);
+      const chunkedDifference = Array.from(chunks(difference, context.per_page));
+
+      const chunkedDifferencePaginated = chunkedDifference
+        .slice(0, context.page)
+        .reduce((acc, val) => acc.concat(val), []);
+
+      context.moreList = chunkedDifferencePaginated;
+    },
+
+    closeCarousel() {
+      const context = getContext<ContextI>();
+      if (!context) return;
+      context.showCarousel = false;
+    },
+
+    initCarousel() {
+      const element = getElement();
+      if (!element || !element.ref) return;
+
+      const context = getContext<ContextI>();
+      if (!context) return;
+
+      const carouselElement: EmblaCarouselHTMLElement | null = element.ref;
+      if (!carouselElement) return;
+
+      // Fix: Only initialize if not already initialized
+      if (!carouselElement.emblaApiInstance) {
+        console.log("Initializing carousel with keyboard nav enabled"); // Debug log
+        carouselElement.emblaApiInstance = carousel(carouselElement);
+
+        if (carouselElement.emblaApiInstance) {
+          // Fix: Better event handling for slide changes
+          carouselElement.emblaApiInstance.on("select", () => {
+            callbacks.updateImageSelectedFromEmbla();
+          });
+
+          // Fix: Handle reInit events
+          carouselElement.emblaApiInstance.on("reInit", () => {
+            callbacks.updateImageSelectedFromEmbla();
+          });
+
+          // Additional debug info
+          console.log("Carousel initialized successfully", {
+            slideCount: carouselElement.emblaApiInstance.slideNodes().length,
+            canScrollPrev: carouselElement.emblaApiInstance.canScrollPrev(),
+            canScrollNext: carouselElement.emblaApiInstance.canScrollNext(),
+          });
+        }
       }
-      const emblaApi = element.emblaApiInstance;
+
+      const emblaApi = carouselElement.emblaApiInstance;
       if (emblaApi && context.imageSelected !== undefined) {
-        // Subtract 1 because Embla is 0-indexed, and your data is 1-indexed
+        // Fix: Better synchronization with context
         const targetIndex = Math.max(0, Number(context.imageSelected) - 1);
-        if (emblaApi.selectedScrollSnap() !== targetIndex) {
-          emblaApi.scrollTo(targetIndex, true);
+        const currentIndex = emblaApi.selectedScrollSnap();
+
+        if (currentIndex !== targetIndex) {
+          // Fix: Use setTimeout to ensure DOM is ready
+          setTimeout(() => {
+            emblaApi.scrollTo(targetIndex, true);
+          }, 0);
         }
       }
     },
 
     updateImageSelectedFromEmbla: () => {
-      const { ref } = getElement();
-      if (!ref) return;
+      const element = getElement();
+      if (!element || !element.ref) return;
+
       const context = getContext<ContextI>();
       if (!context) return;
-      const element: EmblaCarouselHTMLElement | null = ref;
-      if (!element) return;
-      // 2. Cast the element to your new interface here as well
-      const emblaApi = element.emblaApiInstance;
-      if (emblaApi) {
-        context.imageSelected = emblaApi.selectedScrollSnap() + 1;
+
+      const carouselElement: EmblaCarouselHTMLElement | null = element.ref;
+      if (!carouselElement || !carouselElement.emblaApiInstance) return;
+
+      const emblaApi = carouselElement.emblaApiInstance;
+      // Fix: Add 1 to convert from 0-based to 1-based index
+      const newIndex = emblaApi.selectedScrollSnap() + 1;
+
+      // Fix: Only update if actually different to prevent loops
+      if (context.imageSelected !== newIndex) {
+        context.imageSelected = newIndex;
       }
     },
 
@@ -82,14 +167,90 @@ const storeDef = {
       const context = getContext<ContextI>();
       if (!context) return;
 
-      if (event.key === 'Escape') {
-        // context.showCarousel = false;
+      console.log("Key detected:", event.key); // Debug log
+
+      if (event.key === "Escape") {
         callbacks.closeCarousel();
+        return;
       }
+
+      // Note: Arrow key handling is now done by the carousel's built-in keyboard navigation
+      // We don't need to handle it here to avoid double navigation
+    },
+
+    initMoreImg: async () => {
+      const context = getContext<ContextI>();
+      if (!context) return;
+
+      const element = getElement();
+      if (!element || !element.ref) return;
+
+      const elem: HTMLElement | null = element.ref;
+      if (!elem) return;
+
+      let media_id = context.moreimg;
+      if (!media_id) return;
+
+      const url = wpApiSettings.root + "wp/v2/media/" + media_id;
+
+      try {
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+
+        const media = await response.json();
+        if (!media) return;
+
+        const imageUrl = media.media_details?.sizes?.medium?.source_url;
+        if (!imageUrl) return;
+
+        const image = document.createElement("img");
+        image.src = imageUrl;
+        image.alt = media.alt_text || "Domki dobre miejsce - zdjęcie";
+        elem.innerHTML = "";
+        elem.appendChild(image);
+      } catch (err) {
+        console.error("Error loading image:", err);
+      }
+    },
+
+    showButton: () => {
+      const context = getContext<ContextI>();
+      if (!context || !context.slidingGallery) return false;
+
+      // Calculate how many images are currently visible
+      const visibleImagesCount = context.slidingGallery.images.split(",").length;
+
+      // Calculate how many more images have been loaded via "Load More"
+      const loadedMoreImagesCount = context.moreList ? context.moreList.length : 0;
+
+      // Total currently displayed images
+      const totalDisplayedImages = visibleImagesCount + loadedMoreImagesCount;
+
+      // Total available images in the gallery
+      const totalAvailableImages = context.slidingGallery.media_ids.length;
+
+      console.log("showButton check:", {
+        visibleImagesCount,
+        loadedMoreImagesCount,
+        totalDisplayedImages,
+        totalAvailableImages,
+        hasMoreImages: totalDisplayedImages < totalAvailableImages,
+      });
+
+      // Show button only if there are more images to load
+      return totalDisplayedImages < totalAvailableImages;
     },
   },
 };
 
 type Store = ServerState & typeof storeDef;
 
-const { state, callbacks } = store<Store>('domki-kids', storeDef);
+const { state, actions, callbacks } = store<Store>("domki-kids", storeDef);
+
+function* chunks<T extends number[]>(arr: T, n: number) {
+  for (let i = 0; i < arr.length; i += n) {
+    yield arr.slice(i, i + n);
+  }
+}

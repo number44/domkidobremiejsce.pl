@@ -1,10 +1,10 @@
-import { MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
-import { Button, Notice, TextControl } from '@wordpress/components';
-import { useEffect, useMemo, useState, useRef } from 'react';
-import { ApiGalleryI, AttributesI, GalleryI } from '../types';
-import { useAutoAnimate } from '@formkit/auto-animate/react';
-import { getHeaders } from '@/helpers/http';
-import ImageComponent from '@components/ImageComponent';
+import { MediaUpload, MediaUploadCheck } from "@wordpress/block-editor";
+import { Button, Notice, TextControl } from "@wordpress/components";
+import { useEffect, useMemo, useState, useRef } from "react";
+import { ApiGalleryI, AttributesI, GalleryI } from "../types";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
+import { getHeaders } from "@/helpers/http";
+import ImageComponent from "@components/ImageComponent";
 
 interface PropsI {
   gallery: GalleryI;
@@ -18,7 +18,7 @@ interface ImageI {
   media_id: number; // WordPress media library ID (can repeat)
   order_by: number;
 }
-type NoticeT = 'info' | 'warning' | 'success' | 'error' | undefined;
+type NoticeT = "info" | "warning" | "success" | "error" | undefined;
 
 const GalleryImages = ({ attributes, setAttributes, apiGalleries }: PropsI) => {
   const [isPending, setIsPending] = useState(false);
@@ -110,19 +110,15 @@ const GalleryImages = ({ attributes, setAttributes, apiGalleries }: PropsI) => {
       ...attributes,
       gallery: newGallery,
     });
-    const apiGalleryImageIds = attributes.apiGallery.media_ids.split(',').map((id) => +id);
+    const apiGalleryImageIds = attributes.apiGallery.media_ids.split(",").map((id) => +id);
 
     const newGalleryImageIds = sortedImages.map((img) => +img.media_id);
 
-    const sumArr = [...new Set([...newGalleryImageIds, ...apiGalleryImageIds])].filter((id) => id !== 0).join(',');
+    const sumArr = [...new Set([...newGalleryImageIds, ...apiGalleryImageIds])].filter((id) => id !== 0).join(",");
     setIsPending(true);
     try {
-      console.log(
-        "wpApiSettings.api_url + 'gallery/' + gallery.gallery_id",
-        wpApiSettings.api_url + 'gallery/' + attributes.gallery.gallery_id,
-      );
-      const response = await fetch(wpApiSettings.api_url + 'gallery/' + attributes.gallery.gallery_id, {
-        method: 'PUT',
+      const response = await fetch(wpApiSettings.api_url + "gallery/" + attributes.gallery.gallery_id, {
+        method: "PUT",
         headers: getHeaders(),
         body: JSON.stringify({
           title: attributes.apiGallery.title,
@@ -130,11 +126,11 @@ const GalleryImages = ({ attributes, setAttributes, apiGalleries }: PropsI) => {
         }),
       });
       await response.json();
-      setNotice('success');
+      setNotice("success");
       setTimeout(() => setNotice(undefined), 3000);
     } catch (err) {
-      console.error('Failed to save changes:', err);
-      setNotice('error');
+      console.error("Failed to save changes:", err);
+      setNotice("error");
       setTimeout(() => setNotice(undefined), 3000);
     } finally {
       setIsPending(false);
@@ -171,11 +167,11 @@ const GalleryImages = ({ attributes, setAttributes, apiGalleries }: PropsI) => {
 
               setImages(combinedImages);
             }}
-            allowedTypes={['image']}
+            allowedTypes={["image"]}
             render={({ open }) => {
               return (
-                <Button style={{ height: '100%' }} onClick={open} variant="secondary" icon={'images-alt'}>
-                  {'Dodaj zdjęcia'} {/* Changed text to plural */}
+                <Button style={{ height: "100%" }} onClick={open} variant="secondary" icon={"images-alt"}>
+                  {"Dodaj zdjęcia"} {/* Changed text to plural */}
                 </Button>
               );
             }}
@@ -192,17 +188,17 @@ const GalleryImages = ({ attributes, setAttributes, apiGalleries }: PropsI) => {
                     <Button
                       disabled={image.order_by === 1}
                       onClick={() => moveUp(image.order_by)}
-                      icon={'arrow-left-alt'}
+                      icon={"arrow-left-alt"}
                     />
                     <Button
                       disabled={image.order_by === images.length}
                       onClick={() => moveDown(image.order_by)}
-                      icon={'arrow-right-alt'}
+                      icon={"arrow-right-alt"}
                     />
                   </div>
-                  <Button icon={'trash'} onClick={() => removeImage(image.order_by)} />
+                  <Button icon={"trash"} onClick={() => removeImage(image.order_by)} />
                 </div>
-                <ImageComponent media_id={image.media_id} alt={'Zdjęcie gallerii'} style={{ aspectRatio: '16/9' }} />
+                <ImageComponent media_id={image.media_id} alt={"Zdjęcie gallerii"} style={{ aspectRatio: "16/9" }} />
               </section>
             </div>
           </div>
@@ -211,8 +207,8 @@ const GalleryImages = ({ attributes, setAttributes, apiGalleries }: PropsI) => {
       <section className="flex gap-4 flex-wrap justify-between items-center">
         <div>
           {notice && (
-            <Notice status={notice === 'success' ? 'success' : 'error'} isDismissible={false}>
-              {notice === 'success' ? 'Aby zapisać zmiany Zapisz post' : 'Błąd zapisu'}
+            <Notice status={notice === "success" ? "success" : "error"} isDismissible={false}>
+              {notice === "success" ? "Aby zapisać zmiany Zapisz post" : "Błąd zapisu"}
             </Notice>
           )}
         </div>

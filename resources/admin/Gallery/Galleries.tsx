@@ -1,12 +1,12 @@
-import { registerPlugin } from '@wordpress/plugins';
-import { useSelect, useDispatch } from '@wordpress/data';
-import { TextControl, PanelRow, Spinner, Button, PanelBody, Modal } from '@wordpress/components';
-import { Fragment, useEffect, useState } from '@wordpress/element';
-import { PluginDocumentSettingPanel } from '@wordpress/editor';
-import { getHeaders } from '../helpers/http';
-import GalleryButton from './GalleryButton';
-import NewGallery from './NewGallery';
-import { GalleryI } from '../types';
+import { registerPlugin } from "@wordpress/plugins";
+import { useSelect, useDispatch } from "@wordpress/data";
+import { TextControl, PanelRow, Spinner, Button, PanelBody, Modal } from "@wordpress/components";
+import { Fragment, useEffect, useState } from "@wordpress/element";
+import { PluginDocumentSettingPanel } from "@wordpress/editor";
+import { getHeaders } from "../helpers/http";
+import GalleryButton from "./GalleryButton";
+import NewGallery from "./NewGallery";
+import { GalleryI } from "../types";
 
 interface MyCustomFieldsPluginProps {}
 
@@ -20,12 +20,12 @@ const GalleryPanel = () => {
   };
   const fetchGalleries = async () => {
     try {
-      const response = await fetch(wpApiSettings.api_url + 'gallery', {
-        method: 'GET',
+      const response = await fetch(wpApiSettings.api_url + "gallery", {
+        method: "GET",
         headers: getHeaders(),
       });
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+        throw new Error("Network response was not ok");
       }
       const respJson = await response.json();
 
@@ -50,7 +50,7 @@ const GalleryPanel = () => {
       {isLoading ? (
         <Spinner />
       ) : (
-        <div style={{ textAlign: 'center' }} className="">
+        <div style={{ textAlign: "center" }} className="">
           {galleries.map((gallery) => (
             <PanelRow key={gallery.id}>
               <GalleryButton removeGallery={removeGallery} gallery={gallery} />

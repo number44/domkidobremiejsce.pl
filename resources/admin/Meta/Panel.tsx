@@ -2,6 +2,8 @@ import { PluginDocumentSettingPanel, PluginSidebar, PluginSidebarMoreMenuItem } 
 import React, { CSSProperties, useState } from "react";
 import { Button, Modal } from "@wordpress/components";
 import MetaForm from "./MetaForm";
+import GalleryPanel from "../Gallery/GalleryPanel";
+
 interface PropsI {}
 const Panel = ({}: PropsI) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -11,28 +13,15 @@ const Panel = ({}: PropsI) => {
   return (
     <>
       <PluginSidebarMoreMenuItem icon={"google"} target="my-sidebar-plugin">
-        <h4>Google - oceny</h4>
+        <h4>Galerie</h4>
       </PluginSidebarMoreMenuItem>
       <PluginSidebar
         name="my-sidebar-plugin"
-        title="Google - Oceny."
-        icon="google" // Dashicon or custom SVG
+        title="Galeria."
+        icon="format-gallery" // Dashicon or custom SVG
       >
-        <Button
-          variant="secondary"
-          style={{ width: "100%", textAlign: "center", display: "block" }}
-          onClick={() => {
-            setIsModalOpen(true);
-          }}
-        >
-          Button
-        </Button>
+        <GalleryPanel />
       </PluginSidebar>
-      {isModalOpen && (
-        <Modal size="large" title={"Google -SEO - meta data."} onRequestClose={closeModal}>
-          <MetaForm />
-        </Modal>
-      )}
     </>
   );
 };

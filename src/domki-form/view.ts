@@ -93,12 +93,10 @@ const storeDef = {
           body: JSON.stringify(data),
         });
         if (!response.ok) {
-          console.log("response", JSON.parse(JSON.stringify(response)));
           context.loading = false;
           throw new Error("Network response was not ok");
         }
         const json = await response.json();
-        console.log("json", json);
         if (json.status >= 200 && json.status < 300) {
           context.success = true;
           setTimeout(() => {
@@ -109,7 +107,7 @@ const storeDef = {
         context.success = true;
         form.reset();
       } catch (error) {
-        console.log("error", error);
+        console.error("error", error);
       } finally {
         context.loading = false;
       }
@@ -126,7 +124,6 @@ const storeDef = {
     logIsOpen: () => {
       const { isOpen } = getContext<ContextI>();
       // Log the value of `isOpen` each time it changes.
-      console.log(`Is open: ${isOpen}`);
     },
   },
 };

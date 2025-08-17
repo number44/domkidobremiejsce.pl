@@ -1,6 +1,3 @@
-/**
- * WordPress dependencies
- */
 import { store, getContext, getElement } from "@wordpress/interactivity";
 import carousel from "@/scripts/carousel";
 import { EmblaCarouselType } from "embla-carousel"; // Import EmblaCarouselType
@@ -11,6 +8,12 @@ type ContextI = {
   isOpen: boolean;
   active: number;
   showCarousel: boolean;
+  slidingGalleries: GalleryI[];
+  initMoreImg: number;
+  moreList: number[];
+  moreimg: number;
+  per_page: number;
+  page: number;
   switcher: {
     active: number;
   };
@@ -26,11 +29,35 @@ type ServerState = {};
 const storeDef = {
   state: {},
   actions: {
+    handleMore() {
+      const context = getContext<ContextI>();
+      if (!context) return;
+
+      context.page++;
+    },
     openCarousel() {
       const context = getContext<ContextI>();
       if (!context) return;
-      context.imageSelected = context.image.selected;
+      const { ref } = getElement();
+      if (!ref) return;
+
+      const elem: HTMLElement | null = ref;
+      if (!elem) return;
+
+      // get data-media_id value
+      const mediaId = elem.dataset.media_id;
+      if (!mediaId) return;
+
+      const selectedGallery = context.slidingGalleries.find((gallery) => gallery.order_by === context.active);
+      if (!selectedGallery) return;
+      const indexOfMedia = selectedGallery.media_ids.indexOf(Number(mediaId));
+      if (indexOfMedia === -1) return;
+      context.imageSelected = indexOfMedia + 1;
+
       context.showCarousel = !context.showCarousel;
+
+      // context.imageSelected = context.image.selected;
+      // context.showCarousel = !context.showCarousel;
     },
     closeCarousel() {
       const context = getContext<ContextI>();
@@ -49,17 +76,38 @@ const storeDef = {
       const elem: HTMLElement | null = ref;
       if (!elem) return;
       context.active = context.switcher.active;
-
+      context.moreList = [];
+      context.page = 0;
       let weekFromToday = new Date();
       weekFromToday.setDate(weekFromToday.getDate() + 7);
       document.cookie = `gallery_active=${context.active};expires=${weekFromToday.toUTCString()}`.trim();
     },
   },
   callbacks: {
+    handleMore() {
+      const context = getContext<ContextI>();
+      if (!context) return;
+      if (context.page === 0) return;
+      const selectedGallery = context.slidingGalleries.find((gallery) => gallery.order_by === context.active);
+      if (!selectedGallery) return;
+
+      const difference = selectedGallery.media_ids.slice(selectedGallery.images.split(",").length);
+      const chunkedDifference = Array.from(chunks(difference, context.per_page));
+
+      const chunkedDifferencePaginated = chunkedDifference
+        .slice(0, context.page)
+        .reduce((acc, val) => acc.concat(val), []);
+
+      context.moreList = chunkedDifferencePaginated;
+    },
     closeCarousel() {
       const context = getContext<ContextI>();
       if (!context) return;
       context.showCarousel = false;
+    },
+    getMoreImages() {
+      const context = getContext<ContextI>();
+      if (!context) return;
     },
     initCarousel() {
       const { ref } = getElement();
@@ -124,9 +172,73 @@ const storeDef = {
       }
       return false;
     },
+    initMoreImg: async () => {
+      const context = getContext<ContextI>();
+      if (!context) return;
+      const elem: HTMLElement | null = getElement().ref;
+      if (!elem) return;
+      let media_id = context.moreimg;
+      if (!media_id) return;
+
+      const url = wpApiSettings.root + "wp/v2/media/" + media_id;
+
+      try {
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const media = await response.json();
+        if (!media) return;
+        const imageUrl = media.media_details?.sizes?.medium?.source_url;
+        if (!imageUrl) return;
+        const image = document.createElement("img");
+        image.src = imageUrl;
+        image.alt = media.alt_text || "Domki dobre miejsce - zdjÄ™cie";
+        elem.innerHTML = "";
+        elem.appendChild(image);
+      } catch (err) {
+        throw err;
+      } finally {
+      }
+    },
+    showButton: () => {
+      const context = getContext<ContextI>();
+      if (!context) return false;
+
+      const selectedGallery = context.slidingGalleries.find((gallery) => gallery.order_by === context.active);
+      if (!selectedGallery) return false;
+
+      // Calculate how many images are currently visible
+      const visibleImagesCount = selectedGallery.images.split(",").length;
+
+      // Calculate how many more images have been loaded via "Load More"
+      const loadedMoreImagesCount = context.moreList.length;
+
+      // Total currently displayed images
+      const totalDisplayedImages = visibleImagesCount + loadedMoreImagesCount;
+
+      // Total available images in the gallery
+      const totalAvailableImages = selectedGallery.media_ids.length;
+
+      // Show button only if there are more images to load
+      return totalDisplayedImages < totalAvailableImages;
+    },
   },
 };
 
 type Store = ServerState & typeof storeDef;
 
 const { state, actions, callbacks } = store<Store>("domki-galleries", storeDef);
+
+interface GalleryI {
+  title: string;
+  order_by: number;
+  images: string;
+  api: string;
+  media_ids: number[];
+}
+function* chunks<T extends number[]>(arr: T, n: number) {
+  for (let i = 0; i < arr.length; i += n) {
+    yield arr.slice(i, i + n);
+  }
+}

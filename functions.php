@@ -115,6 +115,12 @@ function cc_mime_types($mimes)
 add_filter('upload_mimes', 'cc_mime_types');
 add_post_type_support('page', 'excerpt');
 
+function add_custom_upload_mimes($mimes_types)
+{
+    $mimes_types['webp'] = 'image/webp'; // webp files
+    return $mimes_types;
+}
+add_filter('upload_mimes', 'add_custom_upload_mimes');
 
 /**
  * =========================================================================

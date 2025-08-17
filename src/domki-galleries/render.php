@@ -52,7 +52,7 @@ $gallery_active = isset($_COOKIE['gallery_active']) ? intval($_COOKIE['gallery_a
 
 
 $showButton = $attributes["button"]["show"] ?? true;
-$buttonText = $attributes["button"]["text"] ?? "Zobacz Więcej";
+$buttonText = $attributes["button"]["text"] ?? "Zobacz WiÄ™cej";
 $buttonLink = $attributes["button"]["link"] ?? "#";
 
 
@@ -66,8 +66,13 @@ $buttonLink = $attributes["button"]["link"] ?? "#";
 		"showCarousel" => false,
 		"imageSelected" => 1,
 		"slidingGalleries" => $slidingGalleries,
+		"moreList" => [],
+		"per_page" => $attributes["per_page"],
+		"page" => 0,
+		"loading" => false,
+		"showButton" => $showButton
 	]); ?> data-wp-on-document--keyup="callbacks.detectKeys"
-	id="<?php echo esc_attr($attributes["identifier"]) ?>" class="section">
+	id="<?php echo esc_attr($attributes["identifier"]) ?>" class="section" data-wp-watch="callbacks.handleMore">
 	<div class="container">
 		<?php if ($title["show"]): ?>
 			<h2 class="text-center mb-4"><?= $title["text"] ?></h2>
@@ -94,20 +99,24 @@ $buttonLink = $attributes["button"]["link"] ?? "#";
 							<?php echo my_lazy_load_image($image["media_id"], "inventory-16/9") ?>
 						</div>
 					<?php endforeach; ?>
+
 				</section>
 			<?php endforeach; ?>
-		</div>
-		<?php prettyPrint($slidingGalleries) ?>
-		<?php if ($showButton): ?>
-			<div class="flex justify-center items-center">
-				<a href="<?php echo esc_attr($buttonLink); ?>" class="button-md"><span>xx<?= $buttonText ?></span></a>
+			<div class="grid-3 gap-3 my-4">
+				<template data-wp-each--moreimg="context.moreList">
+					<div data-wp-init="callbacks.initMoreImg" data-wp-on--click="actions.openCarousel"
+						data-wp-bind--data-media_id="context.moreimg" class="show-image">
+					</div>
+				</template>
 			</div>
-		<?php endif; ?>
-
-
-		<?php if (3 < 2): ?>
-			<div class="flex justify-center items-center">
-				<a href="<?php echo esc_attr($buttonLink); ?>" class="button-md"><span>xx<?= $buttonText ?></span></a>
+		</div>
+		<?php if ($showButton): ?>
+			<div class="flex justify-center items-center" data-wp-class--hide="!callbacks.showButton">
+				<button data-wp-on--click="actions.handleMore" title="<?php echo esc_attr($buttonText); ?>"
+					class="button-md">
+					<span data-wp-class--hide="context.loading"><?= $buttonText ?></span>
+					<span data-wp-class--hide="!context.loading" class="loader"></span>
+				</button>
 			</div>
 		<?php endif; ?>
 	</div>

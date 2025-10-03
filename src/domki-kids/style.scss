@@ -23,13 +23,6 @@
     display: none !important;
     animation: vanish 1s;
   }
-  .show-image {
-    border-radius: 0.2rem;
-    overflow: hidden;
-    cursor: pointer;
-    display: block;
-    animation: appear 1s;
-  }
 }
 @media screen and (min-width: 62rem) {
   .wp-block-domki-kids-domki-kids {
@@ -45,18 +38,7 @@
     z-index: 999999;
   }
 }
-@keyframes appear {
-  from {
-    scale: 0.9;
-    opacity: 0;
-    display: none;
-  }
-  to {
-    display: block;
-    scale: 1;
-    opacity: 1;
-  }
-}
+
 @keyframes vanish {
   from {
     display: block;

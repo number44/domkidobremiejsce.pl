@@ -41,6 +41,7 @@
   "dependencies": {
     "@formkit/auto-animate": "^0.8.2",
     "embla-carousel": "^8.6.0",
+    "embla-carousel-auto-height": "^8.6.0",
     "embla-carousel-autoplay": "^8.6.0"
   }
 }

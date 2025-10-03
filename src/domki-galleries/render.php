@@ -1,7 +1,6 @@
 <?php
 
 use App\Services\GalleryService;
-$unique_id = wp_unique_id('p-');
 
 $galleryDbService = new GalleryService();
 
@@ -99,7 +98,6 @@ $buttonLink = $attributes["button"]["link"] ?? "#";
 							<?php echo my_lazy_load_image($image["media_id"], "inventory-16/9") ?>
 						</div>
 					<?php endforeach; ?>
-
 				</section>
 			<?php endforeach; ?>
 			<div class="grid-3 gap-3 my-4">
@@ -113,7 +111,7 @@ $buttonLink = $attributes["button"]["link"] ?? "#";
 		<?php if ($showButton): ?>
 			<div class="flex justify-center items-center" data-wp-class--hide="!callbacks.showButton">
 				<button data-wp-on--click="actions.handleMore" title="<?php echo esc_attr($buttonText); ?>"
-					class="button-md">
+					class="button-md" data-wp-bind--disabled="context.loading">
 					<span data-wp-class--hide="context.loading"><?= $buttonText ?></span>
 					<span data-wp-class--hide="!context.loading" class="loader"></span>
 				</button>

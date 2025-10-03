@@ -63,3 +63,48 @@ img {
 .contrast {
   color: var(--wp--preset--color--contrast) !important;
 }
+
+.loader {
+  width: 1rem;
+  height: 1rem;
+  border: 3px solid var(--wp--preset--color--light);
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: block;
+  margin-inline: auto;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.show-image {
+  aspect-ratio: 384/215;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 0.2rem;
+  overflow: hidden;
+  display: block;
+  animation: appear 1s;
+  background-color: var(--wp--preset--color--secondary);
+  position: relative;
+}
+
+@keyframes appear {
+  from {
+    scale: 0.9;
+    opacity: 0;
+    display: none;
+  }
+  to {
+    display: block;
+    scale: 1;
+    opacity: 1;
+  }
+}

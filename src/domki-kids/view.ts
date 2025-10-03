@@ -21,6 +21,7 @@ type ContextI = {
   moreimg: number;
   per_page: number;
   page: number;
+  loading: boolean; // Add this line
   image: {
     selected: number;
   };
@@ -41,6 +42,7 @@ const storeDef = {
       const context = getContext<ContextI>();
       if (!context) return;
       context.page++;
+      context.loading = true; // Add this line
     },
 
     openCarousel() {
@@ -85,6 +87,7 @@ const storeDef = {
         .reduce((acc, val) => acc.concat(val), []);
 
       context.moreList = chunkedDifferencePaginated;
+      context.loading = false; // Add this line
     },
 
     closeCarousel() {

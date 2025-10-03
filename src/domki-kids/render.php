@@ -53,9 +53,9 @@ if ($pattern_url) {
 		"moreList" => [],
 		"per_page" => $attributes["per_page"] ?? 3,
 		"page" => 0,
-		"showButton" => $showButton
-	]); ?>
-	data-wp-on-document--keyup="callbacks.detectKeys" data-wp-watch="callbacks.handleMore"
+		"showButton" => $showButton,
+		"loading" => false // Add this line
+	]); ?> data-wp-on-document--keyup="callbacks.detectKeys" data-wp-watch="callbacks.handleMore"
 	id="<?php echo esc_attr($attributes["identifier"]) ?>" style="<?php echo $inline_style; ?>">
 	<div class="container">
 		<?php if ($title["show"]): ?>
@@ -80,7 +80,6 @@ if ($pattern_url) {
 			<?php endforeach; ?>
 		</div>
 
-		<!-- Load More Images Section -->
 		<div class="grid-3 gap-3 my-4">
 			<template data-wp-each--moreimg="context.moreList">
 				<div data-wp-init="callbacks.initMoreImg" data-wp-on--click="actions.openCarousel"
@@ -92,7 +91,10 @@ if ($pattern_url) {
 		<?php if ($showButton): ?>
 			<div class="flex justify-center items-center" data-wp-class--hide="!callbacks.showButton">
 				<button data-wp-on--click="actions.handleMore" title="<?php echo esc_attr($buttonText); ?>"
-					class="button-md"><span><?= $buttonText ?></span></button>
+					class="button-md" data-wp-bind--disabled="context.loading">
+					<span data-wp-class--hide="context.loading"><?= $buttonText ?></span>
+					<span data-wp-class--hide="!context.loading" class="loader"></span>
+				</button>
 			</div>
 		<?php endif; ?>
 	</div>

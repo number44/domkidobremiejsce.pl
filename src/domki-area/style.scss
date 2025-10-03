@@ -63,13 +63,6 @@
     display: none !important;
     animation: vanish 1s;
   }
-  .show-image {
-    border-radius: 0.2rem;
-    overflow: hidden;
-    cursor: pointer;
-    display: block;
-    animation: appear 1s;
-  }
 }
 
 @keyframes appear {

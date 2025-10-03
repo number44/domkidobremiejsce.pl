@@ -232,5 +232,4 @@ const GalleryImages = ({ gallery, attributes, setAttributes, apiGalleries }: Pro
     </div>
   );
 };
-
 export default GalleryImages;

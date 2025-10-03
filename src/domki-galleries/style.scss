@@ -53,16 +53,6 @@
     object-fit: cover;
     object-position: center;
   }
-  .show-image {
-    border-radius: 0.2rem;
-    overflow: hidden;
-    background-color: var(--wp--preset--color--secondary);
-    aspect-ratio: 16/9;
-
-    cursor: pointer;
-    position: relative;
-    animation: appear 1s;
-  }
 }
 
 @media (max-width: 62rem) {
